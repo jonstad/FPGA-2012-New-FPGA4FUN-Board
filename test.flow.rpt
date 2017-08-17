@@ -1,0 +1,120 @@
+Flow report for test
+Sun Jul 29 11:04:55 2012
+Quartus II 32-bit Version 12.0 Build 232 07/05/2012 Service Pack 1 SJ Web Edition
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. Flow Summary
+  3. Flow Settings
+  4. Flow Non-Default Global Settings
+  5. Flow Elapsed Time
+  6. Flow OS Summary
+  7. Flow Log
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 1991-2012 Altera Corporation
+Your use of Altera Corporation's design tools, logic functions 
+and other software and tools, and its AMPP partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Altera Program License 
+Subscription Agreement, Altera MegaCore Function License 
+Agreement, or other applicable license agreement, including, 
+without limitation, that your use is for the sole purpose of 
+programming logic devices manufactured by Altera and sold by 
+Altera or its authorized distributors.  Please refer to the 
+applicable agreement for further details.
+
+
+
++------------------------------------------------------------------------------------+
+; Flow Summary                                                                       ;
++------------------------------------+-----------------------------------------------+
+; Flow Status                        ; Successful - Sun Jul 29 11:04:52 2012         ;
+; Quartus II 32-bit Version          ; 12.0 Build 232 07/05/2012 SP 1 SJ Web Edition ;
+; Revision Name                      ; test                                          ;
+; Top-level Entity Name              ; test                                          ;
+; Family                             ; Cyclone II                                    ;
+; Device                             ; EP2C5T144C8                                   ;
+; Timing Models                      ; Final                                         ;
+; Total logic elements               ; 1,955 / 4,608 ( 42 % )                        ;
+;     Total combinational functions  ; 1,830 / 4,608 ( 40 % )                        ;
+;     Dedicated logic registers      ; 974 / 4,608 ( 21 % )                          ;
+; Total registers                    ; 974                                           ;
+; Total pins                         ; 20 / 89 ( 22 % )                              ;
+; Total virtual pins                 ; 0                                             ;
+; Total memory bits                  ; 0 / 119,808 ( 0 % )                           ;
+; Embedded Multiplier 9-bit elements ; 0 / 26 ( 0 % )                                ;
+; Total PLLs                         ; 0 / 2 ( 0 % )                                 ;
++------------------------------------+-----------------------------------------------+
+
+
++-----------------------------------------+
+; Flow Settings                           ;
++-------------------+---------------------+
+; Option            ; Setting             ;
++-------------------+---------------------+
+; Start date & time ; 07/29/2012 11:03:58 ;
+; Main task         ; Compilation         ;
+; Revision Name     ; test                ;
++-------------------+---------------------+
+
+
++-----------------------------------------------------------------------------------------------------------------------------------------+
+; Flow Non-Default Global Settings                                                                                                        ;
++-------------------------------------+--------------------------------------------------------+---------------+-------------+------------+
+; Assignment Name                     ; Value                                                  ; Default Value ; Entity Name ; Section Id ;
++-------------------------------------+--------------------------------------------------------+---------------+-------------+------------+
+; APEX20K_OPTIMIZATION_TECHNIQUE      ; Speed                                                  ; Balanced      ; --          ; --         ;
+; COMPILER_SIGNATURE_ID               ; 264840329582543.134355263800132                        ; --            ; --          ; --         ;
+; MISC_FILE                           ; C:/MyDesigns/MyFPGA/Incliniometer 16mars 2009/test.dpf ; --            ; --          ; --         ;
+; PARTITION_COLOR                     ; 16764057                                               ; --            ; --          ; Top        ;
+; PARTITION_FITTER_PRESERVATION_LEVEL ; PLACEMENT_AND_ROUTING                                  ; --            ; --          ; Top        ;
+; PARTITION_NETLIST_TYPE              ; SOURCE                                                 ; --            ; --          ; Top        ;
+; USE_GENERATED_PHYSICAL_CONSTRAINTS  ; Off                                                    ; --            ; --          ; eda_palace ;
++-------------------------------------+--------------------------------------------------------+---------------+-------------+------------+
+
+
++-------------------------------------------------------------------------------------------------------------------------------+
+; Flow Elapsed Time                                                                                                             ;
++---------------------------+--------------+-------------------------+---------------------+------------------------------------+
+; Module Name               ; Elapsed Time ; Average Processors Used ; Peak Virtual Memory ; Total CPU Time (on all processors) ;
++---------------------------+--------------+-------------------------+---------------------+------------------------------------+
+; Analysis & Synthesis      ; 00:00:15     ; 1.0                     ; 361 MB              ; 00:00:12                           ;
+; Fitter                    ; 00:00:34     ; 1.0                     ; 416 MB              ; 00:00:31                           ;
+; Assembler                 ; 00:00:02     ; 1.0                     ; 327 MB              ; 00:00:01                           ;
+; TimeQuest Timing Analyzer ; 00:00:02     ; 1.0                     ; 320 MB              ; 00:00:02                           ;
+; Total                     ; 00:00:53     ; --                      ; --                  ; 00:00:46                           ;
++---------------------------+--------------+-------------------------+---------------------+------------------------------------+
+
+
++----------------------------------------------------------------------------------------+
+; Flow OS Summary                                                                        ;
++---------------------------+------------------+-----------+------------+----------------+
+; Module Name               ; Machine Hostname ; OS Name   ; OS Version ; Processor type ;
++---------------------------+------------------+-----------+------------+----------------+
+; Analysis & Synthesis      ; AGR20952         ; Windows 7 ; 6.1        ; x86_64         ;
+; Fitter                    ; AGR20952         ; Windows 7 ; 6.1        ; x86_64         ;
+; Assembler                 ; AGR20952         ; Windows 7 ; 6.1        ; x86_64         ;
+; TimeQuest Timing Analyzer ; AGR20952         ; Windows 7 ; 6.1        ; x86_64         ;
++---------------------------+------------------+-----------+------------+----------------+
+
+
+------------
+; Flow Log ;
+------------
+quartus_map --read_settings_files=on --write_settings_files=off Inclinometer -c test
+quartus_fit --read_settings_files=off --write_settings_files=off Inclinometer -c test
+quartus_asm --read_settings_files=off --write_settings_files=off Inclinometer -c test
+quartus_sta Inclinometer -c test
+
+
+

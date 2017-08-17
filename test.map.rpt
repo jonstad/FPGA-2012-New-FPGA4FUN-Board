@@ -1,0 +1,715 @@
+Analysis & Synthesis report for test
+Sun Jul 29 11:04:14 2012
+Quartus II 32-bit Version 12.0 Build 232 07/05/2012 Service Pack 1 SJ Web Edition
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. Analysis & Synthesis Summary
+  3. Analysis & Synthesis Settings
+  4. Parallel Compilation
+  5. Analysis & Synthesis Source Files Read
+  6. Analysis & Synthesis Resource Usage Summary
+  7. Analysis & Synthesis Resource Utilization by Entity
+  8. Analysis & Synthesis IP Cores Summary
+  9. State Machine - |test|mmu_uart_top:inst11|RX:rx_u0|CS
+ 10. State Machine - |test|mmu_uart_top:inst9|RX:rx_u0|CS
+ 11. Registers Removed During Synthesis
+ 12. General Register Statistics
+ 13. Inverted Register Statistics
+ 14. Multiplexer Restructuring Statistics (Restructuring Performed)
+ 15. Parameter Settings for User Entity Instance: lpm_counter0:inst1|lpm_counter:lpm_counter_component
+ 16. Elapsed Time Per Partition
+ 17. Analysis & Synthesis Messages
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 1991-2012 Altera Corporation
+Your use of Altera Corporation's design tools, logic functions 
+and other software and tools, and its AMPP partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Altera Program License 
+Subscription Agreement, Altera MegaCore Function License 
+Agreement, or other applicable license agreement, including, 
+without limitation, that your use is for the sole purpose of 
+programming logic devices manufactured by Altera and sold by 
+Altera or its authorized distributors.  Please refer to the 
+applicable agreement for further details.
+
+
+
++------------------------------------------------------------------------------------+
+; Analysis & Synthesis Summary                                                       ;
++------------------------------------+-----------------------------------------------+
+; Analysis & Synthesis Status        ; Successful - Sun Jul 29 11:04:14 2012         ;
+; Quartus II 32-bit Version          ; 12.0 Build 232 07/05/2012 SP 1 SJ Web Edition ;
+; Revision Name                      ; test                                          ;
+; Top-level Entity Name              ; test                                          ;
+; Family                             ; Cyclone II                                    ;
+; Total logic elements               ; 2,002                                         ;
+;     Total combinational functions  ; 1,830                                         ;
+;     Dedicated logic registers      ; 974                                           ;
+; Total registers                    ; 974                                           ;
+; Total pins                         ; 20                                            ;
+; Total virtual pins                 ; 0                                             ;
+; Total memory bits                  ; 0                                             ;
+; Embedded Multiplier 9-bit elements ; 0                                             ;
+; Total PLLs                         ; 0                                             ;
++------------------------------------+-----------------------------------------------+
+
+
++----------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Settings                                                                                        ;
++----------------------------------------------------------------------------+--------------------+--------------------+
+; Option                                                                     ; Setting            ; Default Value      ;
++----------------------------------------------------------------------------+--------------------+--------------------+
+; Device                                                                     ; EP2C5T144C8        ;                    ;
+; Top-level entity name                                                      ; test               ; test               ;
+; Family name                                                                ; Cyclone II         ; Stratix II         ;
+; Use smart compilation                                                      ; Off                ; Off                ;
+; Maximum processors allowed for parallel compilation                        ; 1                  ; 1                  ;
+; Enable parallel Assembler and TimeQuest Timing Analyzer during compilation ; On                 ; On                 ;
+; Enable compact report table                                                ; Off                ; Off                ;
+; Restructure Multiplexers                                                   ; Auto               ; Auto               ;
+; Create Debugging Nodes for IP Cores                                        ; Off                ; Off                ;
+; Preserve fewer node names                                                  ; On                 ; On                 ;
+; Disable OpenCore Plus hardware evaluation                                  ; Off                ; Off                ;
+; Verilog Version                                                            ; Verilog_2001       ; Verilog_2001       ;
+; VHDL Version                                                               ; VHDL_1993          ; VHDL_1993          ;
+; State Machine Processing                                                   ; Auto               ; Auto               ;
+; Safe State Machine                                                         ; Off                ; Off                ;
+; Extract Verilog State Machines                                             ; On                 ; On                 ;
+; Extract VHDL State Machines                                                ; On                 ; On                 ;
+; Ignore Verilog initial constructs                                          ; Off                ; Off                ;
+; Iteration limit for constant Verilog loops                                 ; 5000               ; 5000               ;
+; Iteration limit for non-constant Verilog loops                             ; 250                ; 250                ;
+; Add Pass-Through Logic to Inferred RAMs                                    ; On                 ; On                 ;
+; Infer RAMs from Raw Logic                                                  ; On                 ; On                 ;
+; Parallel Synthesis                                                         ; On                 ; On                 ;
+; DSP Block Balancing                                                        ; Auto               ; Auto               ;
+; NOT Gate Push-Back                                                         ; On                 ; On                 ;
+; Power-Up Don't Care                                                        ; On                 ; On                 ;
+; Remove Redundant Logic Cells                                               ; Off                ; Off                ;
+; Remove Duplicate Registers                                                 ; On                 ; On                 ;
+; Ignore CARRY Buffers                                                       ; Off                ; Off                ;
+; Ignore CASCADE Buffers                                                     ; Off                ; Off                ;
+; Ignore GLOBAL Buffers                                                      ; Off                ; Off                ;
+; Ignore ROW GLOBAL Buffers                                                  ; Off                ; Off                ;
+; Ignore LCELL Buffers                                                       ; Off                ; Off                ;
+; Ignore SOFT Buffers                                                        ; On                 ; On                 ;
+; Limit AHDL Integers to 32 Bits                                             ; Off                ; Off                ;
+; Optimization Technique                                                     ; Balanced           ; Balanced           ;
+; Carry Chain Length                                                         ; 70                 ; 70                 ;
+; Auto Carry Chains                                                          ; On                 ; On                 ;
+; Auto Open-Drain Pins                                                       ; On                 ; On                 ;
+; Perform WYSIWYG Primitive Resynthesis                                      ; Off                ; Off                ;
+; Auto ROM Replacement                                                       ; On                 ; On                 ;
+; Auto RAM Replacement                                                       ; On                 ; On                 ;
+; Auto Shift Register Replacement                                            ; Auto               ; Auto               ;
+; Allow Shift Register Merging across Hierarchies                            ; Auto               ; Auto               ;
+; Auto Clock Enable Replacement                                              ; On                 ; On                 ;
+; Strict RAM Replacement                                                     ; Off                ; Off                ;
+; Allow Synchronous Control Signals                                          ; On                 ; On                 ;
+; Force Use of Synchronous Clear Signals                                     ; Off                ; Off                ;
+; Auto RAM to Logic Cell Conversion                                          ; Off                ; Off                ;
+; Auto Resource Sharing                                                      ; Off                ; Off                ;
+; Allow Any RAM Size For Recognition                                         ; Off                ; Off                ;
+; Allow Any ROM Size For Recognition                                         ; Off                ; Off                ;
+; Allow Any Shift Register Size For Recognition                              ; Off                ; Off                ;
+; Use LogicLock Constraints during Resource Balancing                        ; On                 ; On                 ;
+; Ignore translate_off and synthesis_off directives                          ; Off                ; Off                ;
+; Timing-Driven Synthesis                                                    ; Off                ; Off                ;
+; Report Parameter Settings                                                  ; On                 ; On                 ;
+; Report Source Assignments                                                  ; On                 ; On                 ;
+; Report Connectivity Checks                                                 ; On                 ; On                 ;
+; Ignore Maximum Fan-Out Assignments                                         ; Off                ; Off                ;
+; Synchronization Register Chain Length                                      ; 2                  ; 2                  ;
+; PowerPlay Power Optimization                                               ; Normal compilation ; Normal compilation ;
+; HDL message level                                                          ; Level2             ; Level2             ;
+; Suppress Register Optimization Related Messages                            ; Off                ; Off                ;
+; Number of Removed Registers Reported in Synthesis Report                   ; 100                ; 100                ;
+; Number of Swept Nodes Reported in Synthesis Report                         ; 5000               ; 5000               ;
+; Number of Inverted Registers Reported in Synthesis Report                  ; 100                ; 100                ;
+; Clock MUX Protection                                                       ; On                 ; On                 ;
+; Auto Gated Clock Conversion                                                ; Off                ; Off                ;
+; Block Design Naming                                                        ; Auto               ; Auto               ;
+; SDC constraint protection                                                  ; Off                ; Off                ;
+; Synthesis Effort                                                           ; Auto               ; Auto               ;
+; Shift Register Replacement - Allow Asynchronous Clear Signal               ; On                 ; On                 ;
+; Analysis & Synthesis Message Level                                         ; Medium             ; Medium             ;
+; Disable Register Merging Across Hierarchies                                ; Auto               ; Auto               ;
+; Resource Aware Inference For Block RAM                                     ; On                 ; On                 ;
+; Synthesis Seed                                                             ; 1                  ; 1                  ;
++----------------------------------------------------------------------------+--------------------+--------------------+
+
+
+Parallel compilation was disabled, but you have multiple processors available. Enable parallel compilation to reduce compilation time.
++-------------------------------------+
+; Parallel Compilation                ;
++----------------------------+--------+
+; Processors                 ; Number ;
++----------------------------+--------+
+; Number detected on machine ; 8      ;
+; Maximum allowed            ; 1      ;
++----------------------------+--------+
+
+
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                                                            ;
++----------------------------------+-----------------+------------------------------------+-------------------------------------------------------------------------------+---------+
+; File Name with User-Entered Path ; Used in Netlist ; File Type                          ; File Name with Absolute Path                                                  ; Library ;
++----------------------------------+-----------------+------------------------------------+-------------------------------------------------------------------------------+---------+
+; FSM.vhdl                         ; yes             ; User VHDL File                     ; C:/Users/tej/Documents/MyDesigns/Incliniometer 16mars 2009/FSM.vhdl           ;         ;
+; baud_cnt.vhd                     ; yes             ; User VHDL File                     ; C:/Users/tej/Documents/MyDesigns/Incliniometer 16mars 2009/baud_cnt.vhd       ;         ;
+; mmu_uart_top.vhd                 ; yes             ; User VHDL File                     ; C:/Users/tej/Documents/MyDesigns/Incliniometer 16mars 2009/mmu_uart_top.vhd   ;         ;
+; rx.vhd                           ; yes             ; User VHDL File                     ; C:/Users/tej/Documents/MyDesigns/Incliniometer 16mars 2009/rx.vhd             ;         ;
+; tx.vhd                           ; yes             ; User VHDL File                     ; C:/Users/tej/Documents/MyDesigns/Incliniometer 16mars 2009/tx.vhd             ;         ;
+; test.bdf                         ; yes             ; User Block Diagram/Schematic File  ; C:/Users/tej/Documents/MyDesigns/Incliniometer 16mars 2009/test.bdf           ;         ;
+; Encoder.vhd                      ; yes             ; User VHDL File                     ; C:/Users/tej/Documents/MyDesigns/Incliniometer 16mars 2009/Encoder.vhd        ;         ;
+; SPI.vhd                          ; yes             ; User VHDL File                     ; C:/Users/tej/Documents/MyDesigns/Incliniometer 16mars 2009/SPI.vhd            ;         ;
+; UartController.vhd               ; yes             ; User VHDL File                     ; C:/Users/tej/Documents/MyDesigns/Incliniometer 16mars 2009/UartController.vhd ;         ;
+; lpm_counter0.vhd                 ; yes             ; Auto-Found Wizard-Generated File   ; C:/Users/tej/Documents/MyDesigns/Incliniometer 16mars 2009/lpm_counter0.vhd   ;         ;
+; lpm_counter.tdf                  ; yes             ; Megafunction                       ; c:/altera/12.0sp1/quartus/libraries/megafunctions/lpm_counter.tdf             ;         ;
+; lpm_constant.inc                 ; yes             ; Megafunction                       ; c:/altera/12.0sp1/quartus/libraries/megafunctions/lpm_constant.inc            ;         ;
+; lpm_decode.inc                   ; yes             ; Megafunction                       ; c:/altera/12.0sp1/quartus/libraries/megafunctions/lpm_decode.inc              ;         ;
+; lpm_add_sub.inc                  ; yes             ; Megafunction                       ; c:/altera/12.0sp1/quartus/libraries/megafunctions/lpm_add_sub.inc             ;         ;
+; cmpconst.inc                     ; yes             ; Megafunction                       ; c:/altera/12.0sp1/quartus/libraries/megafunctions/cmpconst.inc                ;         ;
+; lpm_compare.inc                  ; yes             ; Megafunction                       ; c:/altera/12.0sp1/quartus/libraries/megafunctions/lpm_compare.inc             ;         ;
+; lpm_counter.inc                  ; yes             ; Megafunction                       ; c:/altera/12.0sp1/quartus/libraries/megafunctions/lpm_counter.inc             ;         ;
+; dffeea.inc                       ; yes             ; Megafunction                       ; c:/altera/12.0sp1/quartus/libraries/megafunctions/dffeea.inc                  ;         ;
+; alt_counter_stratix.inc          ; yes             ; Megafunction                       ; c:/altera/12.0sp1/quartus/libraries/megafunctions/alt_counter_stratix.inc     ;         ;
+; aglobal120.inc                   ; yes             ; Megafunction                       ; c:/altera/12.0sp1/quartus/libraries/megafunctions/aglobal120.inc              ;         ;
+; db/cntr_amh.tdf                  ; yes             ; Auto-Generated Megafunction        ; C:/Users/tej/Documents/MyDesigns/Incliniometer 16mars 2009/db/cntr_amh.tdf    ;         ;
++----------------------------------+-----------------+------------------------------------+-------------------------------------------------------------------------------+---------+
+
+
++-----------------------------------------------------+
+; Analysis & Synthesis Resource Usage Summary         ;
++---------------------------------------------+-------+
+; Resource                                    ; Usage ;
++---------------------------------------------+-------+
+; Estimated Total logic elements              ; 2,002 ;
+;                                             ;       ;
+; Total combinational functions               ; 1830  ;
+; Logic element usage by number of LUT inputs ;       ;
+;     -- 4 input functions                    ; 965   ;
+;     -- 3 input functions                    ; 321   ;
+;     -- <=2 input functions                  ; 544   ;
+;                                             ;       ;
+; Logic elements by mode                      ;       ;
+;     -- normal mode                          ; 1463  ;
+;     -- arithmetic mode                      ; 367   ;
+;                                             ;       ;
+; Total registers                             ; 974   ;
+;     -- Dedicated logic registers            ; 974   ;
+;     -- I/O registers                        ; 0     ;
+;                                             ;       ;
+; I/O pins                                    ; 20    ;
+; Maximum fan-out node                        ; Clock ;
+; Maximum fan-out                             ; 910   ;
+; Total fan-out                               ; 9255  ;
+; Average fan-out                             ; 3.28  ;
++---------------------------------------------+-------+
+
+
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                                                                       ;
++-------------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+------------------------------------------------------------------------------------+--------------+
+; Compilation Hierarchy Node                ; LC Combinationals ; LC Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name                                                                ; Library Name ;
++-------------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+------------------------------------------------------------------------------------+--------------+
+; |test                                     ; 1830 (0)          ; 974 (0)      ; 0           ; 0            ; 0       ; 0         ; 20   ; 0            ; |test                                                                              ;              ;
+;    |Encoder:inst5|                        ; 66 (66)           ; 64 (64)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |test|Encoder:inst5                                                                ;              ;
+;    |FSM:inst14|                           ; 1123 (1123)       ; 421 (421)    ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |test|FSM:inst14                                                                   ;              ;
+;    |SPI:inst|                             ; 87 (87)           ; 97 (97)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |test|SPI:inst                                                                     ;              ;
+;    |UartController:inst3|                 ; 406 (406)         ; 222 (222)    ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |test|UartController:inst3                                                         ;              ;
+;    |lpm_counter0:inst1|                   ; 24 (0)            ; 24 (0)       ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |test|lpm_counter0:inst1                                                           ;              ;
+;       |lpm_counter:lpm_counter_component| ; 24 (0)            ; 24 (0)       ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |test|lpm_counter0:inst1|lpm_counter:lpm_counter_component                         ;              ;
+;          |cntr_amh:auto_generated|        ; 24 (24)           ; 24 (24)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |test|lpm_counter0:inst1|lpm_counter:lpm_counter_component|cntr_amh:auto_generated ;              ;
+;    |mmu_uart_top:inst11|                  ; 60 (3)            ; 73 (0)       ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |test|mmu_uart_top:inst11                                                          ;              ;
+;       |RX:rx_u0|                          ; 8 (8)             ; 38 (38)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |test|mmu_uart_top:inst11|RX:rx_u0                                                 ;              ;
+;       |baud_cnt:baud_cnt_u0|              ; 25 (25)           ; 17 (17)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |test|mmu_uart_top:inst11|baud_cnt:baud_cnt_u0                                     ;              ;
+;       |tx:tx_u0|                          ; 24 (24)           ; 18 (18)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |test|mmu_uart_top:inst11|tx:tx_u0                                                 ;              ;
+;    |mmu_uart_top:inst9|                   ; 64 (8)            ; 73 (0)       ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |test|mmu_uart_top:inst9                                                           ;              ;
+;       |RX:rx_u0|                          ; 8 (8)             ; 38 (38)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |test|mmu_uart_top:inst9|RX:rx_u0                                                  ;              ;
+;       |baud_cnt:baud_cnt_u0|              ; 24 (24)           ; 17 (17)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |test|mmu_uart_top:inst9|baud_cnt:baud_cnt_u0                                      ;              ;
+;       |tx:tx_u0|                          ; 24 (24)           ; 18 (18)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |test|mmu_uart_top:inst9|tx:tx_u0                                                  ;              ;
++-------------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+------------------------------------------------------------------------------------+--------------+
+Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
+
+
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis IP Cores Summary                                                                                                                                  ;
++--------+--------------+---------+--------------+--------------+--------------------------+-----------------------------------------------------------------------------+
+; Vendor ; IP Core Name ; Version ; Release Date ; License Type ; Entity Instance          ; IP Include File                                                             ;
++--------+--------------+---------+--------------+--------------+--------------------------+-----------------------------------------------------------------------------+
+; Altera ; LPM_COUNTER  ; N/A     ; N/A          ; N/A          ; |test|lpm_counter0:inst1 ; C:/Users/tej/Documents/MyDesigns/Incliniometer 16mars 2009/lpm_counter0.vhd ;
++--------+--------------+---------+--------------+--------------+--------------------------+-----------------------------------------------------------------------------+
+
+
+Encoding Type:  One-Hot
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; State Machine - |test|mmu_uart_top:inst11|RX:rx_u0|CS                                                                                                                                                                                                                                                                                                                                                      ;
++----------------+---------+-----------+--------------+-------------+-----------+--------------+-------------+-----------+--------------+-------------+-----------+--------------+-------------+-----------+--------------+-------------+-----------+--------------+-------------+-----------+--------------+-------------+-----------+--------------+-------------+--------------+----------------+---------+
+; Name           ; CS.STOP ; CS.B7_END ; CS.B7_SAMPLE ; CS.B7_START ; CS.B6_END ; CS.B6_SAMPLE ; CS.B6_START ; CS.B5_END ; CS.B5_SAMPLE ; CS.B5_START ; CS.B4_END ; CS.B4_SAMPLE ; CS.B4_START ; CS.B3_END ; CS.B3_SAMPLE ; CS.B3_START ; CS.B2_END ; CS.B2_SAMPLE ; CS.B2_START ; CS.B1_END ; CS.B1_SAMPLE ; CS.B1_START ; CS.B0_END ; CS.B0_SAMPLE ; CS.B0_START ; CS.START_END ; CS.START_START ; CS.IDLE ;
++----------------+---------+-----------+--------------+-------------+-----------+--------------+-------------+-----------+--------------+-------------+-----------+--------------+-------------+-----------+--------------+-------------+-----------+--------------+-------------+-----------+--------------+-------------+-----------+--------------+-------------+--------------+----------------+---------+
+; CS.IDLE        ; 0       ; 0         ; 0            ; 0           ; 0         ; 0            ; 0           ; 0         ; 0            ; 0           ; 0         ; 0            ; 0           ; 0         ; 0            ; 0           ; 0         ; 0            ; 0           ; 0         ; 0            ; 0           ; 0         ; 0            ; 0           ; 0            ; 0              ; 0       ;
+; CS.START_START ; 0       ; 0         ; 0            ; 0           ; 0         ; 0            ; 0           ; 0         ; 0            ; 0           ; 0         ; 0            ; 0           ; 0         ; 0            ; 0           ; 0         ; 0            ; 0           ; 0         ; 0            ; 0           ; 0         ; 0            ; 0           ; 0            ; 1              ; 1       ;
+; CS.START_END   ; 0       ; 0         ; 0            ; 0           ; 0         ; 0            ; 0           ; 0         ; 0            ; 0           ; 0         ; 0            ; 0           ; 0         ; 0            ; 0           ; 0         ; 0            ; 0           ; 0         ; 0            ; 0           ; 0         ; 0            ; 0           ; 1            ; 0              ; 1       ;
+; CS.B0_START    ; 0       ; 0         ; 0            ; 0           ; 0         ; 0            ; 0           ; 0         ; 0            ; 0           ; 0         ; 0            ; 0           ; 0         ; 0            ; 0           ; 0         ; 0            ; 0           ; 0         ; 0            ; 0           ; 0         ; 0            ; 1           ; 0            ; 0              ; 1       ;
+; CS.B0_SAMPLE   ; 0       ; 0         ; 0            ; 0           ; 0         ; 0            ; 0           ; 0         ; 0            ; 0           ; 0         ; 0            ; 0           ; 0         ; 0            ; 0           ; 0         ; 0            ; 0           ; 0         ; 0            ; 0           ; 0         ; 1            ; 0           ; 0            ; 0              ; 1       ;
+; CS.B0_END      ; 0       ; 0         ; 0            ; 0           ; 0         ; 0            ; 0           ; 0         ; 0            ; 0           ; 0         ; 0            ; 0           ; 0         ; 0            ; 0           ; 0         ; 0            ; 0           ; 0         ; 0            ; 0           ; 1         ; 0            ; 0           ; 0            ; 0              ; 1       ;
+; CS.B1_START    ; 0       ; 0         ; 0            ; 0           ; 0         ; 0            ; 0           ; 0         ; 0            ; 0           ; 0         ; 0            ; 0           ; 0         ; 0            ; 0           ; 0         ; 0            ; 0           ; 0         ; 0            ; 1           ; 0         ; 0            ; 0           ; 0            ; 0              ; 1       ;
+; CS.B1_SAMPLE   ; 0       ; 0         ; 0            ; 0           ; 0         ; 0            ; 0           ; 0         ; 0            ; 0           ; 0         ; 0            ; 0           ; 0         ; 0            ; 0           ; 0         ; 0            ; 0           ; 0         ; 1            ; 0           ; 0         ; 0            ; 0           ; 0            ; 0              ; 1       ;
+; CS.B1_END      ; 0       ; 0         ; 0            ; 0           ; 0         ; 0            ; 0           ; 0         ; 0            ; 0           ; 0         ; 0            ; 0           ; 0         ; 0            ; 0           ; 0         ; 0            ; 0           ; 1         ; 0            ; 0           ; 0         ; 0            ; 0           ; 0            ; 0              ; 1       ;
+; CS.B2_START    ; 0       ; 0         ; 0            ; 0           ; 0         ; 0            ; 0           ; 0         ; 0            ; 0           ; 0         ; 0            ; 0           ; 0         ; 0            ; 0           ; 0         ; 0            ; 1           ; 0         ; 0            ; 0           ; 0         ; 0            ; 0           ; 0            ; 0              ; 1       ;
+; CS.B2_SAMPLE   ; 0       ; 0         ; 0            ; 0           ; 0         ; 0            ; 0           ; 0         ; 0            ; 0           ; 0         ; 0            ; 0           ; 0         ; 0            ; 0           ; 0         ; 1            ; 0           ; 0         ; 0            ; 0           ; 0         ; 0            ; 0           ; 0            ; 0              ; 1       ;
+; CS.B2_END      ; 0       ; 0         ; 0            ; 0           ; 0         ; 0            ; 0           ; 0         ; 0            ; 0           ; 0         ; 0            ; 0           ; 0         ; 0            ; 0           ; 1         ; 0            ; 0           ; 0         ; 0            ; 0           ; 0         ; 0            ; 0           ; 0            ; 0              ; 1       ;
+; CS.B3_START    ; 0       ; 0         ; 0            ; 0           ; 0         ; 0            ; 0           ; 0         ; 0            ; 0           ; 0         ; 0            ; 0           ; 0         ; 0            ; 1           ; 0         ; 0            ; 0           ; 0         ; 0            ; 0           ; 0         ; 0            ; 0           ; 0            ; 0              ; 1       ;
+; CS.B3_SAMPLE   ; 0       ; 0         ; 0            ; 0           ; 0         ; 0            ; 0           ; 0         ; 0            ; 0           ; 0         ; 0            ; 0           ; 0         ; 1            ; 0           ; 0         ; 0            ; 0           ; 0         ; 0            ; 0           ; 0         ; 0            ; 0           ; 0            ; 0              ; 1       ;
+; CS.B3_END      ; 0       ; 0         ; 0            ; 0           ; 0         ; 0            ; 0           ; 0         ; 0            ; 0           ; 0         ; 0            ; 0           ; 1         ; 0            ; 0           ; 0         ; 0            ; 0           ; 0         ; 0            ; 0           ; 0         ; 0            ; 0           ; 0            ; 0              ; 1       ;
+; CS.B4_START    ; 0       ; 0         ; 0            ; 0           ; 0         ; 0            ; 0           ; 0         ; 0            ; 0           ; 0         ; 0            ; 1           ; 0         ; 0            ; 0           ; 0         ; 0            ; 0           ; 0         ; 0            ; 0           ; 0         ; 0            ; 0           ; 0            ; 0              ; 1       ;
+; CS.B4_SAMPLE   ; 0       ; 0         ; 0            ; 0           ; 0         ; 0            ; 0           ; 0         ; 0            ; 0           ; 0         ; 1            ; 0           ; 0         ; 0            ; 0           ; 0         ; 0            ; 0           ; 0         ; 0            ; 0           ; 0         ; 0            ; 0           ; 0            ; 0              ; 1       ;
+; CS.B4_END      ; 0       ; 0         ; 0            ; 0           ; 0         ; 0            ; 0           ; 0         ; 0            ; 0           ; 1         ; 0            ; 0           ; 0         ; 0            ; 0           ; 0         ; 0            ; 0           ; 0         ; 0            ; 0           ; 0         ; 0            ; 0           ; 0            ; 0              ; 1       ;
+; CS.B5_START    ; 0       ; 0         ; 0            ; 0           ; 0         ; 0            ; 0           ; 0         ; 0            ; 1           ; 0         ; 0            ; 0           ; 0         ; 0            ; 0           ; 0         ; 0            ; 0           ; 0         ; 0            ; 0           ; 0         ; 0            ; 0           ; 0            ; 0              ; 1       ;
+; CS.B5_SAMPLE   ; 0       ; 0         ; 0            ; 0           ; 0         ; 0            ; 0           ; 0         ; 1            ; 0           ; 0         ; 0            ; 0           ; 0         ; 0            ; 0           ; 0         ; 0            ; 0           ; 0         ; 0            ; 0           ; 0         ; 0            ; 0           ; 0            ; 0              ; 1       ;
+; CS.B5_END      ; 0       ; 0         ; 0            ; 0           ; 0         ; 0            ; 0           ; 1         ; 0            ; 0           ; 0         ; 0            ; 0           ; 0         ; 0            ; 0           ; 0         ; 0            ; 0           ; 0         ; 0            ; 0           ; 0         ; 0            ; 0           ; 0            ; 0              ; 1       ;
+; CS.B6_START    ; 0       ; 0         ; 0            ; 0           ; 0         ; 0            ; 1           ; 0         ; 0            ; 0           ; 0         ; 0            ; 0           ; 0         ; 0            ; 0           ; 0         ; 0            ; 0           ; 0         ; 0            ; 0           ; 0         ; 0            ; 0           ; 0            ; 0              ; 1       ;
+; CS.B6_SAMPLE   ; 0       ; 0         ; 0            ; 0           ; 0         ; 1            ; 0           ; 0         ; 0            ; 0           ; 0         ; 0            ; 0           ; 0         ; 0            ; 0           ; 0         ; 0            ; 0           ; 0         ; 0            ; 0           ; 0         ; 0            ; 0           ; 0            ; 0              ; 1       ;
+; CS.B6_END      ; 0       ; 0         ; 0            ; 0           ; 1         ; 0            ; 0           ; 0         ; 0            ; 0           ; 0         ; 0            ; 0           ; 0         ; 0            ; 0           ; 0         ; 0            ; 0           ; 0         ; 0            ; 0           ; 0         ; 0            ; 0           ; 0            ; 0              ; 1       ;
+; CS.B7_START    ; 0       ; 0         ; 0            ; 1           ; 0         ; 0            ; 0           ; 0         ; 0            ; 0           ; 0         ; 0            ; 0           ; 0         ; 0            ; 0           ; 0         ; 0            ; 0           ; 0         ; 0            ; 0           ; 0         ; 0            ; 0           ; 0            ; 0              ; 1       ;
+; CS.B7_SAMPLE   ; 0       ; 0         ; 1            ; 0           ; 0         ; 0            ; 0           ; 0         ; 0            ; 0           ; 0         ; 0            ; 0           ; 0         ; 0            ; 0           ; 0         ; 0            ; 0           ; 0         ; 0            ; 0           ; 0         ; 0            ; 0           ; 0            ; 0              ; 1       ;
+; CS.B7_END      ; 0       ; 1         ; 0            ; 0           ; 0         ; 0            ; 0           ; 0         ; 0            ; 0           ; 0         ; 0            ; 0           ; 0         ; 0            ; 0           ; 0         ; 0            ; 0           ; 0         ; 0            ; 0           ; 0         ; 0            ; 0           ; 0            ; 0              ; 1       ;
+; CS.STOP        ; 1       ; 0         ; 0            ; 0           ; 0         ; 0            ; 0           ; 0         ; 0            ; 0           ; 0         ; 0            ; 0           ; 0         ; 0            ; 0           ; 0         ; 0            ; 0           ; 0         ; 0            ; 0           ; 0         ; 0            ; 0           ; 0            ; 0              ; 1       ;
++----------------+---------+-----------+--------------+-------------+-----------+--------------+-------------+-----------+--------------+-------------+-----------+--------------+-------------+-----------+--------------+-------------+-----------+--------------+-------------+-----------+--------------+-------------+-----------+--------------+-------------+--------------+----------------+---------+
+
+
+Encoding Type:  One-Hot
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; State Machine - |test|mmu_uart_top:inst9|RX:rx_u0|CS                                                                                                                                                                                                                                                                                                                                                       ;
++----------------+---------+-----------+--------------+-------------+-----------+--------------+-------------+-----------+--------------+-------------+-----------+--------------+-------------+-----------+--------------+-------------+-----------+--------------+-------------+-----------+--------------+-------------+-----------+--------------+-------------+--------------+----------------+---------+
+; Name           ; CS.STOP ; CS.B7_END ; CS.B7_SAMPLE ; CS.B7_START ; CS.B6_END ; CS.B6_SAMPLE ; CS.B6_START ; CS.B5_END ; CS.B5_SAMPLE ; CS.B5_START ; CS.B4_END ; CS.B4_SAMPLE ; CS.B4_START ; CS.B3_END ; CS.B3_SAMPLE ; CS.B3_START ; CS.B2_END ; CS.B2_SAMPLE ; CS.B2_START ; CS.B1_END ; CS.B1_SAMPLE ; CS.B1_START ; CS.B0_END ; CS.B0_SAMPLE ; CS.B0_START ; CS.START_END ; CS.START_START ; CS.IDLE ;
++----------------+---------+-----------+--------------+-------------+-----------+--------------+-------------+-----------+--------------+-------------+-----------+--------------+-------------+-----------+--------------+-------------+-----------+--------------+-------------+-----------+--------------+-------------+-----------+--------------+-------------+--------------+----------------+---------+
+; CS.IDLE        ; 0       ; 0         ; 0            ; 0           ; 0         ; 0            ; 0           ; 0         ; 0            ; 0           ; 0         ; 0            ; 0           ; 0         ; 0            ; 0           ; 0         ; 0            ; 0           ; 0         ; 0            ; 0           ; 0         ; 0            ; 0           ; 0            ; 0              ; 0       ;
+; CS.START_START ; 0       ; 0         ; 0            ; 0           ; 0         ; 0            ; 0           ; 0         ; 0            ; 0           ; 0         ; 0            ; 0           ; 0         ; 0            ; 0           ; 0         ; 0            ; 0           ; 0         ; 0            ; 0           ; 0         ; 0            ; 0           ; 0            ; 1              ; 1       ;
+; CS.START_END   ; 0       ; 0         ; 0            ; 0           ; 0         ; 0            ; 0           ; 0         ; 0            ; 0           ; 0         ; 0            ; 0           ; 0         ; 0            ; 0           ; 0         ; 0            ; 0           ; 0         ; 0            ; 0           ; 0         ; 0            ; 0           ; 1            ; 0              ; 1       ;
+; CS.B0_START    ; 0       ; 0         ; 0            ; 0           ; 0         ; 0            ; 0           ; 0         ; 0            ; 0           ; 0         ; 0            ; 0           ; 0         ; 0            ; 0           ; 0         ; 0            ; 0           ; 0         ; 0            ; 0           ; 0         ; 0            ; 1           ; 0            ; 0              ; 1       ;
+; CS.B0_SAMPLE   ; 0       ; 0         ; 0            ; 0           ; 0         ; 0            ; 0           ; 0         ; 0            ; 0           ; 0         ; 0            ; 0           ; 0         ; 0            ; 0           ; 0         ; 0            ; 0           ; 0         ; 0            ; 0           ; 0         ; 1            ; 0           ; 0            ; 0              ; 1       ;
+; CS.B0_END      ; 0       ; 0         ; 0            ; 0           ; 0         ; 0            ; 0           ; 0         ; 0            ; 0           ; 0         ; 0            ; 0           ; 0         ; 0            ; 0           ; 0         ; 0            ; 0           ; 0         ; 0            ; 0           ; 1         ; 0            ; 0           ; 0            ; 0              ; 1       ;
+; CS.B1_START    ; 0       ; 0         ; 0            ; 0           ; 0         ; 0            ; 0           ; 0         ; 0            ; 0           ; 0         ; 0            ; 0           ; 0         ; 0            ; 0           ; 0         ; 0            ; 0           ; 0         ; 0            ; 1           ; 0         ; 0            ; 0           ; 0            ; 0              ; 1       ;
+; CS.B1_SAMPLE   ; 0       ; 0         ; 0            ; 0           ; 0         ; 0            ; 0           ; 0         ; 0            ; 0           ; 0         ; 0            ; 0           ; 0         ; 0            ; 0           ; 0         ; 0            ; 0           ; 0         ; 1            ; 0           ; 0         ; 0            ; 0           ; 0            ; 0              ; 1       ;
+; CS.B1_END      ; 0       ; 0         ; 0            ; 0           ; 0         ; 0            ; 0           ; 0         ; 0            ; 0           ; 0         ; 0            ; 0           ; 0         ; 0            ; 0           ; 0         ; 0            ; 0           ; 1         ; 0            ; 0           ; 0         ; 0            ; 0           ; 0            ; 0              ; 1       ;
+; CS.B2_START    ; 0       ; 0         ; 0            ; 0           ; 0         ; 0            ; 0           ; 0         ; 0            ; 0           ; 0         ; 0            ; 0           ; 0         ; 0            ; 0           ; 0         ; 0            ; 1           ; 0         ; 0            ; 0           ; 0         ; 0            ; 0           ; 0            ; 0              ; 1       ;
+; CS.B2_SAMPLE   ; 0       ; 0         ; 0            ; 0           ; 0         ; 0            ; 0           ; 0         ; 0            ; 0           ; 0         ; 0            ; 0           ; 0         ; 0            ; 0           ; 0         ; 1            ; 0           ; 0         ; 0            ; 0           ; 0         ; 0            ; 0           ; 0            ; 0              ; 1       ;
+; CS.B2_END      ; 0       ; 0         ; 0            ; 0           ; 0         ; 0            ; 0           ; 0         ; 0            ; 0           ; 0         ; 0            ; 0           ; 0         ; 0            ; 0           ; 1         ; 0            ; 0           ; 0         ; 0            ; 0           ; 0         ; 0            ; 0           ; 0            ; 0              ; 1       ;
+; CS.B3_START    ; 0       ; 0         ; 0            ; 0           ; 0         ; 0            ; 0           ; 0         ; 0            ; 0           ; 0         ; 0            ; 0           ; 0         ; 0            ; 1           ; 0         ; 0            ; 0           ; 0         ; 0            ; 0           ; 0         ; 0            ; 0           ; 0            ; 0              ; 1       ;
+; CS.B3_SAMPLE   ; 0       ; 0         ; 0            ; 0           ; 0         ; 0            ; 0           ; 0         ; 0            ; 0           ; 0         ; 0            ; 0           ; 0         ; 1            ; 0           ; 0         ; 0            ; 0           ; 0         ; 0            ; 0           ; 0         ; 0            ; 0           ; 0            ; 0              ; 1       ;
+; CS.B3_END      ; 0       ; 0         ; 0            ; 0           ; 0         ; 0            ; 0           ; 0         ; 0            ; 0           ; 0         ; 0            ; 0           ; 1         ; 0            ; 0           ; 0         ; 0            ; 0           ; 0         ; 0            ; 0           ; 0         ; 0            ; 0           ; 0            ; 0              ; 1       ;
+; CS.B4_START    ; 0       ; 0         ; 0            ; 0           ; 0         ; 0            ; 0           ; 0         ; 0            ; 0           ; 0         ; 0            ; 1           ; 0         ; 0            ; 0           ; 0         ; 0            ; 0           ; 0         ; 0            ; 0           ; 0         ; 0            ; 0           ; 0            ; 0              ; 1       ;
+; CS.B4_SAMPLE   ; 0       ; 0         ; 0            ; 0           ; 0         ; 0            ; 0           ; 0         ; 0            ; 0           ; 0         ; 1            ; 0           ; 0         ; 0            ; 0           ; 0         ; 0            ; 0           ; 0         ; 0            ; 0           ; 0         ; 0            ; 0           ; 0            ; 0              ; 1       ;
+; CS.B4_END      ; 0       ; 0         ; 0            ; 0           ; 0         ; 0            ; 0           ; 0         ; 0            ; 0           ; 1         ; 0            ; 0           ; 0         ; 0            ; 0           ; 0         ; 0            ; 0           ; 0         ; 0            ; 0           ; 0         ; 0            ; 0           ; 0            ; 0              ; 1       ;
+; CS.B5_START    ; 0       ; 0         ; 0            ; 0           ; 0         ; 0            ; 0           ; 0         ; 0            ; 1           ; 0         ; 0            ; 0           ; 0         ; 0            ; 0           ; 0         ; 0            ; 0           ; 0         ; 0            ; 0           ; 0         ; 0            ; 0           ; 0            ; 0              ; 1       ;
+; CS.B5_SAMPLE   ; 0       ; 0         ; 0            ; 0           ; 0         ; 0            ; 0           ; 0         ; 1            ; 0           ; 0         ; 0            ; 0           ; 0         ; 0            ; 0           ; 0         ; 0            ; 0           ; 0         ; 0            ; 0           ; 0         ; 0            ; 0           ; 0            ; 0              ; 1       ;
+; CS.B5_END      ; 0       ; 0         ; 0            ; 0           ; 0         ; 0            ; 0           ; 1         ; 0            ; 0           ; 0         ; 0            ; 0           ; 0         ; 0            ; 0           ; 0         ; 0            ; 0           ; 0         ; 0            ; 0           ; 0         ; 0            ; 0           ; 0            ; 0              ; 1       ;
+; CS.B6_START    ; 0       ; 0         ; 0            ; 0           ; 0         ; 0            ; 1           ; 0         ; 0            ; 0           ; 0         ; 0            ; 0           ; 0         ; 0            ; 0           ; 0         ; 0            ; 0           ; 0         ; 0            ; 0           ; 0         ; 0            ; 0           ; 0            ; 0              ; 1       ;
+; CS.B6_SAMPLE   ; 0       ; 0         ; 0            ; 0           ; 0         ; 1            ; 0           ; 0         ; 0            ; 0           ; 0         ; 0            ; 0           ; 0         ; 0            ; 0           ; 0         ; 0            ; 0           ; 0         ; 0            ; 0           ; 0         ; 0            ; 0           ; 0            ; 0              ; 1       ;
+; CS.B6_END      ; 0       ; 0         ; 0            ; 0           ; 1         ; 0            ; 0           ; 0         ; 0            ; 0           ; 0         ; 0            ; 0           ; 0         ; 0            ; 0           ; 0         ; 0            ; 0           ; 0         ; 0            ; 0           ; 0         ; 0            ; 0           ; 0            ; 0              ; 1       ;
+; CS.B7_START    ; 0       ; 0         ; 0            ; 1           ; 0         ; 0            ; 0           ; 0         ; 0            ; 0           ; 0         ; 0            ; 0           ; 0         ; 0            ; 0           ; 0         ; 0            ; 0           ; 0         ; 0            ; 0           ; 0         ; 0            ; 0           ; 0            ; 0              ; 1       ;
+; CS.B7_SAMPLE   ; 0       ; 0         ; 1            ; 0           ; 0         ; 0            ; 0           ; 0         ; 0            ; 0           ; 0         ; 0            ; 0           ; 0         ; 0            ; 0           ; 0         ; 0            ; 0           ; 0         ; 0            ; 0           ; 0         ; 0            ; 0           ; 0            ; 0              ; 1       ;
+; CS.B7_END      ; 0       ; 1         ; 0            ; 0           ; 0         ; 0            ; 0           ; 0         ; 0            ; 0           ; 0         ; 0            ; 0           ; 0         ; 0            ; 0           ; 0         ; 0            ; 0           ; 0         ; 0            ; 0           ; 0         ; 0            ; 0           ; 0            ; 0              ; 1       ;
+; CS.STOP        ; 1       ; 0         ; 0            ; 0           ; 0         ; 0            ; 0           ; 0         ; 0            ; 0           ; 0         ; 0            ; 0           ; 0         ; 0            ; 0           ; 0         ; 0            ; 0           ; 0         ; 0            ; 0           ; 0         ; 0            ; 0           ; 0            ; 0              ; 1       ;
++----------------+---------+-----------+--------------+-------------+-----------+--------------+-------------+-----------+--------------+-------------+-----------+--------------+-------------+-----------+--------------+-------------+-----------+--------------+-------------+-----------+--------------+-------------+-----------+--------------+-------------+--------------+----------------+---------+
+
+
++-----------------------------------------------------------------------------------+
+; Registers Removed During Synthesis                                                ;
++----------------------------------------+------------------------------------------+
+; Register name                          ; Reason for Removal                       ;
++----------------------------------------+------------------------------------------+
+; UartController:inst3|dout2[0]          ; Stuck at VCC due to stuck port data_in   ;
+; UartController:inst3|dout2[1..7]       ; Stuck at GND due to stuck port data_in   ;
+; UartController:inst3|dout[3,7]         ; Merged with UartController:inst3|dout[1] ;
+; UartController:inst3|dout[6]           ; Merged with UartController:inst3|dout[2] ;
+; UartController:inst3|dout[5]           ; Merged with UartController:inst3|dout[4] ;
+; UartController:inst3|dout[1]           ; Stuck at GND due to stuck port data_in   ;
+; UartController:inst3|dout[4]           ; Merged with UartController:inst3|dout[2] ;
+; SPI:inst|csout                         ; Stuck at GND due to stuck port data_in   ;
+; Total Number of Removed Registers = 15 ;                                          ;
++----------------------------------------+------------------------------------------+
+
+
++------------------------------------------------------+
+; General Register Statistics                          ;
++----------------------------------------------+-------+
+; Statistic                                    ; Value ;
++----------------------------------------------+-------+
+; Total registers                              ; 974   ;
+; Number of registers using Synchronous Clear  ; 64    ;
+; Number of registers using Synchronous Load   ; 1     ;
+; Number of registers using Asynchronous Clear ; 450   ;
+; Number of registers using Asynchronous Load  ; 0     ;
+; Number of registers using Clock Enable       ; 889   ;
+; Number of registers using Preset             ; 0     ;
++----------------------------------------------+-------+
+
+
++---------------------------------------------------+
+; Inverted Register Statistics                      ;
++-----------------------------------------+---------+
+; Inverted Register                       ; Fan out ;
++-----------------------------------------+---------+
+; SPI:inst|SclkInt                        ; 2       ;
+; UartController:inst3|wr_enint2          ; 18      ;
+; UartController:inst3|wr_enint           ; 19      ;
+; FSM:inst14|count[0]                     ; 32      ;
+; FSM:inst14|outclockcounter[0]           ; 2       ;
+; FSM:inst14|outclockcounter[31]          ; 2       ;
+; FSM:inst14|count[31]                    ; 2       ;
+; SPI:inst|Counter[3]                     ; 1       ;
+; SPI:inst|Counter[2]                     ; 1       ;
+; SPI:inst|Counter[1]                     ; 1       ;
+; SPI:inst|Counter[0]                     ; 2       ;
+; UartController:inst3|DoneINCLINO        ; 38      ;
+; UartController:inst3|DoneSendInclino    ; 9       ;
+; UartController:inst3|DoneTemp           ; 9       ;
+; UartController:inst3|DoneENC1           ; 8       ;
+; UartController:inst3|DoneENC2           ; 9       ;
+; UartController:inst3|LoadENC2           ; 5       ;
+; UartController:inst3|LoadENC1           ; 6       ;
+; UartController:inst3|encaddress         ; 35      ;
+; UartController:inst3|DoneUART           ; 2       ;
+; UartController:inst3|write_enc          ; 4       ;
+; Total number of inverted registers = 21 ;         ;
++-----------------------------------------+---------+
+
+
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                                                                    ;
++--------------------+-----------+---------------+----------------------+------------------------+-----------------------------------------------------+----------------------------+
+; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered                                          ; Example Multiplexer Output ;
++--------------------+-----------+---------------+----------------------+------------------------+-----------------------------------------------------+----------------------------+
+; 3:1                ; 9 bits    ; 18 LEs        ; 9 LEs                ; 9 LEs                  ; |test|mmu_uart_top:inst9|tx:tx_u0|data[8]           ;                            ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; |test|mmu_uart_top:inst11|tx:tx_u0|data[1]          ;                            ;
+; 3:1                ; 7 bits    ; 14 LEs        ; 7 LEs                ; 7 LEs                  ; |test|mmu_uart_top:inst11|tx:tx_u0|data[8]          ;                            ;
+; 3:1                ; 160 bits  ; 320 LEs       ; 160 LEs              ; 160 LEs                ; |test|FSM:inst14|dataregister[74]                   ;                            ;
+; 4:1                ; 4 bits    ; 8 LEs         ; 8 LEs                ; 0 LEs                  ; |test|mmu_uart_top:inst9|tx:tx_u0|byte_timer[3]     ;                            ;
+; 4:1                ; 4 bits    ; 8 LEs         ; 8 LEs                ; 0 LEs                  ; |test|mmu_uart_top:inst11|tx:tx_u0|byte_timer[0]    ;                            ;
+; 4:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; |test|mmu_uart_top:inst9|tx:tx_u0|cnt_3[0]          ;                            ;
+; 4:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; |test|mmu_uart_top:inst11|tx:tx_u0|cnt_3[0]         ;                            ;
+; 5:1                ; 32 bits   ; 96 LEs        ; 32 LEs               ; 64 LEs                 ; |test|SPI:inst|outclockcounter[1]                   ;                            ;
+; 3:1                ; 30 bits   ; 60 LEs        ; 30 LEs               ; 30 LEs                 ; |test|FSM:inst14|count[9]                           ;                            ;
+; 5:1                ; 32 bits   ; 96 LEs        ; 32 LEs               ; 64 LEs                 ; |test|UartController:inst3|ENClatch[14]             ;                            ;
+; 6:1                ; 31 bits   ; 124 LEs       ; 31 LEs               ; 93 LEs                 ; |test|UartController:inst3|packet[19]               ;                            ;
+; 7:1                ; 30 bits   ; 120 LEs       ; 30 LEs               ; 90 LEs                 ; |test|FSM:inst14|outclockcounter[3]                 ;                            ;
+; 16:1               ; 3 bits    ; 30 LEs        ; 6 LEs                ; 24 LEs                 ; |test|UartController:inst3|dout[2]                  ;                            ;
+; 17:1               ; 32 bits   ; 352 LEs       ; 32 LEs               ; 320 LEs                ; |test|UartController:inst3|packetnumber[31]         ;                            ;
+; 13:1               ; 32 bits   ; 256 LEs       ; 32 LEs               ; 224 LEs                ; |test|UartController:inst3|UART2ReceivedCounter[17] ;                            ;
+; 4:1                ; 10 bits   ; 20 LEs        ; 10 LEs               ; 10 LEs                 ; |test|FSM:inst14|shiftregister[42]                  ;                            ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; |test|FSM:inst14|count[0]                           ;                            ;
+; 6:1                ; 5 bits    ; 20 LEs        ; 5 LEs                ; 15 LEs                 ; |test|FSM:inst14|shiftregister[125]                 ;                            ;
+; 6:1                ; 10 bits   ; 40 LEs        ; 20 LEs               ; 20 LEs                 ; |test|FSM:inst14|shiftregister[120]                 ;                            ;
+; 6:1                ; 5 bits    ; 20 LEs        ; 10 LEs               ; 10 LEs                 ; |test|FSM:inst14|shiftregister[54]                  ;                            ;
+; 7:1                ; 25 bits   ; 100 LEs       ; 50 LEs               ; 50 LEs                 ; |test|FSM:inst14|shiftregister[110]                 ;                            ;
+; 7:1                ; 25 bits   ; 100 LEs       ; 50 LEs               ; 50 LEs                 ; |test|FSM:inst14|shiftregister[37]                  ;                            ;
+; 7:1                ; 2 bits    ; 8 LEs         ; 2 LEs                ; 6 LEs                  ; |test|FSM:inst14|outclockcounter[31]                ;                            ;
+; 8:1                ; 25 bits   ; 125 LEs       ; 50 LEs               ; 75 LEs                 ; |test|FSM:inst14|shiftregister[144]                 ;                            ;
+; 8:1                ; 25 bits   ; 125 LEs       ; 75 LEs               ; 50 LEs                 ; |test|FSM:inst14|shiftregister[56]                  ;                            ;
+; 8:1                ; 5 bits    ; 25 LEs        ; 10 LEs               ; 15 LEs                 ; |test|FSM:inst14|shiftregister[86]                  ;                            ;
+; 8:1                ; 10 bits   ; 50 LEs        ; 30 LEs               ; 20 LEs                 ; |test|FSM:inst14|shiftregister[93]                  ;                            ;
+; 8:1                ; 5 bits    ; 25 LEs        ; 10 LEs               ; 15 LEs                 ; |test|FSM:inst14|shiftregister[5]                   ;                            ;
+; 8:1                ; 10 bits   ; 50 LEs        ; 30 LEs               ; 20 LEs                 ; |test|FSM:inst14|shiftregister[3]                   ;                            ;
+; 4:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; |test|UartController:inst3|LoadENC2                 ;                            ;
+; 9:1                ; 2 bits    ; 12 LEs        ; 2 LEs                ; 10 LEs                 ; |test|UartController:inst3|DoneENC1                 ;                            ;
++--------------------+-----------+---------------+----------------------+------------------------+-----------------------------------------------------+----------------------------+
+
+
++---------------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: lpm_counter0:inst1|lpm_counter:lpm_counter_component ;
++------------------------+-------------+------------------------------------------------------------+
+; Parameter Name         ; Value       ; Type                                                       ;
++------------------------+-------------+------------------------------------------------------------+
+; AUTO_CARRY_CHAINS      ; ON          ; AUTO_CARRY                                                 ;
+; IGNORE_CARRY_BUFFERS   ; OFF         ; IGNORE_CARRY                                               ;
+; AUTO_CASCADE_CHAINS    ; ON          ; AUTO_CASCADE                                               ;
+; IGNORE_CASCADE_BUFFERS ; OFF         ; IGNORE_CASCADE                                             ;
+; LPM_WIDTH              ; 24          ; Signed Integer                                             ;
+; LPM_DIRECTION          ; UP          ; Untyped                                                    ;
+; LPM_MODULUS            ; 0           ; Untyped                                                    ;
+; LPM_AVALUE             ; UNUSED      ; Untyped                                                    ;
+; LPM_SVALUE             ; UNUSED      ; Untyped                                                    ;
+; LPM_PORT_UPDOWN        ; PORT_UNUSED ; Untyped                                                    ;
+; DEVICE_FAMILY          ; Cyclone II  ; Untyped                                                    ;
+; CARRY_CHAIN            ; MANUAL      ; Untyped                                                    ;
+; CARRY_CHAIN_LENGTH     ; 48          ; CARRY_CHAIN_LENGTH                                         ;
+; NOT_GATE_PUSH_BACK     ; ON          ; NOT_GATE_PUSH_BACK                                         ;
+; CARRY_CNT_EN           ; SMART       ; Untyped                                                    ;
+; LABWIDE_SCLR           ; ON          ; Untyped                                                    ;
+; USE_NEW_VERSION        ; TRUE        ; Untyped                                                    ;
+; CBXI_PARAMETER         ; cntr_amh    ; Untyped                                                    ;
++------------------------+-------------+------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-------------------------------+
+; Elapsed Time Per Partition    ;
++----------------+--------------+
+; Partition Name ; Elapsed Time ;
++----------------+--------------+
+; Top            ; 00:00:11     ;
++----------------+--------------+
+
+
++-------------------------------+
+; Analysis & Synthesis Messages ;
++-------------------------------+
+Info: *******************************************************************
+Info: Running Quartus II 32-bit Analysis & Synthesis
+    Info: Version 12.0 Build 232 07/05/2012 Service Pack 1 SJ Web Edition
+    Info: Processing started: Sun Jul 29 11:03:58 2012
+Info: Command: quartus_map --read_settings_files=on --write_settings_files=off Inclinometer -c test
+Info (12021): Found 2 design units, including 1 entities, in source file fsm.vhdl
+    Info (12022): Found design unit 1: FSM-RTL
+    Info (12023): Found entity 1: FSM
+Info (12021): Found 2 design units, including 1 entities, in source file baud_cnt.vhd
+    Info (12022): Found design unit 1: baud_cnt-RTL
+    Info (12023): Found entity 1: baud_cnt
+Info (12021): Found 2 design units, including 1 entities, in source file mmu_uart_top.vhd
+    Info (12022): Found design unit 1: mmu_uart_top-RTL
+    Info (12023): Found entity 1: mmu_uart_top
+Info (12021): Found 2 design units, including 1 entities, in source file rx.vhd
+    Info (12022): Found design unit 1: RX-RTL
+    Info (12023): Found entity 1: RX
+Info (12021): Found 2 design units, including 1 entities, in source file tx.vhd
+    Info (12022): Found design unit 1: tx-RTL
+    Info (12023): Found entity 1: tx
+Info (12021): Found 1 design units, including 1 entities, in source file test.bdf
+    Info (12023): Found entity 1: test
+Info (12021): Found 2 design units, including 1 entities, in source file encoder.vhd
+    Info (12022): Found design unit 1: Encoder-quad_enc
+    Info (12023): Found entity 1: Encoder
+Info (12021): Found 2 design units, including 1 entities, in source file spi.vhd
+    Info (12022): Found design unit 1: SPI-RTL
+    Info (12023): Found entity 1: SPI
+Info (12021): Found 2 design units, including 1 entities, in source file uartcontroller.vhd
+    Info (12022): Found design unit 1: UartController-TransmittEncoder
+    Info (12023): Found entity 1: UartController
+Info (12127): Elaborating entity "test" for the top level hierarchy
+Info (12128): Elaborating entity "SPI" for hierarchy "SPI:inst"
+Warning (10541): VHDL Signal Declaration warning at SPI.vhd(13): used implicit default value for signal "Dout" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations.
+Warning (12125): Using design file lpm_counter0.vhd, which is not specified as a design file for the current project, but contains definitions for 2 design units and 1 entities in project
+    Info (12022): Found design unit 1: lpm_counter0-SYN
+    Info (12023): Found entity 1: lpm_counter0
+Info (12128): Elaborating entity "lpm_counter0" for hierarchy "lpm_counter0:inst1"
+Info (12128): Elaborating entity "lpm_counter" for hierarchy "lpm_counter0:inst1|lpm_counter:lpm_counter_component"
+Info (12130): Elaborated megafunction instantiation "lpm_counter0:inst1|lpm_counter:lpm_counter_component"
+Info (12133): Instantiated megafunction "lpm_counter0:inst1|lpm_counter:lpm_counter_component" with the following parameter:
+    Info (12134): Parameter "lpm_direction" = "UP"
+    Info (12134): Parameter "lpm_port_updown" = "PORT_UNUSED"
+    Info (12134): Parameter "lpm_type" = "LPM_COUNTER"
+    Info (12134): Parameter "lpm_width" = "24"
+Info (12021): Found 1 design units, including 1 entities, in source file db/cntr_amh.tdf
+    Info (12023): Found entity 1: cntr_amh
+Info (12128): Elaborating entity "cntr_amh" for hierarchy "lpm_counter0:inst1|lpm_counter:lpm_counter_component|cntr_amh:auto_generated"
+Info (12128): Elaborating entity "mmu_uart_top" for hierarchy "mmu_uart_top:inst9"
+Info (12128): Elaborating entity "baud_cnt" for hierarchy "mmu_uart_top:inst9|baud_cnt:baud_cnt_u0"
+Info (12128): Elaborating entity "tx" for hierarchy "mmu_uart_top:inst9|tx:tx_u0"
+Info (12128): Elaborating entity "RX" for hierarchy "mmu_uart_top:inst9|RX:rx_u0"
+Info (12128): Elaborating entity "UartController" for hierarchy "UartController:inst3"
+Info (12128): Elaborating entity "Encoder" for hierarchy "Encoder:inst5"
+Warning (10492): VHDL Process Statement warning at Encoder.vhd(49): signal "COUNT_1" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at Encoder.vhd(51): signal "COUNT_2" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Info (12128): Elaborating entity "FSM" for hierarchy "FSM:inst14"
+Warning (10540): VHDL Signal Declaration warning at FSM.vhdl(19): used explicit default value for signal "zeroes" because signal was never assigned a value
+Warning (10036): Verilog HDL or VHDL warning at FSM.vhdl(22): object "countout" assigned a value but never read
+Info (13000): Registers with preset signals will power-up high
+Info (13003): DEV_CLRn pin will set, and not reset, register with preset signal due to NOT Gate Push-Back
+Warning (13004): Presettable and clearable registers converted to equivalent circuits with latches. Registers power-up to an undefined state, and DEVCLRn places the registers in an undefined state.
+    Warning (13310): Register "FSM:inst14|shiftregister[38]" is converted into an equivalent circuit using register "FSM:inst14|shiftregister[38]~_emulated" and latch "FSM:inst14|shiftregister[38]~latch"
+    Warning (13310): Register "FSM:inst14|shiftregister[39]" is converted into an equivalent circuit using register "FSM:inst14|shiftregister[39]~_emulated" and latch "FSM:inst14|shiftregister[39]~latch"
+    Warning (13310): Register "FSM:inst14|shiftregister[37]" is converted into an equivalent circuit using register "FSM:inst14|shiftregister[37]~_emulated" and latch "FSM:inst14|shiftregister[37]~latch"
+    Warning (13310): Register "FSM:inst14|shiftregister[40]" is converted into an equivalent circuit using register "FSM:inst14|shiftregister[40]~_emulated" and latch "FSM:inst14|shiftregister[40]~latch"
+    Warning (13310): Register "FSM:inst14|shiftregister[22]" is converted into an equivalent circuit using register "FSM:inst14|shiftregister[22]~_emulated" and latch "FSM:inst14|shiftregister[22]~latch"
+    Warning (13310): Register "FSM:inst14|shiftregister[23]" is converted into an equivalent circuit using register "FSM:inst14|shiftregister[23]~_emulated" and latch "FSM:inst14|shiftregister[23]~latch"
+    Warning (13310): Register "FSM:inst14|shiftregister[21]" is converted into an equivalent circuit using register "FSM:inst14|shiftregister[21]~_emulated" and latch "FSM:inst14|shiftregister[21]~latch"
+    Warning (13310): Register "FSM:inst14|shiftregister[24]" is converted into an equivalent circuit using register "FSM:inst14|shiftregister[24]~_emulated" and latch "FSM:inst14|shiftregister[24]~latch"
+    Warning (13310): Register "FSM:inst14|shiftregister[6]" is converted into an equivalent circuit using register "FSM:inst14|shiftregister[6]~_emulated" and latch "FSM:inst14|shiftregister[6]~latch"
+    Warning (13310): Register "FSM:inst14|shiftregister[7]" is converted into an equivalent circuit using register "FSM:inst14|shiftregister[7]~_emulated" and latch "FSM:inst14|shiftregister[7]~latch"
+    Warning (13310): Register "FSM:inst14|shiftregister[5]" is converted into an equivalent circuit using register "FSM:inst14|shiftregister[5]~_emulated" and latch "FSM:inst14|shiftregister[5]~latch"
+    Warning (13310): Register "FSM:inst14|shiftregister[8]" is converted into an equivalent circuit using register "FSM:inst14|shiftregister[8]~_emulated" and latch "FSM:inst14|shiftregister[8]~latch"
+    Warning (13310): Register "FSM:inst14|shiftregister[54]" is converted into an equivalent circuit using register "FSM:inst14|shiftregister[54]~_emulated" and latch "FSM:inst14|shiftregister[54]~latch"
+    Warning (13310): Register "FSM:inst14|shiftregister[55]" is converted into an equivalent circuit using register "FSM:inst14|shiftregister[55]~_emulated" and latch "FSM:inst14|shiftregister[55]~latch"
+    Warning (13310): Register "FSM:inst14|shiftregister[53]" is converted into an equivalent circuit using register "FSM:inst14|shiftregister[53]~_emulated" and latch "FSM:inst14|shiftregister[53]~latch"
+    Warning (13310): Register "FSM:inst14|shiftregister[56]" is converted into an equivalent circuit using register "FSM:inst14|shiftregister[56]~_emulated" and latch "FSM:inst14|shiftregister[56]~latch"
+    Warning (13310): Register "FSM:inst14|shiftregister[19]" is converted into an equivalent circuit using register "FSM:inst14|shiftregister[19]~_emulated" and latch "FSM:inst14|shiftregister[19]~latch"
+    Warning (13310): Register "FSM:inst14|shiftregister[18]" is converted into an equivalent circuit using register "FSM:inst14|shiftregister[18]~_emulated" and latch "FSM:inst14|shiftregister[18]~latch"
+    Warning (13310): Register "FSM:inst14|shiftregister[17]" is converted into an equivalent circuit using register "FSM:inst14|shiftregister[17]~_emulated" and latch "FSM:inst14|shiftregister[17]~latch"
+    Warning (13310): Register "FSM:inst14|shiftregister[20]" is converted into an equivalent circuit using register "FSM:inst14|shiftregister[20]~_emulated" and latch "FSM:inst14|shiftregister[20]~latch"
+    Warning (13310): Register "FSM:inst14|shiftregister[35]" is converted into an equivalent circuit using register "FSM:inst14|shiftregister[35]~_emulated" and latch "FSM:inst14|shiftregister[35]~latch"
+    Warning (13310): Register "FSM:inst14|shiftregister[34]" is converted into an equivalent circuit using register "FSM:inst14|shiftregister[34]~_emulated" and latch "FSM:inst14|shiftregister[34]~latch"
+    Warning (13310): Register "FSM:inst14|shiftregister[33]" is converted into an equivalent circuit using register "FSM:inst14|shiftregister[33]~_emulated" and latch "FSM:inst14|shiftregister[33]~latch"
+    Warning (13310): Register "FSM:inst14|shiftregister[36]" is converted into an equivalent circuit using register "FSM:inst14|shiftregister[36]~_emulated" and latch "FSM:inst14|shiftregister[36]~latch"
+    Warning (13310): Register "FSM:inst14|shiftregister[3]" is converted into an equivalent circuit using register "FSM:inst14|shiftregister[3]~_emulated" and latch "FSM:inst14|shiftregister[3]~latch"
+    Warning (13310): Register "FSM:inst14|shiftregister[2]" is converted into an equivalent circuit using register "FSM:inst14|shiftregister[2]~_emulated" and latch "FSM:inst14|shiftregister[2]~latch"
+    Warning (13310): Register "FSM:inst14|shiftregister[1]" is converted into an equivalent circuit using register "FSM:inst14|shiftregister[1]~_emulated" and latch "FSM:inst14|shiftregister[1]~latch"
+    Warning (13310): Register "FSM:inst14|shiftregister[4]" is converted into an equivalent circuit using register "FSM:inst14|shiftregister[4]~_emulated" and latch "FSM:inst14|shiftregister[4]~latch"
+    Warning (13310): Register "FSM:inst14|shiftregister[51]" is converted into an equivalent circuit using register "FSM:inst14|shiftregister[51]~_emulated" and latch "FSM:inst14|shiftregister[51]~latch"
+    Warning (13310): Register "FSM:inst14|shiftregister[50]" is converted into an equivalent circuit using register "FSM:inst14|shiftregister[50]~_emulated" and latch "FSM:inst14|shiftregister[50]~latch"
+    Warning (13310): Register "FSM:inst14|shiftregister[49]" is converted into an equivalent circuit using register "FSM:inst14|shiftregister[49]~_emulated" and latch "FSM:inst14|shiftregister[49]~latch"
+    Warning (13310): Register "FSM:inst14|shiftregister[52]" is converted into an equivalent circuit using register "FSM:inst14|shiftregister[52]~_emulated" and latch "FSM:inst14|shiftregister[52]~latch"
+    Warning (13310): Register "FSM:inst14|shiftregister[30]" is converted into an equivalent circuit using register "FSM:inst14|shiftregister[30]~_emulated" and latch "FSM:inst14|shiftregister[30]~latch"
+    Warning (13310): Register "FSM:inst14|shiftregister[31]" is converted into an equivalent circuit using register "FSM:inst14|shiftregister[31]~_emulated" and latch "FSM:inst14|shiftregister[31]~latch"
+    Warning (13310): Register "FSM:inst14|shiftregister[29]" is converted into an equivalent circuit using register "FSM:inst14|shiftregister[29]~_emulated" and latch "FSM:inst14|shiftregister[29]~latch"
+    Warning (13310): Register "FSM:inst14|shiftregister[32]" is converted into an equivalent circuit using register "FSM:inst14|shiftregister[32]~_emulated" and latch "FSM:inst14|shiftregister[32]~latch"
+    Warning (13310): Register "FSM:inst14|shiftregister[14]" is converted into an equivalent circuit using register "FSM:inst14|shiftregister[14]~_emulated" and latch "FSM:inst14|shiftregister[14]~latch"
+    Warning (13310): Register "FSM:inst14|shiftregister[15]" is converted into an equivalent circuit using register "FSM:inst14|shiftregister[15]~_emulated" and latch "FSM:inst14|shiftregister[15]~latch"
+    Warning (13310): Register "FSM:inst14|shiftregister[13]" is converted into an equivalent circuit using register "FSM:inst14|shiftregister[13]~_emulated" and latch "FSM:inst14|shiftregister[13]~latch"
+    Warning (13310): Register "FSM:inst14|shiftregister[16]" is converted into an equivalent circuit using register "FSM:inst14|shiftregister[16]~_emulated" and latch "FSM:inst14|shiftregister[16]~latch"
+    Warning (13310): Register "FSM:inst14|shiftregister[0]" is converted into an equivalent circuit using register "FSM:inst14|shiftregister[0]~_emulated" and latch "FSM:inst14|shiftregister[0]~latch"
+    Warning (13310): Register "FSM:inst14|shiftregister[46]" is converted into an equivalent circuit using register "FSM:inst14|shiftregister[46]~_emulated" and latch "FSM:inst14|shiftregister[46]~latch"
+    Warning (13310): Register "FSM:inst14|shiftregister[47]" is converted into an equivalent circuit using register "FSM:inst14|shiftregister[47]~_emulated" and latch "FSM:inst14|shiftregister[47]~latch"
+    Warning (13310): Register "FSM:inst14|shiftregister[45]" is converted into an equivalent circuit using register "FSM:inst14|shiftregister[45]~_emulated" and latch "FSM:inst14|shiftregister[45]~latch"
+    Warning (13310): Register "FSM:inst14|shiftregister[48]" is converted into an equivalent circuit using register "FSM:inst14|shiftregister[48]~_emulated" and latch "FSM:inst14|shiftregister[48]~latch"
+    Warning (13310): Register "FSM:inst14|shiftregister[27]" is converted into an equivalent circuit using register "FSM:inst14|shiftregister[27]~_emulated" and latch "FSM:inst14|shiftregister[27]~latch"
+    Warning (13310): Register "FSM:inst14|shiftregister[26]" is converted into an equivalent circuit using register "FSM:inst14|shiftregister[26]~_emulated" and latch "FSM:inst14|shiftregister[26]~latch"
+    Warning (13310): Register "FSM:inst14|shiftregister[25]" is converted into an equivalent circuit using register "FSM:inst14|shiftregister[25]~_emulated" and latch "FSM:inst14|shiftregister[25]~latch"
+    Warning (13310): Register "FSM:inst14|shiftregister[28]" is converted into an equivalent circuit using register "FSM:inst14|shiftregister[28]~_emulated" and latch "FSM:inst14|shiftregister[28]~latch"
+    Warning (13310): Register "FSM:inst14|shiftregister[43]" is converted into an equivalent circuit using register "FSM:inst14|shiftregister[43]~_emulated" and latch "FSM:inst14|shiftregister[43]~latch"
+    Warning (13310): Register "FSM:inst14|shiftregister[42]" is converted into an equivalent circuit using register "FSM:inst14|shiftregister[42]~_emulated" and latch "FSM:inst14|shiftregister[42]~latch"
+    Warning (13310): Register "FSM:inst14|shiftregister[41]" is converted into an equivalent circuit using register "FSM:inst14|shiftregister[41]~_emulated" and latch "FSM:inst14|shiftregister[41]~latch"
+    Warning (13310): Register "FSM:inst14|shiftregister[44]" is converted into an equivalent circuit using register "FSM:inst14|shiftregister[44]~_emulated" and latch "FSM:inst14|shiftregister[44]~latch"
+    Warning (13310): Register "FSM:inst14|shiftregister[11]" is converted into an equivalent circuit using register "FSM:inst14|shiftregister[11]~_emulated" and latch "FSM:inst14|shiftregister[11]~latch"
+    Warning (13310): Register "FSM:inst14|shiftregister[10]" is converted into an equivalent circuit using register "FSM:inst14|shiftregister[10]~_emulated" and latch "FSM:inst14|shiftregister[10]~latch"
+    Warning (13310): Register "FSM:inst14|shiftregister[9]" is converted into an equivalent circuit using register "FSM:inst14|shiftregister[9]~_emulated" and latch "FSM:inst14|shiftregister[9]~latch"
+    Warning (13310): Register "FSM:inst14|shiftregister[12]" is converted into an equivalent circuit using register "FSM:inst14|shiftregister[12]~_emulated" and latch "FSM:inst14|shiftregister[12]~latch"
+    Warning (13310): Register "FSM:inst14|shiftregister[59]" is converted into an equivalent circuit using register "FSM:inst14|shiftregister[59]~_emulated" and latch "FSM:inst14|shiftregister[59]~latch"
+    Warning (13310): Register "FSM:inst14|shiftregister[58]" is converted into an equivalent circuit using register "FSM:inst14|shiftregister[58]~_emulated" and latch "FSM:inst14|shiftregister[58]~latch"
+    Warning (13310): Register "FSM:inst14|shiftregister[57]" is converted into an equivalent circuit using register "FSM:inst14|shiftregister[57]~_emulated" and latch "FSM:inst14|shiftregister[57]~latch"
+    Warning (13310): Register "FSM:inst14|shiftregister[60]" is converted into an equivalent circuit using register "FSM:inst14|shiftregister[60]~_emulated" and latch "FSM:inst14|shiftregister[60]~latch"
+    Warning (13310): Register "FSM:inst14|shiftregister[102]" is converted into an equivalent circuit using register "FSM:inst14|shiftregister[102]~_emulated" and latch "FSM:inst14|shiftregister[102]~latch"
+    Warning (13310): Register "FSM:inst14|shiftregister[86]" is converted into an equivalent circuit using register "FSM:inst14|shiftregister[86]~_emulated" and latch "FSM:inst14|shiftregister[86]~latch"
+    Warning (13310): Register "FSM:inst14|shiftregister[70]" is converted into an equivalent circuit using register "FSM:inst14|shiftregister[70]~_emulated" and latch "FSM:inst14|shiftregister[70]~latch"
+    Warning (13310): Register "FSM:inst14|shiftregister[118]" is converted into an equivalent circuit using register "FSM:inst14|shiftregister[118]~_emulated" and latch "FSM:inst14|shiftregister[118]~latch"
+    Warning (13310): Register "FSM:inst14|shiftregister[82]" is converted into an equivalent circuit using register "FSM:inst14|shiftregister[82]~_emulated" and latch "FSM:inst14|shiftregister[82]~latch"
+    Warning (13310): Register "FSM:inst14|shiftregister[98]" is converted into an equivalent circuit using register "FSM:inst14|shiftregister[98]~_emulated" and latch "FSM:inst14|shiftregister[98]~latch"
+    Warning (13310): Register "FSM:inst14|shiftregister[66]" is converted into an equivalent circuit using register "FSM:inst14|shiftregister[66]~_emulated" and latch "FSM:inst14|shiftregister[66]~latch"
+    Warning (13310): Register "FSM:inst14|shiftregister[114]" is converted into an equivalent circuit using register "FSM:inst14|shiftregister[114]~_emulated" and latch "FSM:inst14|shiftregister[114]~latch"
+    Warning (13310): Register "FSM:inst14|shiftregister[94]" is converted into an equivalent circuit using register "FSM:inst14|shiftregister[94]~_emulated" and latch "FSM:inst14|shiftregister[94]~latch"
+    Warning (13310): Register "FSM:inst14|shiftregister[78]" is converted into an equivalent circuit using register "FSM:inst14|shiftregister[78]~_emulated" and latch "FSM:inst14|shiftregister[78]~latch"
+    Warning (13310): Register "FSM:inst14|shiftregister[62]" is converted into an equivalent circuit using register "FSM:inst14|shiftregister[62]~_emulated" and latch "FSM:inst14|shiftregister[62]~latch"
+    Warning (13310): Register "FSM:inst14|shiftregister[110]" is converted into an equivalent circuit using register "FSM:inst14|shiftregister[110]~_emulated" and latch "FSM:inst14|shiftregister[110]~latch"
+    Warning (13310): Register "FSM:inst14|shiftregister[90]" is converted into an equivalent circuit using register "FSM:inst14|shiftregister[90]~_emulated" and latch "FSM:inst14|shiftregister[90]~latch"
+    Warning (13310): Register "FSM:inst14|shiftregister[106]" is converted into an equivalent circuit using register "FSM:inst14|shiftregister[106]~_emulated" and latch "FSM:inst14|shiftregister[106]~latch"
+    Warning (13310): Register "FSM:inst14|shiftregister[74]" is converted into an equivalent circuit using register "FSM:inst14|shiftregister[74]~_emulated" and latch "FSM:inst14|shiftregister[74]~latch"
+    Warning (13310): Register "FSM:inst14|shiftregister[122]" is converted into an equivalent circuit using register "FSM:inst14|shiftregister[122]~_emulated" and latch "FSM:inst14|shiftregister[122]~latch"
+    Warning (13310): Register "FSM:inst14|shiftregister[83]" is converted into an equivalent circuit using register "FSM:inst14|shiftregister[83]~_emulated" and latch "FSM:inst14|shiftregister[83]~latch"
+    Warning (13310): Register "FSM:inst14|shiftregister[99]" is converted into an equivalent circuit using register "FSM:inst14|shiftregister[99]~_emulated" and latch "FSM:inst14|shiftregister[99]~latch"
+    Warning (13310): Register "FSM:inst14|shiftregister[67]" is converted into an equivalent circuit using register "FSM:inst14|shiftregister[67]~_emulated" and latch "FSM:inst14|shiftregister[67]~latch"
+    Warning (13310): Register "FSM:inst14|shiftregister[115]" is converted into an equivalent circuit using register "FSM:inst14|shiftregister[115]~_emulated" and latch "FSM:inst14|shiftregister[115]~latch"
+    Warning (13310): Register "FSM:inst14|shiftregister[103]" is converted into an equivalent circuit using register "FSM:inst14|shiftregister[103]~_emulated" and latch "FSM:inst14|shiftregister[103]~latch"
+    Warning (13310): Register "FSM:inst14|shiftregister[87]" is converted into an equivalent circuit using register "FSM:inst14|shiftregister[87]~_emulated" and latch "FSM:inst14|shiftregister[87]~latch"
+    Warning (13310): Register "FSM:inst14|shiftregister[71]" is converted into an equivalent circuit using register "FSM:inst14|shiftregister[71]~_emulated" and latch "FSM:inst14|shiftregister[71]~latch"
+    Warning (13310): Register "FSM:inst14|shiftregister[119]" is converted into an equivalent circuit using register "FSM:inst14|shiftregister[119]~_emulated" and latch "FSM:inst14|shiftregister[119]~latch"
+    Warning (13310): Register "FSM:inst14|shiftregister[95]" is converted into an equivalent circuit using register "FSM:inst14|shiftregister[95]~_emulated" and latch "FSM:inst14|shiftregister[95]~latch"
+    Warning (13310): Register "FSM:inst14|shiftregister[79]" is converted into an equivalent circuit using register "FSM:inst14|shiftregister[79]~_emulated" and latch "FSM:inst14|shiftregister[79]~latch"
+    Warning (13310): Register "FSM:inst14|shiftregister[63]" is converted into an equivalent circuit using register "FSM:inst14|shiftregister[63]~_emulated" and latch "FSM:inst14|shiftregister[63]~latch"
+    Warning (13310): Register "FSM:inst14|shiftregister[111]" is converted into an equivalent circuit using register "FSM:inst14|shiftregister[111]~_emulated" and latch "FSM:inst14|shiftregister[111]~latch"
+    Warning (13310): Register "FSM:inst14|shiftregister[91]" is converted into an equivalent circuit using register "FSM:inst14|shiftregister[91]~_emulated" and latch "FSM:inst14|shiftregister[91]~latch"
+    Warning (13310): Register "FSM:inst14|shiftregister[107]" is converted into an equivalent circuit using register "FSM:inst14|shiftregister[107]~_emulated" and latch "FSM:inst14|shiftregister[107]~latch"
+    Warning (13310): Register "FSM:inst14|shiftregister[75]" is converted into an equivalent circuit using register "FSM:inst14|shiftregister[75]~_emulated" and latch "FSM:inst14|shiftregister[75]~latch"
+    Warning (13310): Register "FSM:inst14|shiftregister[123]" is converted into an equivalent circuit using register "FSM:inst14|shiftregister[123]~_emulated" and latch "FSM:inst14|shiftregister[123]~latch"
+    Warning (13310): Register "FSM:inst14|shiftregister[81]" is converted into an equivalent circuit using register "FSM:inst14|shiftregister[81]~_emulated" and latch "FSM:inst14|shiftregister[81]~latch"
+    Warning (13310): Register "FSM:inst14|shiftregister[97]" is converted into an equivalent circuit using register "FSM:inst14|shiftregister[97]~_emulated" and latch "FSM:inst14|shiftregister[97]~latch"
+    Warning (13310): Register "FSM:inst14|shiftregister[65]" is converted into an equivalent circuit using register "FSM:inst14|shiftregister[65]~_emulated" and latch "FSM:inst14|shiftregister[65]~latch"
+    Warning (13310): Register "FSM:inst14|shiftregister[113]" is converted into an equivalent circuit using register "FSM:inst14|shiftregister[113]~_emulated" and latch "FSM:inst14|shiftregister[113]~latch"
+    Warning (13310): Register "FSM:inst14|shiftregister[101]" is converted into an equivalent circuit using register "FSM:inst14|shiftregister[101]~_emulated" and latch "FSM:inst14|shiftregister[101]~latch"
+    Warning (13310): Register "FSM:inst14|shiftregister[85]" is converted into an equivalent circuit using register "FSM:inst14|shiftregister[85]~_emulated" and latch "FSM:inst14|shiftregister[85]~latch"
+    Warning (13310): Register "FSM:inst14|shiftregister[69]" is converted into an equivalent circuit using register "FSM:inst14|shiftregister[69]~_emulated" and latch "FSM:inst14|shiftregister[69]~latch"
+    Warning (13310): Register "FSM:inst14|shiftregister[117]" is converted into an equivalent circuit using register "FSM:inst14|shiftregister[117]~_emulated" and latch "FSM:inst14|shiftregister[117]~latch"
+    Warning (13310): Register "FSM:inst14|shiftregister[93]" is converted into an equivalent circuit using register "FSM:inst14|shiftregister[93]~_emulated" and latch "FSM:inst14|shiftregister[93]~latch"
+    Warning (13310): Register "FSM:inst14|shiftregister[77]" is converted into an equivalent circuit using register "FSM:inst14|shiftregister[77]~_emulated" and latch "FSM:inst14|shiftregister[77]~latch"
+    Warning (13310): Register "FSM:inst14|shiftregister[61]" is converted into an equivalent circuit using register "FSM:inst14|shiftregister[61]~_emulated" and latch "FSM:inst14|shiftregister[61]~latch"
+    Warning (13310): Register "FSM:inst14|shiftregister[109]" is converted into an equivalent circuit using register "FSM:inst14|shiftregister[109]~_emulated" and latch "FSM:inst14|shiftregister[109]~latch"
+    Warning (13310): Register "FSM:inst14|shiftregister[89]" is converted into an equivalent circuit using register "FSM:inst14|shiftregister[89]~_emulated" and latch "FSM:inst14|shiftregister[89]~latch"
+    Warning (13310): Register "FSM:inst14|shiftregister[105]" is converted into an equivalent circuit using register "FSM:inst14|shiftregister[105]~_emulated" and latch "FSM:inst14|shiftregister[105]~latch"
+    Warning (13310): Register "FSM:inst14|shiftregister[73]" is converted into an equivalent circuit using register "FSM:inst14|shiftregister[73]~_emulated" and latch "FSM:inst14|shiftregister[73]~latch"
+    Warning (13310): Register "FSM:inst14|shiftregister[121]" is converted into an equivalent circuit using register "FSM:inst14|shiftregister[121]~_emulated" and latch "FSM:inst14|shiftregister[121]~latch"
+    Warning (13310): Register "FSM:inst14|shiftregister[104]" is converted into an equivalent circuit using register "FSM:inst14|shiftregister[104]~_emulated" and latch "FSM:inst14|shiftregister[104]~latch"
+    Warning (13310): Register "FSM:inst14|shiftregister[100]" is converted into an equivalent circuit using register "FSM:inst14|shiftregister[100]~_emulated" and latch "FSM:inst14|shiftregister[100]~latch"
+    Warning (13310): Register "FSM:inst14|shiftregister[96]" is converted into an equivalent circuit using register "FSM:inst14|shiftregister[96]~_emulated" and latch "FSM:inst14|shiftregister[96]~latch"
+    Warning (13310): Register "FSM:inst14|shiftregister[108]" is converted into an equivalent circuit using register "FSM:inst14|shiftregister[108]~_emulated" and latch "FSM:inst14|shiftregister[108]~latch"
+    Warning (13310): Register "FSM:inst14|shiftregister[84]" is converted into an equivalent circuit using register "FSM:inst14|shiftregister[84]~_emulated" and latch "FSM:inst14|shiftregister[84]~latch"
+    Warning (13310): Register "FSM:inst14|shiftregister[88]" is converted into an equivalent circuit using register "FSM:inst14|shiftregister[88]~_emulated" and latch "FSM:inst14|shiftregister[88]~latch"
+    Warning (13310): Register "FSM:inst14|shiftregister[80]" is converted into an equivalent circuit using register "FSM:inst14|shiftregister[80]~_emulated" and latch "FSM:inst14|shiftregister[80]~latch"
+    Warning (13310): Register "FSM:inst14|shiftregister[92]" is converted into an equivalent circuit using register "FSM:inst14|shiftregister[92]~_emulated" and latch "FSM:inst14|shiftregister[92]~latch"
+    Warning (13310): Register "FSM:inst14|shiftregister[72]" is converted into an equivalent circuit using register "FSM:inst14|shiftregister[72]~_emulated" and latch "FSM:inst14|shiftregister[72]~latch"
+    Warning (13310): Register "FSM:inst14|shiftregister[68]" is converted into an equivalent circuit using register "FSM:inst14|shiftregister[68]~_emulated" and latch "FSM:inst14|shiftregister[68]~latch"
+    Warning (13310): Register "FSM:inst14|shiftregister[64]" is converted into an equivalent circuit using register "FSM:inst14|shiftregister[64]~_emulated" and latch "FSM:inst14|shiftregister[64]~latch"
+    Warning (13310): Register "FSM:inst14|shiftregister[76]" is converted into an equivalent circuit using register "FSM:inst14|shiftregister[76]~_emulated" and latch "FSM:inst14|shiftregister[76]~latch"
+    Warning (13310): Register "FSM:inst14|shiftregister[116]" is converted into an equivalent circuit using register "FSM:inst14|shiftregister[116]~_emulated" and latch "FSM:inst14|shiftregister[116]~latch"
+    Warning (13310): Register "FSM:inst14|shiftregister[120]" is converted into an equivalent circuit using register "FSM:inst14|shiftregister[120]~_emulated" and latch "FSM:inst14|shiftregister[120]~latch"
+    Warning (13310): Register "FSM:inst14|shiftregister[112]" is converted into an equivalent circuit using register "FSM:inst14|shiftregister[112]~_emulated" and latch "FSM:inst14|shiftregister[112]~latch"
+    Warning (13310): Register "FSM:inst14|shiftregister[124]" is converted into an equivalent circuit using register "FSM:inst14|shiftregister[124]~_emulated" and latch "FSM:inst14|shiftregister[124]~latch"
+    Warning (13310): Register "FSM:inst14|shiftregister[134]" is converted into an equivalent circuit using register "FSM:inst14|shiftregister[134]~_emulated" and latch "FSM:inst14|shiftregister[134]~latch"
+    Warning (13310): Register "FSM:inst14|shiftregister[130]" is converted into an equivalent circuit using register "FSM:inst14|shiftregister[130]~_emulated" and latch "FSM:inst14|shiftregister[130]~latch"
+    Warning (13310): Register "FSM:inst14|shiftregister[126]" is converted into an equivalent circuit using register "FSM:inst14|shiftregister[126]~_emulated" and latch "FSM:inst14|shiftregister[126]~latch"
+    Warning (13310): Register "FSM:inst14|shiftregister[138]" is converted into an equivalent circuit using register "FSM:inst14|shiftregister[138]~_emulated" and latch "FSM:inst14|shiftregister[138]~latch"
+    Warning (13310): Register "FSM:inst14|shiftregister[131]" is converted into an equivalent circuit using register "FSM:inst14|shiftregister[131]~_emulated" and latch "FSM:inst14|shiftregister[131]~latch"
+    Warning (13310): Register "FSM:inst14|shiftregister[135]" is converted into an equivalent circuit using register "FSM:inst14|shiftregister[135]~_emulated" and latch "FSM:inst14|shiftregister[135]~latch"
+    Warning (13310): Register "FSM:inst14|shiftregister[127]" is converted into an equivalent circuit using register "FSM:inst14|shiftregister[127]~_emulated" and latch "FSM:inst14|shiftregister[127]~latch"
+    Warning (13310): Register "FSM:inst14|shiftregister[139]" is converted into an equivalent circuit using register "FSM:inst14|shiftregister[139]~_emulated" and latch "FSM:inst14|shiftregister[139]~latch"
+    Warning (13310): Register "FSM:inst14|shiftregister[129]" is converted into an equivalent circuit using register "FSM:inst14|shiftregister[129]~_emulated" and latch "FSM:inst14|shiftregister[129]~latch"
+    Warning (13310): Register "FSM:inst14|shiftregister[133]" is converted into an equivalent circuit using register "FSM:inst14|shiftregister[133]~_emulated" and latch "FSM:inst14|shiftregister[133]~latch"
+    Warning (13310): Register "FSM:inst14|shiftregister[125]" is converted into an equivalent circuit using register "FSM:inst14|shiftregister[125]~_emulated" and latch "FSM:inst14|shiftregister[125]~latch"
+    Warning (13310): Register "FSM:inst14|shiftregister[137]" is converted into an equivalent circuit using register "FSM:inst14|shiftregister[137]~_emulated" and latch "FSM:inst14|shiftregister[137]~latch"
+    Warning (13310): Register "FSM:inst14|shiftregister[136]" is converted into an equivalent circuit using register "FSM:inst14|shiftregister[136]~_emulated" and latch "FSM:inst14|shiftregister[136]~latch"
+    Warning (13310): Register "FSM:inst14|shiftregister[132]" is converted into an equivalent circuit using register "FSM:inst14|shiftregister[132]~_emulated" and latch "FSM:inst14|shiftregister[132]~latch"
+    Warning (13310): Register "FSM:inst14|shiftregister[128]" is converted into an equivalent circuit using register "FSM:inst14|shiftregister[128]~_emulated" and latch "FSM:inst14|shiftregister[128]~latch"
+    Warning (13310): Register "FSM:inst14|shiftregister[140]" is converted into an equivalent circuit using register "FSM:inst14|shiftregister[140]~_emulated" and latch "FSM:inst14|shiftregister[140]~latch"
+    Warning (13310): Register "FSM:inst14|shiftregister[147]" is converted into an equivalent circuit using register "FSM:inst14|shiftregister[147]~_emulated" and latch "FSM:inst14|shiftregister[147]~latch"
+    Warning (13310): Register "FSM:inst14|shiftregister[151]" is converted into an equivalent circuit using register "FSM:inst14|shiftregister[151]~_emulated" and latch "FSM:inst14|shiftregister[151]~latch"
+    Warning (13310): Register "FSM:inst14|shiftregister[143]" is converted into an equivalent circuit using register "FSM:inst14|shiftregister[143]~_emulated" and latch "FSM:inst14|shiftregister[143]~latch"
+    Warning (13310): Register "FSM:inst14|shiftregister[155]" is converted into an equivalent circuit using register "FSM:inst14|shiftregister[155]~_emulated" and latch "FSM:inst14|shiftregister[155]~latch"
+    Warning (13310): Register "FSM:inst14|shiftregister[150]" is converted into an equivalent circuit using register "FSM:inst14|shiftregister[150]~_emulated" and latch "FSM:inst14|shiftregister[150]~latch"
+    Warning (13310): Register "FSM:inst14|shiftregister[146]" is converted into an equivalent circuit using register "FSM:inst14|shiftregister[146]~_emulated" and latch "FSM:inst14|shiftregister[146]~latch"
+    Warning (13310): Register "FSM:inst14|shiftregister[142]" is converted into an equivalent circuit using register "FSM:inst14|shiftregister[142]~_emulated" and latch "FSM:inst14|shiftregister[142]~latch"
+    Warning (13310): Register "FSM:inst14|shiftregister[154]" is converted into an equivalent circuit using register "FSM:inst14|shiftregister[154]~_emulated" and latch "FSM:inst14|shiftregister[154]~latch"
+    Warning (13310): Register "FSM:inst14|shiftregister[145]" is converted into an equivalent circuit using register "FSM:inst14|shiftregister[145]~_emulated" and latch "FSM:inst14|shiftregister[145]~latch"
+    Warning (13310): Register "FSM:inst14|shiftregister[149]" is converted into an equivalent circuit using register "FSM:inst14|shiftregister[149]~_emulated" and latch "FSM:inst14|shiftregister[149]~latch"
+    Warning (13310): Register "FSM:inst14|shiftregister[141]" is converted into an equivalent circuit using register "FSM:inst14|shiftregister[141]~_emulated" and latch "FSM:inst14|shiftregister[141]~latch"
+    Warning (13310): Register "FSM:inst14|shiftregister[153]" is converted into an equivalent circuit using register "FSM:inst14|shiftregister[153]~_emulated" and latch "FSM:inst14|shiftregister[153]~latch"
+    Warning (13310): Register "FSM:inst14|shiftregister[152]" is converted into an equivalent circuit using register "FSM:inst14|shiftregister[152]~_emulated" and latch "FSM:inst14|shiftregister[152]~latch"
+    Warning (13310): Register "FSM:inst14|shiftregister[148]" is converted into an equivalent circuit using register "FSM:inst14|shiftregister[148]~_emulated" and latch "FSM:inst14|shiftregister[148]~latch"
+    Warning (13310): Register "FSM:inst14|shiftregister[144]" is converted into an equivalent circuit using register "FSM:inst14|shiftregister[144]~_emulated" and latch "FSM:inst14|shiftregister[144]~latch"
+    Warning (13310): Register "FSM:inst14|shiftregister[156]" is converted into an equivalent circuit using register "FSM:inst14|shiftregister[156]~_emulated" and latch "FSM:inst14|shiftregister[156]~latch"
+    Warning (13310): Register "FSM:inst14|shiftregister[157]" is converted into an equivalent circuit using register "FSM:inst14|shiftregister[157]~_emulated" and latch "FSM:inst14|shiftregister[157]~latch"
+    Warning (13310): Register "FSM:inst14|shiftregister[158]" is converted into an equivalent circuit using register "FSM:inst14|shiftregister[158]~_emulated" and latch "FSM:inst14|shiftregister[158]~latch"
+    Warning (13310): Register "FSM:inst14|shiftregister[159]" is converted into an equivalent circuit using register "FSM:inst14|shiftregister[159]~_emulated" and latch "FSM:inst14|shiftregister[159]~latch"
+Warning (13024): Output pins are stuck at VCC or GND
+    Warning (13410): Pin "SPI_OUT" is stuck at GND
+Critical Warning (18061): Ignored Power-Up Level option on the following registers
+    Critical Warning (18010): Register SPI:inst|csout will power up to Low
+    Critical Warning (18010): Register SPI:inst|Counter[31] will power up to Low
+    Critical Warning (18010): Register SPI:inst|Counter[3] will power up to High
+    Critical Warning (18010): Register SPI:inst|Counter[2] will power up to High
+    Critical Warning (18010): Register SPI:inst|Counter[1] will power up to High
+    Critical Warning (18010): Register FSM:inst14|incounter[31] will power up to Low
+    Critical Warning (18010): Register FSM:inst14|incounter[0] will power up to Low
+Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
+    Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
+Info (21057): Implemented 2034 device resources after synthesis - the final resource count might be different
+    Info (21058): Implemented 11 input pins
+    Info (21059): Implemented 9 output pins
+    Info (21061): Implemented 2014 logic cells
+Info: Quartus II 32-bit Analysis & Synthesis was successful. 0 errors, 177 warnings
+    Info: Peak virtual memory: 361 megabytes
+    Info: Processing ended: Sun Jul 29 11:04:14 2012
+    Info: Elapsed time: 00:00:16
+    Info: Total CPU time (on all processors): 00:00:13
+
+

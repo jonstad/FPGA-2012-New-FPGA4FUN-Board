@@ -1,0 +1,1170 @@
+Design Assistant report for test
+Tue Nov 22 14:30:33 2011
+Quartus II Version 9.0 Build 132 02/25/2009 SJ Web Edition
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. Design Assistant Summary
+  3. Design Assistant Settings
+  4. High Violations
+  5. Medium Violations
+  6. Information only Violations
+  7. Design Assistant Messages
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 1991-2009 Altera Corporation
+Your use of Altera Corporation's design tools, logic functions 
+and other software and tools, and its AMPP partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Altera Program License 
+Subscription Agreement, Altera MegaCore Function License 
+Agreement, or other applicable license agreement, including, 
+without limitation, that your use is for the sole purpose of 
+programming logic devices manufactured by Altera and sold by 
+Altera or its authorized distributors.  Please refer to the 
+applicable agreement for further details.
+
+
+
++-------------------------------------------------------------------------+
+; Design Assistant Summary                                                ;
++-----------------------------------+-------------------------------------+
+; Design Assistant Status           ; Analyzed - Tue Nov 22 14:30:33 2011 ;
+; Revision Name                     ; test                                ;
+; Top-level Entity Name             ; test                                ;
+; Family                            ; Cyclone II                          ;
+; Total Critical Violations         ; 0                                   ;
+; Total High Violations             ; 450                                 ;
+; - Rule A108                       ; 160                                 ;
+; - Rule R101                       ; 2                                   ;
+; - Rule S102                       ; 224                                 ;
+; - Rule D101                       ; 64                                  ;
+; Total Medium Violations           ; 1                                   ;
+; - Rule R102                       ; 1                                   ;
+; Total Information only Violations ; 91                                  ;
+; - Rule T101                       ; 41                                  ;
+; - Rule T102                       ; 50                                  ;
++-----------------------------------+-------------------------------------+
+
+
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Design Assistant Settings                                                                                                                                                                                                                                                                                      ;
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------+----+
+; Option                                                                                                                                                                                                                                                                                   ; Setting        ; To ;
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------+----+
+; Design Assistant mode                                                                                                                                                                                                                                                                    ; Post-Synthesis ;    ;
+; Threshold value for clock net not mapped to clock spines rule                                                                                                                                                                                                                            ; 25             ;    ;
+; Minimum number of clock port feed by gated clocks                                                                                                                                                                                                                                        ; 30             ;    ;
+; Minimum number of node fan-out                                                                                                                                                                                                                                                           ; 30             ;    ;
+; Maximum number of nodes to report                                                                                                                                                                                                                                                        ; 50             ;    ;
+; Rule C101: Gated clock should be implemented according to the Altera standard scheme                                                                                                                                                                                                     ; On             ;    ;
+; Rule C102: Logic cell should not be used to generate inverted clock                                                                                                                                                                                                                      ; On             ;    ;
+; Rule C103: Gated clock is not feeding at least a pre-defined number of clock port to effectively save power                                                                                                                                                                              ; On             ;    ;
+; Rule C104: Clock signal source should drive only input clock ports                                                                                                                                                                                                                       ; On             ;    ;
+; Rule C105: Clock signal should be a global signal (Rule applies during post-fitting analysis. This rule applies during both post-fitting analysis and post-synthesis analysis if the design targets a MAX 3000 or MAX 7000 device. For more information, see the Help for the rule.)     ; On             ;    ;
+; Rule C106: Clock signal source should not drive registers that are triggered by different clock edges                                                                                                                                                                                    ; On             ;    ;
+; Rule R101: Combinational logic used as a reset signal should be synchronized                                                                                                                                                                                                             ; On             ;    ;
+; Rule R102: External reset should be synchronized using two cascaded registers                                                                                                                                                                                                            ; On             ;    ;
+; Rule R103: External reset should be correctly synchronized                                                                                                                                                                                                                               ; On             ;    ;
+; Rule R104: The reset signal that is generated in one clock domain and is used in the other clock domain, should be correctly synchronized                                                                                                                                                ; On             ;    ;
+; Rule R105: The reset signal that is generated in one clock domain and is used in the other clock domain, should be synchronized                                                                                                                                                          ; On             ;    ;
+; Rule T101: Nodes with more than the specified number of fan-outs                                                                                                                                                                                                                         ; On             ;    ;
+; Rule T102: Top nodes with the highest number of fan-outs                                                                                                                                                                                                                                 ; On             ;    ;
+; Rule A101: Design should not contain combinational loops                                                                                                                                                                                                                                 ; On             ;    ;
+; Rule A102: Register output should not drive its own control signal directly or through combinational logic                                                                                                                                                                               ; On             ;    ;
+; Rule A103: Design should not contain delay chains                                                                                                                                                                                                                                        ; On             ;    ;
+; Rule A104: Design should not contain ripple clock structures                                                                                                                                                                                                                             ; On             ;    ;
+; Rule A105: Pulses should not be implemented asynchronously                                                                                                                                                                                                                               ; On             ;    ;
+; Rule A106: Multiple pulses should not be generated in design                                                                                                                                                                                                                             ; On             ;    ;
+; Rule A107: Design should not contain SR latches                                                                                                                                                                                                                                          ; On             ;    ;
+; Rule A108: Design should not contain latches                                                                                                                                                                                                                                             ; On             ;    ;
+; Rule A109: Combinational logic should not directly drive write enable signal of asynchronous RAM                                                                                                                                                                                         ; On             ;    ;
+; Rule A110: Design should not contain asynchronous memory                                                                                                                                                                                                                                 ; On             ;    ;
+; Rule S101: Output enable and input of the same tri-state node should not be driven by same signal source                                                                                                                                                                                 ; On             ;    ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source                                                                                                                                                                    ; On             ;    ;
+; Rule S103: More than one asynchronous signal port of the same register should not be driven by the same signal source                                                                                                                                                                    ; On             ;    ;
+; Rule S104: Clock port and any other signal port of same register should not be driven by the same signal source                                                                                                                                                                          ; On             ;    ;
+; Rule D101: Data bits are not synchronized when transferred between asynchronous clock domains                                                                                                                                                                                            ; On             ;    ;
+; Rule D102: Multiple data bits that are transferred across asynchronous clock domains are synchronized, but not all bits may be aligned in the receiving clock domain                                                                                                                     ; On             ;    ;
+; Rule D103: Data bits are not correctly synchronized when transferred between asynchronous clock domains                                                                                                                                                                                  ; On             ;    ;
+; Rule H101: Only one VREF pin should be assigned to the HardCopy test pin in an I/O bank (Rule does not apply to all HardCopy and HardCopy Stratix devices. This rule is used to analyze a design only when the rule applies to the design's target HardCopy or HardCopy Stratix device.) ; On             ;    ;
+; Rule H102: PLL clock output drives multiple clock network types (Rule does not apply to all HardCopy and HardCopy Stratix devices. This rule is used to analyze a design only when the rule applies to the design's target HardCopy or HardCopy Stratix device.)                         ; On             ;    ;
+; Rule M101: Data bits are not synchronized when transferred to the state machine of asynchronous clock domains                                                                                                                                                                            ; Off            ;    ;
+; Rule M102: No reset signal defined to initialize the state machine                                                                                                                                                                                                                       ; Off            ;    ;
+; Rule M103: State machine should not contain an unreachable state                                                                                                                                                                                                                         ; Off            ;    ;
+; Rule M104: State machine should not contain a deadlock state                                                                                                                                                                                                                             ; Off            ;    ;
+; Rule M105: State machine should not contain a dead transition                                                                                                                                                                                                                            ; Off            ;    ;
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------+----+
+
+
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; High Violations                                                                                                                                                 ;
++-----------------------------------------------------------------------------------------------------------------------+-----------------------------------------+
+; Rule name                                                                                                             ; Name                                    ;
++-----------------------------------------------------------------------------------------------------------------------+-----------------------------------------+
+; Rule A108: Design should not contain latches - Latch 1                                                                ;                                         ;
+;  Latch 1                                                                                                              ; FSM:inst14|shiftregister[159]~latch     ;
+; Rule A108: Design should not contain latches - Latch 2                                                                ;                                         ;
+;  Latch 2                                                                                                              ; FSM:inst14|shiftregister[157]~latch     ;
+; Rule A108: Design should not contain latches - Latch 3                                                                ;                                         ;
+;  Latch 3                                                                                                              ; FSM:inst14|shiftregister[158]~latch     ;
+; Rule A108: Design should not contain latches - Latch 4                                                                ;                                         ;
+;  Latch 4                                                                                                              ; FSM:inst14|shiftregister[38]~latch      ;
+; Rule A108: Design should not contain latches - Latch 5                                                                ;                                         ;
+;  Latch 5                                                                                                              ; FSM:inst14|shiftregister[40]~latch      ;
+; Rule A108: Design should not contain latches - Latch 6                                                                ;                                         ;
+;  Latch 6                                                                                                              ; FSM:inst14|shiftregister[54]~latch      ;
+; Rule A108: Design should not contain latches - Latch 7                                                                ;                                         ;
+;  Latch 7                                                                                                              ; FSM:inst14|shiftregister[56]~latch      ;
+; Rule A108: Design should not contain latches - Latch 8                                                                ;                                         ;
+;  Latch 8                                                                                                              ; FSM:inst14|shiftregister[27]~latch      ;
+; Rule A108: Design should not contain latches - Latch 9                                                                ;                                         ;
+;  Latch 9                                                                                                              ; FSM:inst14|shiftregister[28]~latch      ;
+; Rule A108: Design should not contain latches - Latch 10                                                               ;                                         ;
+;  Latch 10                                                                                                             ; FSM:inst14|shiftregister[59]~latch      ;
+; Rule A108: Design should not contain latches - Latch 11                                                               ;                                         ;
+;  Latch 11                                                                                                             ; FSM:inst14|shiftregister[60]~latch      ;
+; Rule A108: Design should not contain latches - Latch 12                                                               ;                                         ;
+;  Latch 12                                                                                                             ; FSM:inst14|shiftregister[147]~latch     ;
+; Rule A108: Design should not contain latches - Latch 13                                                               ;                                         ;
+;  Latch 13                                                                                                             ; FSM:inst14|shiftregister[155]~latch     ;
+; Rule A108: Design should not contain latches - Latch 14                                                               ;                                         ;
+;  Latch 14                                                                                                             ; FSM:inst14|shiftregister[152]~latch     ;
+; Rule A108: Design should not contain latches - Latch 15                                                               ;                                         ;
+;  Latch 15                                                                                                             ; FSM:inst14|shiftregister[156]~latch     ;
+; Rule A108: Design should not contain latches - Latch 16                                                               ;                                         ;
+;  Latch 16                                                                                                             ; FSM:inst14|shiftregister[134]~latch     ;
+; Rule A108: Design should not contain latches - Latch 17                                                               ;                                         ;
+;  Latch 17                                                                                                             ; FSM:inst14|shiftregister[138]~latch     ;
+; Rule A108: Design should not contain latches - Latch 18                                                               ;                                         ;
+;  Latch 18                                                                                                             ; FSM:inst14|shiftregister[136]~latch     ;
+; Rule A108: Design should not contain latches - Latch 19                                                               ;                                         ;
+;  Latch 19                                                                                                             ; FSM:inst14|shiftregister[140]~latch     ;
+; Rule A108: Design should not contain latches - Latch 20                                                               ;                                         ;
+;  Latch 20                                                                                                             ; FSM:inst14|shiftregister[104]~latch     ;
+; Rule A108: Design should not contain latches - Latch 21                                                               ;                                         ;
+;  Latch 21                                                                                                             ; FSM:inst14|shiftregister[108]~latch     ;
+; Rule A108: Design should not contain latches - Latch 22                                                               ;                                         ;
+;  Latch 22                                                                                                             ; FSM:inst14|shiftregister[116]~latch     ;
+; Rule A108: Design should not contain latches - Latch 23                                                               ;                                         ;
+;  Latch 23                                                                                                             ; FSM:inst14|shiftregister[124]~latch     ;
+; Rule A108: Design should not contain latches - Latch 24                                                               ;                                         ;
+;  Latch 24                                                                                                             ; FSM:inst14|shiftregister[102]~latch     ;
+; Rule A108: Design should not contain latches - Latch 25                                                               ;                                         ;
+;  Latch 25                                                                                                             ; FSM:inst14|shiftregister[118]~latch     ;
+; Rule A108: Design should not contain latches - Latch 26                                                               ;                                         ;
+;  Latch 26                                                                                                             ; FSM:inst14|shiftregister[90]~latch      ;
+; Rule A108: Design should not contain latches - Latch 27                                                               ;                                         ;
+;  Latch 27                                                                                                             ; FSM:inst14|shiftregister[122]~latch     ;
+; Rule A108: Design should not contain latches - Latch 28                                                               ;                                         ;
+;  Latch 28                                                                                                             ; FSM:inst14|shiftregister[83]~latch      ;
+; Rule A108: Design should not contain latches - Latch 29                                                               ;                                         ;
+;  Latch 29                                                                                                             ; FSM:inst14|shiftregister[115]~latch     ;
+; Rule A108: Design should not contain latches - Latch 30                                                               ;                                         ;
+;  Latch 30                                                                                                             ; FSM:inst14|shiftregister[91]~latch      ;
+; Rule A108: Design should not contain latches - Latch 31                                                               ;                                         ;
+;  Latch 31                                                                                                             ; FSM:inst14|shiftregister[123]~latch     ;
+; Rule A108: Design should not contain latches - Latch 32                                                               ;                                         ;
+;  Latch 32                                                                                                             ; FSM:inst14|shiftregister[81]~latch      ;
+; Rule A108: Design should not contain latches - Latch 33                                                               ;                                         ;
+;  Latch 33                                                                                                             ; FSM:inst14|shiftregister[113]~latch     ;
+; Rule A108: Design should not contain latches - Latch 34                                                               ;                                         ;
+;  Latch 34                                                                                                             ; FSM:inst14|shiftregister[89]~latch      ;
+; Rule A108: Design should not contain latches - Latch 35                                                               ;                                         ;
+;  Latch 35                                                                                                             ; FSM:inst14|shiftregister[121]~latch     ;
+; Rule A108: Design should not contain latches - Latch 36                                                               ;                                         ;
+;  Latch 36                                                                                                             ; FSM:inst14|shiftregister[39]~latch      ;
+; Rule A108: Design should not contain latches - Latch 37                                                               ;                                         ;
+;  Latch 37                                                                                                             ; FSM:inst14|shiftregister[37]~latch      ;
+; Rule A108: Design should not contain latches - Latch 38                                                               ;                                         ;
+;  Latch 38                                                                                                             ; FSM:inst14|shiftregister[22]~latch      ;
+; Rule A108: Design should not contain latches - Latch 39                                                               ;                                         ;
+;  Latch 39                                                                                                             ; FSM:inst14|shiftregister[24]~latch      ;
+; Rule A108: Design should not contain latches - Latch 40                                                               ;                                         ;
+;  Latch 40                                                                                                             ; FSM:inst14|shiftregister[6]~latch       ;
+; Rule A108: Design should not contain latches - Latch 41                                                               ;                                         ;
+;  Latch 41                                                                                                             ; FSM:inst14|shiftregister[8]~latch       ;
+; Rule A108: Design should not contain latches - Latch 42                                                               ;                                         ;
+;  Latch 42                                                                                                             ; FSM:inst14|shiftregister[55]~latch      ;
+; Rule A108: Design should not contain latches - Latch 43                                                               ;                                         ;
+;  Latch 43                                                                                                             ; FSM:inst14|shiftregister[53]~latch      ;
+; Rule A108: Design should not contain latches - Latch 44                                                               ;                                         ;
+;  Latch 44                                                                                                             ; FSM:inst14|shiftregister[19]~latch      ;
+; Rule A108: Design should not contain latches - Latch 45                                                               ;                                         ;
+;  Latch 45                                                                                                             ; FSM:inst14|shiftregister[20]~latch      ;
+; Rule A108: Design should not contain latches - Latch 46                                                               ;                                         ;
+;  Latch 46                                                                                                             ; FSM:inst14|shiftregister[51]~latch      ;
+; Rule A108: Design should not contain latches - Latch 47                                                               ;                                         ;
+;  Latch 47                                                                                                             ; FSM:inst14|shiftregister[52]~latch      ;
+; Rule A108: Design should not contain latches - Latch 48                                                               ;                                         ;
+;  Latch 48                                                                                                             ; FSM:inst14|shiftregister[30]~latch      ;
+; Rule A108: Design should not contain latches - Latch 49                                                               ;                                         ;
+;  Latch 49                                                                                                             ; FSM:inst14|shiftregister[32]~latch      ;
+; Rule A108: Design should not contain latches - Latch 50                                                               ;                                         ;
+;  Latch 50                                                                                                             ; FSM:inst14|shiftregister[46]~latch      ;
+; Rule A108: Design should not contain latches - Latch 51                                                               ;                                         ;
+;  Latch 51                                                                                                             ; FSM:inst14|shiftregister[48]~latch      ;
+; Rule A108: Design should not contain latches - Latch 52                                                               ;                                         ;
+;  Latch 52                                                                                                             ; FSM:inst14|shiftregister[26]~latch      ;
+; Rule A108: Design should not contain latches - Latch 53                                                               ;                                         ;
+;  Latch 53                                                                                                             ; FSM:inst14|shiftregister[25]~latch      ;
+; Rule A108: Design should not contain latches - Latch 54                                                               ;                                         ;
+;  Latch 54                                                                                                             ; FSM:inst14|shiftregister[43]~latch      ;
+; Rule A108: Design should not contain latches - Latch 55                                                               ;                                         ;
+;  Latch 55                                                                                                             ; FSM:inst14|shiftregister[44]~latch      ;
+; Rule A108: Design should not contain latches - Latch 56                                                               ;                                         ;
+;  Latch 56                                                                                                             ; FSM:inst14|shiftregister[11]~latch      ;
+; Rule A108: Design should not contain latches - Latch 57                                                               ;                                         ;
+;  Latch 57                                                                                                             ; FSM:inst14|shiftregister[12]~latch      ;
+; Rule A108: Design should not contain latches - Latch 58                                                               ;                                         ;
+;  Latch 58                                                                                                             ; FSM:inst14|shiftregister[58]~latch      ;
+; Rule A108: Design should not contain latches - Latch 59                                                               ;                                         ;
+;  Latch 59                                                                                                             ; FSM:inst14|shiftregister[57]~latch      ;
+; Rule A108: Design should not contain latches - Latch 60                                                               ;                                         ;
+;  Latch 60                                                                                                             ; FSM:inst14|shiftregister[151]~latch     ;
+; Rule A108: Design should not contain latches - Latch 61                                                               ;                                         ;
+;  Latch 61                                                                                                             ; FSM:inst14|shiftregister[143]~latch     ;
+; Rule A108: Design should not contain latches - Latch 62                                                               ;                                         ;
+;  Latch 62                                                                                                             ; FSM:inst14|shiftregister[150]~latch     ;
+; Rule A108: Design should not contain latches - Latch 63                                                               ;                                         ;
+;  Latch 63                                                                                                             ; FSM:inst14|shiftregister[154]~latch     ;
+; Rule A108: Design should not contain latches - Latch 64                                                               ;                                         ;
+;  Latch 64                                                                                                             ; FSM:inst14|shiftregister[145]~latch     ;
+; Rule A108: Design should not contain latches - Latch 65                                                               ;                                         ;
+;  Latch 65                                                                                                             ; FSM:inst14|shiftregister[153]~latch     ;
+; Rule A108: Design should not contain latches - Latch 66                                                               ;                                         ;
+;  Latch 66                                                                                                             ; FSM:inst14|shiftregister[148]~latch     ;
+; Rule A108: Design should not contain latches - Latch 67                                                               ;                                         ;
+;  Latch 67                                                                                                             ; FSM:inst14|shiftregister[144]~latch     ;
+; Rule A108: Design should not contain latches - Latch 68                                                               ;                                         ;
+;  Latch 68                                                                                                             ; FSM:inst14|shiftregister[130]~latch     ;
+; Rule A108: Design should not contain latches - Latch 69                                                               ;                                         ;
+;  Latch 69                                                                                                             ; FSM:inst14|shiftregister[126]~latch     ;
+; Rule A108: Design should not contain latches - Latch 70                                                               ;                                         ;
+;  Latch 70                                                                                                             ; FSM:inst14|shiftregister[131]~latch     ;
+; Rule A108: Design should not contain latches - Latch 71                                                               ;                                         ;
+;  Latch 71                                                                                                             ; FSM:inst14|shiftregister[139]~latch     ;
+; Rule A108: Design should not contain latches - Latch 72                                                               ;                                         ;
+;  Latch 72                                                                                                             ; FSM:inst14|shiftregister[129]~latch     ;
+; Rule A108: Design should not contain latches - Latch 73                                                               ;                                         ;
+;  Latch 73                                                                                                             ; FSM:inst14|shiftregister[137]~latch     ;
+; Rule A108: Design should not contain latches - Latch 74                                                               ;                                         ;
+;  Latch 74                                                                                                             ; FSM:inst14|shiftregister[132]~latch     ;
+; Rule A108: Design should not contain latches - Latch 75                                                               ;                                         ;
+;  Latch 75                                                                                                             ; FSM:inst14|shiftregister[128]~latch     ;
+; Rule A108: Design should not contain latches - Latch 76                                                               ;                                         ;
+;  Latch 76                                                                                                             ; FSM:inst14|shiftregister[100]~latch     ;
+; Rule A108: Design should not contain latches - Latch 77                                                               ;                                         ;
+;  Latch 77                                                                                                             ; FSM:inst14|shiftregister[96]~latch      ;
+; Rule A108: Design should not contain latches - Latch 78                                                               ;                                         ;
+;  Latch 78                                                                                                             ; FSM:inst14|shiftregister[84]~latch      ;
+; Rule A108: Design should not contain latches - Latch 79                                                               ;                                         ;
+;  Latch 79                                                                                                             ; FSM:inst14|shiftregister[92]~latch      ;
+; Rule A108: Design should not contain latches - Latch 80                                                               ;                                         ;
+;  Latch 80                                                                                                             ; FSM:inst14|shiftregister[72]~latch      ;
+; Rule A108: Design should not contain latches - Latch 81                                                               ;                                         ;
+;  Latch 81                                                                                                             ; FSM:inst14|shiftregister[76]~latch      ;
+; Rule A108: Design should not contain latches - Latch 82                                                               ;                                         ;
+;  Latch 82                                                                                                             ; FSM:inst14|shiftregister[120]~latch     ;
+; Rule A108: Design should not contain latches - Latch 83                                                               ;                                         ;
+;  Latch 83                                                                                                             ; FSM:inst14|shiftregister[112]~latch     ;
+; Rule A108: Design should not contain latches - Latch 84                                                               ;                                         ;
+;  Latch 84                                                                                                             ; FSM:inst14|shiftregister[86]~latch      ;
+; Rule A108: Design should not contain latches - Latch 85                                                               ;                                         ;
+;  Latch 85                                                                                                             ; FSM:inst14|shiftregister[70]~latch      ;
+; Rule A108: Design should not contain latches - Latch 86                                                               ;                                         ;
+;  Latch 86                                                                                                             ; FSM:inst14|shiftregister[82]~latch      ;
+; Rule A108: Design should not contain latches - Latch 87                                                               ;                                         ;
+;  Latch 87                                                                                                             ; FSM:inst14|shiftregister[114]~latch     ;
+; Rule A108: Design should not contain latches - Latch 88                                                               ;                                         ;
+;  Latch 88                                                                                                             ; FSM:inst14|shiftregister[94]~latch      ;
+; Rule A108: Design should not contain latches - Latch 89                                                               ;                                         ;
+;  Latch 89                                                                                                             ; FSM:inst14|shiftregister[110]~latch     ;
+; Rule A108: Design should not contain latches - Latch 90                                                               ;                                         ;
+;  Latch 90                                                                                                             ; FSM:inst14|shiftregister[106]~latch     ;
+; Rule A108: Design should not contain latches - Latch 91                                                               ;                                         ;
+;  Latch 91                                                                                                             ; FSM:inst14|shiftregister[74]~latch      ;
+; Rule A108: Design should not contain latches - Latch 92                                                               ;                                         ;
+;  Latch 92                                                                                                             ; FSM:inst14|shiftregister[99]~latch      ;
+; Rule A108: Design should not contain latches - Latch 93                                                               ;                                         ;
+;  Latch 93                                                                                                             ; FSM:inst14|shiftregister[67]~latch      ;
+; Rule A108: Design should not contain latches - Latch 94                                                               ;                                         ;
+;  Latch 94                                                                                                             ; FSM:inst14|shiftregister[103]~latch     ;
+; Rule A108: Design should not contain latches - Latch 95                                                               ;                                         ;
+;  Latch 95                                                                                                             ; FSM:inst14|shiftregister[119]~latch     ;
+; Rule A108: Design should not contain latches - Latch 96                                                               ;                                         ;
+;  Latch 96                                                                                                             ; FSM:inst14|shiftregister[95]~latch      ;
+; Rule A108: Design should not contain latches - Latch 97                                                               ;                                         ;
+;  Latch 97                                                                                                             ; FSM:inst14|shiftregister[111]~latch     ;
+; Rule A108: Design should not contain latches - Latch 98                                                               ;                                         ;
+;  Latch 98                                                                                                             ; FSM:inst14|shiftregister[107]~latch     ;
+; Rule A108: Design should not contain latches - Latch 99                                                               ;                                         ;
+;  Latch 99                                                                                                             ; FSM:inst14|shiftregister[75]~latch      ;
+; Rule A108: Design should not contain latches - Latch 100                                                              ;                                         ;
+;  Latch 100                                                                                                            ; FSM:inst14|shiftregister[97]~latch      ;
+; Rule A108: Design should not contain latches - Latch 101                                                              ;                                         ;
+;  Latch 101                                                                                                            ; FSM:inst14|shiftregister[65]~latch      ;
+; Rule A108: Design should not contain latches - Latch 102                                                              ;                                         ;
+;  Latch 102                                                                                                            ; FSM:inst14|shiftregister[101]~latch     ;
+; Rule A108: Design should not contain latches - Latch 103                                                              ;                                         ;
+;  Latch 103                                                                                                            ; FSM:inst14|shiftregister[117]~latch     ;
+; Rule A108: Design should not contain latches - Latch 104                                                              ;                                         ;
+;  Latch 104                                                                                                            ; FSM:inst14|shiftregister[93]~latch      ;
+; Rule A108: Design should not contain latches - Latch 105                                                              ;                                         ;
+;  Latch 105                                                                                                            ; FSM:inst14|shiftregister[109]~latch     ;
+; Rule A108: Design should not contain latches - Latch 106                                                              ;                                         ;
+;  Latch 106                                                                                                            ; FSM:inst14|shiftregister[105]~latch     ;
+; Rule A108: Design should not contain latches - Latch 107                                                              ;                                         ;
+;  Latch 107                                                                                                            ; FSM:inst14|shiftregister[73]~latch      ;
+; Rule A108: Design should not contain latches - Latch 108                                                              ;                                         ;
+;  Latch 108                                                                                                            ; FSM:inst14|shiftregister[23]~latch      ;
+; Rule A108: Design should not contain latches - Latch 109                                                              ;                                         ;
+;  Latch 109                                                                                                            ; FSM:inst14|shiftregister[21]~latch      ;
+; Rule A108: Design should not contain latches - Latch 110                                                              ;                                         ;
+;  Latch 110                                                                                                            ; FSM:inst14|shiftregister[7]~latch       ;
+; Rule A108: Design should not contain latches - Latch 111                                                              ;                                         ;
+;  Latch 111                                                                                                            ; FSM:inst14|shiftregister[5]~latch       ;
+; Rule A108: Design should not contain latches - Latch 112                                                              ;                                         ;
+;  Latch 112                                                                                                            ; FSM:inst14|shiftregister[18]~latch      ;
+; Rule A108: Design should not contain latches - Latch 113                                                              ;                                         ;
+;  Latch 113                                                                                                            ; FSM:inst14|shiftregister[17]~latch      ;
+; Rule A108: Design should not contain latches - Latch 114                                                              ;                                         ;
+;  Latch 114                                                                                                            ; FSM:inst14|shiftregister[35]~latch      ;
+; Rule A108: Design should not contain latches - Latch 115                                                              ;                                         ;
+;  Latch 115                                                                                                            ; FSM:inst14|shiftregister[36]~latch      ;
+; Rule A108: Design should not contain latches - Latch 116                                                              ;                                         ;
+;  Latch 116                                                                                                            ; FSM:inst14|shiftregister[3]~latch       ;
+; Rule A108: Design should not contain latches - Latch 117                                                              ;                                         ;
+;  Latch 117                                                                                                            ; FSM:inst14|shiftregister[4]~latch       ;
+; Rule A108: Design should not contain latches - Latch 118                                                              ;                                         ;
+;  Latch 118                                                                                                            ; FSM:inst14|shiftregister[50]~latch      ;
+; Rule A108: Design should not contain latches - Latch 119                                                              ;                                         ;
+;  Latch 119                                                                                                            ; FSM:inst14|shiftregister[49]~latch      ;
+; Rule A108: Design should not contain latches - Latch 120                                                              ;                                         ;
+;  Latch 120                                                                                                            ; FSM:inst14|shiftregister[31]~latch      ;
+; Rule A108: Design should not contain latches - Latch 121                                                              ;                                         ;
+;  Latch 121                                                                                                            ; FSM:inst14|shiftregister[29]~latch      ;
+; Rule A108: Design should not contain latches - Latch 122                                                              ;                                         ;
+;  Latch 122                                                                                                            ; FSM:inst14|shiftregister[14]~latch      ;
+; Rule A108: Design should not contain latches - Latch 123                                                              ;                                         ;
+;  Latch 123                                                                                                            ; FSM:inst14|shiftregister[16]~latch      ;
+; Rule A108: Design should not contain latches - Latch 124                                                              ;                                         ;
+;  Latch 124                                                                                                            ; FSM:inst14|shiftregister[0]~latch       ;
+; Rule A108: Design should not contain latches - Latch 125                                                              ;                                         ;
+;  Latch 125                                                                                                            ; FSM:inst14|shiftregister[47]~latch      ;
+; Rule A108: Design should not contain latches - Latch 126                                                              ;                                         ;
+;  Latch 126                                                                                                            ; FSM:inst14|shiftregister[45]~latch      ;
+; Rule A108: Design should not contain latches - Latch 127                                                              ;                                         ;
+;  Latch 127                                                                                                            ; FSM:inst14|shiftregister[42]~latch      ;
+; Rule A108: Design should not contain latches - Latch 128                                                              ;                                         ;
+;  Latch 128                                                                                                            ; FSM:inst14|shiftregister[41]~latch      ;
+; Rule A108: Design should not contain latches - Latch 129                                                              ;                                         ;
+;  Latch 129                                                                                                            ; FSM:inst14|shiftregister[10]~latch      ;
+; Rule A108: Design should not contain latches - Latch 130                                                              ;                                         ;
+;  Latch 130                                                                                                            ; FSM:inst14|shiftregister[9]~latch       ;
+; Rule A108: Design should not contain latches - Latch 131                                                              ;                                         ;
+;  Latch 131                                                                                                            ; FSM:inst14|shiftregister[146]~latch     ;
+; Rule A108: Design should not contain latches - Latch 132                                                              ;                                         ;
+;  Latch 132                                                                                                            ; FSM:inst14|shiftregister[142]~latch     ;
+; Rule A108: Design should not contain latches - Latch 133                                                              ;                                         ;
+;  Latch 133                                                                                                            ; FSM:inst14|shiftregister[149]~latch     ;
+; Rule A108: Design should not contain latches - Latch 134                                                              ;                                         ;
+;  Latch 134                                                                                                            ; FSM:inst14|shiftregister[141]~latch     ;
+; Rule A108: Design should not contain latches - Latch 135                                                              ;                                         ;
+;  Latch 135                                                                                                            ; FSM:inst14|shiftregister[135]~latch     ;
+; Rule A108: Design should not contain latches - Latch 136                                                              ;                                         ;
+;  Latch 136                                                                                                            ; FSM:inst14|shiftregister[127]~latch     ;
+; Rule A108: Design should not contain latches - Latch 137                                                              ;                                         ;
+;  Latch 137                                                                                                            ; FSM:inst14|shiftregister[133]~latch     ;
+; Rule A108: Design should not contain latches - Latch 138                                                              ;                                         ;
+;  Latch 138                                                                                                            ; FSM:inst14|shiftregister[125]~latch     ;
+; Rule A108: Design should not contain latches - Latch 139                                                              ;                                         ;
+;  Latch 139                                                                                                            ; FSM:inst14|shiftregister[88]~latch      ;
+; Rule A108: Design should not contain latches - Latch 140                                                              ;                                         ;
+;  Latch 140                                                                                                            ; FSM:inst14|shiftregister[80]~latch      ;
+; Rule A108: Design should not contain latches - Latch 141                                                              ;                                         ;
+;  Latch 141                                                                                                            ; FSM:inst14|shiftregister[68]~latch      ;
+; Rule A108: Design should not contain latches - Latch 142                                                              ;                                         ;
+;  Latch 142                                                                                                            ; FSM:inst14|shiftregister[64]~latch      ;
+; Rule A108: Design should not contain latches - Latch 143                                                              ;                                         ;
+;  Latch 143                                                                                                            ; FSM:inst14|shiftregister[98]~latch      ;
+; Rule A108: Design should not contain latches - Latch 144                                                              ;                                         ;
+;  Latch 144                                                                                                            ; FSM:inst14|shiftregister[66]~latch      ;
+; Rule A108: Design should not contain latches - Latch 145                                                              ;                                         ;
+;  Latch 145                                                                                                            ; FSM:inst14|shiftregister[78]~latch      ;
+; Rule A108: Design should not contain latches - Latch 146                                                              ;                                         ;
+;  Latch 146                                                                                                            ; FSM:inst14|shiftregister[62]~latch      ;
+; Rule A108: Design should not contain latches - Latch 147                                                              ;                                         ;
+;  Latch 147                                                                                                            ; FSM:inst14|shiftregister[87]~latch      ;
+; Rule A108: Design should not contain latches - Latch 148                                                              ;                                         ;
+;  Latch 148                                                                                                            ; FSM:inst14|shiftregister[71]~latch      ;
+; Rule A108: Design should not contain latches - Latch 149                                                              ;                                         ;
+;  Latch 149                                                                                                            ; FSM:inst14|shiftregister[79]~latch      ;
+; Rule A108: Design should not contain latches - Latch 150                                                              ;                                         ;
+;  Latch 150                                                                                                            ; FSM:inst14|shiftregister[63]~latch      ;
+; Rule A108: Design should not contain latches - Latch 151                                                              ;                                         ;
+;  Latch 151                                                                                                            ; FSM:inst14|shiftregister[85]~latch      ;
+; Rule A108: Design should not contain latches - Latch 152                                                              ;                                         ;
+;  Latch 152                                                                                                            ; FSM:inst14|shiftregister[69]~latch      ;
+; Rule A108: Design should not contain latches - Latch 153                                                              ;                                         ;
+;  Latch 153                                                                                                            ; FSM:inst14|shiftregister[77]~latch      ;
+; Rule A108: Design should not contain latches - Latch 154                                                              ;                                         ;
+;  Latch 154                                                                                                            ; FSM:inst14|shiftregister[61]~latch      ;
+; Rule A108: Design should not contain latches - Latch 155                                                              ;                                         ;
+;  Latch 155                                                                                                            ; FSM:inst14|shiftregister[34]~latch      ;
+; Rule A108: Design should not contain latches - Latch 156                                                              ;                                         ;
+;  Latch 156                                                                                                            ; FSM:inst14|shiftregister[33]~latch      ;
+; Rule A108: Design should not contain latches - Latch 157                                                              ;                                         ;
+;  Latch 157                                                                                                            ; FSM:inst14|shiftregister[2]~latch       ;
+; Rule A108: Design should not contain latches - Latch 158                                                              ;                                         ;
+;  Latch 158                                                                                                            ; FSM:inst14|shiftregister[1]~latch       ;
+; Rule A108: Design should not contain latches - Latch 159                                                              ;                                         ;
+;  Latch 159                                                                                                            ; FSM:inst14|shiftregister[15]~latch      ;
+; Rule A108: Design should not contain latches - Latch 160                                                              ;                                         ;
+;  Latch 160                                                                                                            ; FSM:inst14|shiftregister[13]~latch      ;
+; Rule R101: Combinational logic used as a reset signal should be synchronized                                          ; Encoder:inst5|process_0~1               ;
+;  Reset signal destination node(s) list                                                                                ; Encoder:inst5|COUNT_1[0]                ;
+;  Reset signal destination node(s) list                                                                                ; Encoder:inst5|COUNT_1[8]                ;
+;  Reset signal destination node(s) list                                                                                ; Encoder:inst5|COUNT_1[1]                ;
+;  Reset signal destination node(s) list                                                                                ; Encoder:inst5|COUNT_1[5]                ;
+;  Reset signal destination node(s) list                                                                                ; Encoder:inst5|COUNT_1[16]               ;
+;  Reset signal destination node(s) list                                                                                ; Encoder:inst5|COUNT_1[18]               ;
+;  Reset signal destination node(s) list                                                                                ; Encoder:inst5|COUNT_1[24]               ;
+;  Reset signal destination node(s) list                                                                                ; Encoder:inst5|COUNT_1[26]               ;
+;  Reset signal destination node(s) list                                                                                ; Encoder:inst5|COUNT_1[3]                ;
+;  Reset signal destination node(s) list                                                                                ; Encoder:inst5|COUNT_1[7]                ;
+; Rule R101: Combinational logic used as a reset signal should be synchronized                                          ; Encoder:inst5|process_0~3               ;
+;  Reset signal destination node(s) list                                                                                ; Encoder:inst5|COUNT_2[0]                ;
+;  Reset signal destination node(s) list                                                                                ; Encoder:inst5|COUNT_2[8]                ;
+;  Reset signal destination node(s) list                                                                                ; Encoder:inst5|COUNT_2[1]                ;
+;  Reset signal destination node(s) list                                                                                ; Encoder:inst5|COUNT_2[5]                ;
+;  Reset signal destination node(s) list                                                                                ; Encoder:inst5|COUNT_2[16]               ;
+;  Reset signal destination node(s) list                                                                                ; Encoder:inst5|COUNT_2[18]               ;
+;  Reset signal destination node(s) list                                                                                ; Encoder:inst5|COUNT_2[24]               ;
+;  Reset signal destination node(s) list                                                                                ; Encoder:inst5|COUNT_2[26]               ;
+;  Reset signal destination node(s) list                                                                                ; Encoder:inst5|COUNT_2[3]                ;
+;  Reset signal destination node(s) list                                                                                ; Encoder:inst5|COUNT_2[7]                ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; Encoder:inst5|COUNT_1[22]               ;
+;  Synchronous and reset port source node(s) list                                                                       ; UartController:inst3|encaddress         ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; Encoder:inst5|COUNT_2[22]               ;
+;  Synchronous and reset port source node(s) list                                                                       ; UartController:inst3|encaddress         ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; Encoder:inst5|COUNT_1[23]               ;
+;  Synchronous and reset port source node(s) list                                                                       ; UartController:inst3|encaddress         ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; Encoder:inst5|COUNT_2[23]               ;
+;  Synchronous and reset port source node(s) list                                                                       ; UartController:inst3|encaddress         ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; Encoder:inst5|COUNT_1[30]               ;
+;  Synchronous and reset port source node(s) list                                                                       ; UartController:inst3|encaddress         ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; Encoder:inst5|COUNT_2[30]               ;
+;  Synchronous and reset port source node(s) list                                                                       ; UartController:inst3|encaddress         ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; Encoder:inst5|COUNT_1[31]               ;
+;  Synchronous and reset port source node(s) list                                                                       ; UartController:inst3|encaddress         ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; Encoder:inst5|COUNT_2[31]               ;
+;  Synchronous and reset port source node(s) list                                                                       ; UartController:inst3|encaddress         ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; Encoder:inst5|COUNT_1[6]                ;
+;  Synchronous and reset port source node(s) list                                                                       ; UartController:inst3|encaddress         ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; Encoder:inst5|COUNT_2[6]                ;
+;  Synchronous and reset port source node(s) list                                                                       ; UartController:inst3|encaddress         ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; Encoder:inst5|COUNT_1[14]               ;
+;  Synchronous and reset port source node(s) list                                                                       ; UartController:inst3|encaddress         ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; Encoder:inst5|COUNT_2[14]               ;
+;  Synchronous and reset port source node(s) list                                                                       ; UartController:inst3|encaddress         ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; Encoder:inst5|COUNT_1[11]               ;
+;  Synchronous and reset port source node(s) list                                                                       ; UartController:inst3|encaddress         ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; Encoder:inst5|COUNT_2[11]               ;
+;  Synchronous and reset port source node(s) list                                                                       ; UartController:inst3|encaddress         ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; Encoder:inst5|COUNT_1[15]               ;
+;  Synchronous and reset port source node(s) list                                                                       ; UartController:inst3|encaddress         ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; Encoder:inst5|COUNT_2[15]               ;
+;  Synchronous and reset port source node(s) list                                                                       ; UartController:inst3|encaddress         ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; Encoder:inst5|COUNT_1[21]               ;
+;  Synchronous and reset port source node(s) list                                                                       ; UartController:inst3|encaddress         ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; Encoder:inst5|COUNT_2[21]               ;
+;  Synchronous and reset port source node(s) list                                                                       ; UartController:inst3|encaddress         ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; Encoder:inst5|COUNT_1[20]               ;
+;  Synchronous and reset port source node(s) list                                                                       ; UartController:inst3|encaddress         ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; Encoder:inst5|COUNT_2[20]               ;
+;  Synchronous and reset port source node(s) list                                                                       ; UartController:inst3|encaddress         ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; Encoder:inst5|COUNT_1[25]               ;
+;  Synchronous and reset port source node(s) list                                                                       ; UartController:inst3|encaddress         ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; Encoder:inst5|COUNT_2[25]               ;
+;  Synchronous and reset port source node(s) list                                                                       ; UartController:inst3|encaddress         ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; Encoder:inst5|COUNT_1[27]               ;
+;  Synchronous and reset port source node(s) list                                                                       ; UartController:inst3|encaddress         ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; Encoder:inst5|COUNT_2[27]               ;
+;  Synchronous and reset port source node(s) list                                                                       ; UartController:inst3|encaddress         ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; Encoder:inst5|COUNT_1[17]               ;
+;  Synchronous and reset port source node(s) list                                                                       ; UartController:inst3|encaddress         ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; Encoder:inst5|COUNT_2[17]               ;
+;  Synchronous and reset port source node(s) list                                                                       ; UartController:inst3|encaddress         ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; Encoder:inst5|COUNT_1[19]               ;
+;  Synchronous and reset port source node(s) list                                                                       ; UartController:inst3|encaddress         ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; Encoder:inst5|COUNT_2[19]               ;
+;  Synchronous and reset port source node(s) list                                                                       ; UartController:inst3|encaddress         ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; Encoder:inst5|COUNT_1[29]               ;
+;  Synchronous and reset port source node(s) list                                                                       ; UartController:inst3|encaddress         ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; Encoder:inst5|COUNT_2[29]               ;
+;  Synchronous and reset port source node(s) list                                                                       ; UartController:inst3|encaddress         ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; Encoder:inst5|COUNT_1[28]               ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; Encoder:inst5|COUNT_2[28]               ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; Encoder:inst5|COUNT_1[10]               ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; Encoder:inst5|COUNT_2[10]               ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; Encoder:inst5|COUNT_1[2]                ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; Encoder:inst5|COUNT_2[2]                ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; Encoder:inst5|COUNT_1[9]                ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; Encoder:inst5|COUNT_2[9]                ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; Encoder:inst5|COUNT_1[13]               ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; Encoder:inst5|COUNT_2[13]               ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; Encoder:inst5|COUNT_1[4]                ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; Encoder:inst5|COUNT_2[4]                ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; Encoder:inst5|COUNT_1[12]               ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; Encoder:inst5|COUNT_2[12]               ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; Encoder:inst5|COUNT_1[7]                ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; Encoder:inst5|COUNT_2[7]                ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; Encoder:inst5|COUNT_1[3]                ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; Encoder:inst5|COUNT_2[3]                ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; Encoder:inst5|COUNT_1[26]               ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; Encoder:inst5|COUNT_2[26]               ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; Encoder:inst5|COUNT_1[24]               ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; Encoder:inst5|COUNT_2[24]               ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; Encoder:inst5|COUNT_1[18]               ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; Encoder:inst5|COUNT_2[18]               ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; Encoder:inst5|COUNT_1[16]               ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; Encoder:inst5|COUNT_2[16]               ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; Encoder:inst5|COUNT_1[5]                ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; Encoder:inst5|COUNT_2[5]                ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; Encoder:inst5|COUNT_1[1]                ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; Encoder:inst5|COUNT_2[1]                ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; Encoder:inst5|COUNT_1[8]                ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; Encoder:inst5|COUNT_2[8]                ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; Encoder:inst5|COUNT_1[0]                ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; Encoder:inst5|COUNT_2[0]                ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; FSM:inst14|shiftregister[159]~_emulated ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; FSM:inst14|shiftregister[157]~_emulated ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; FSM:inst14|shiftregister[158]~_emulated ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; FSM:inst14|shiftregister[38]~_emulated  ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; FSM:inst14|shiftregister[40]~_emulated  ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; FSM:inst14|shiftregister[54]~_emulated  ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; FSM:inst14|shiftregister[56]~_emulated  ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; FSM:inst14|shiftregister[27]~_emulated  ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; FSM:inst14|shiftregister[28]~_emulated  ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; FSM:inst14|shiftregister[59]~_emulated  ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; FSM:inst14|shiftregister[60]~_emulated  ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; FSM:inst14|shiftregister[147]~_emulated ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; FSM:inst14|shiftregister[155]~_emulated ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; FSM:inst14|shiftregister[152]~_emulated ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; FSM:inst14|shiftregister[156]~_emulated ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; FSM:inst14|shiftregister[134]~_emulated ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; FSM:inst14|shiftregister[138]~_emulated ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; FSM:inst14|shiftregister[136]~_emulated ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; FSM:inst14|shiftregister[140]~_emulated ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; FSM:inst14|shiftregister[104]~_emulated ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; FSM:inst14|shiftregister[108]~_emulated ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; FSM:inst14|shiftregister[116]~_emulated ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; FSM:inst14|shiftregister[124]~_emulated ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; FSM:inst14|shiftregister[102]~_emulated ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; FSM:inst14|shiftregister[118]~_emulated ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; FSM:inst14|shiftregister[90]~_emulated  ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; FSM:inst14|shiftregister[122]~_emulated ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; FSM:inst14|shiftregister[83]~_emulated  ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; FSM:inst14|shiftregister[115]~_emulated ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; FSM:inst14|shiftregister[91]~_emulated  ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; FSM:inst14|shiftregister[123]~_emulated ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; FSM:inst14|shiftregister[81]~_emulated  ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; FSM:inst14|shiftregister[113]~_emulated ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; FSM:inst14|shiftregister[89]~_emulated  ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; FSM:inst14|shiftregister[121]~_emulated ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; FSM:inst14|shiftregister[39]~_emulated  ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; FSM:inst14|shiftregister[37]~_emulated  ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; FSM:inst14|shiftregister[22]~_emulated  ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; FSM:inst14|shiftregister[24]~_emulated  ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; FSM:inst14|shiftregister[6]~_emulated   ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; FSM:inst14|shiftregister[8]~_emulated   ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; FSM:inst14|shiftregister[55]~_emulated  ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; FSM:inst14|shiftregister[53]~_emulated  ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; FSM:inst14|shiftregister[19]~_emulated  ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; FSM:inst14|shiftregister[20]~_emulated  ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; FSM:inst14|shiftregister[51]~_emulated  ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; FSM:inst14|shiftregister[52]~_emulated  ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; FSM:inst14|shiftregister[30]~_emulated  ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; FSM:inst14|shiftregister[32]~_emulated  ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; FSM:inst14|shiftregister[46]~_emulated  ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; FSM:inst14|shiftregister[48]~_emulated  ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; FSM:inst14|shiftregister[26]~_emulated  ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; FSM:inst14|shiftregister[25]~_emulated  ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; FSM:inst14|shiftregister[43]~_emulated  ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; FSM:inst14|shiftregister[44]~_emulated  ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; FSM:inst14|shiftregister[11]~_emulated  ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; FSM:inst14|shiftregister[12]~_emulated  ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; FSM:inst14|shiftregister[58]~_emulated  ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; FSM:inst14|shiftregister[57]~_emulated  ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; FSM:inst14|shiftregister[151]~_emulated ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; FSM:inst14|shiftregister[143]~_emulated ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; FSM:inst14|shiftregister[150]~_emulated ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; FSM:inst14|shiftregister[154]~_emulated ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; FSM:inst14|shiftregister[145]~_emulated ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; FSM:inst14|shiftregister[153]~_emulated ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; FSM:inst14|shiftregister[148]~_emulated ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; FSM:inst14|shiftregister[144]~_emulated ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; FSM:inst14|shiftregister[130]~_emulated ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; FSM:inst14|shiftregister[126]~_emulated ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; FSM:inst14|shiftregister[131]~_emulated ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; FSM:inst14|shiftregister[139]~_emulated ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; FSM:inst14|shiftregister[129]~_emulated ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; FSM:inst14|shiftregister[137]~_emulated ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; FSM:inst14|shiftregister[132]~_emulated ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; FSM:inst14|shiftregister[128]~_emulated ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; FSM:inst14|shiftregister[100]~_emulated ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; FSM:inst14|shiftregister[96]~_emulated  ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; FSM:inst14|shiftregister[84]~_emulated  ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; FSM:inst14|shiftregister[92]~_emulated  ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; FSM:inst14|shiftregister[72]~_emulated  ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; FSM:inst14|shiftregister[76]~_emulated  ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; FSM:inst14|shiftregister[120]~_emulated ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; FSM:inst14|shiftregister[112]~_emulated ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; FSM:inst14|shiftregister[86]~_emulated  ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; FSM:inst14|shiftregister[70]~_emulated  ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; FSM:inst14|shiftregister[82]~_emulated  ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; FSM:inst14|shiftregister[114]~_emulated ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; FSM:inst14|shiftregister[94]~_emulated  ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; FSM:inst14|shiftregister[110]~_emulated ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; FSM:inst14|shiftregister[106]~_emulated ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; FSM:inst14|shiftregister[74]~_emulated  ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; FSM:inst14|shiftregister[99]~_emulated  ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; FSM:inst14|shiftregister[67]~_emulated  ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; FSM:inst14|shiftregister[103]~_emulated ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; FSM:inst14|shiftregister[119]~_emulated ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; FSM:inst14|shiftregister[95]~_emulated  ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; FSM:inst14|shiftregister[111]~_emulated ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; FSM:inst14|shiftregister[107]~_emulated ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; FSM:inst14|shiftregister[75]~_emulated  ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; FSM:inst14|shiftregister[97]~_emulated  ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; FSM:inst14|shiftregister[65]~_emulated  ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; FSM:inst14|shiftregister[101]~_emulated ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; FSM:inst14|shiftregister[117]~_emulated ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; FSM:inst14|shiftregister[93]~_emulated  ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; FSM:inst14|shiftregister[109]~_emulated ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; FSM:inst14|shiftregister[105]~_emulated ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; FSM:inst14|shiftregister[73]~_emulated  ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; FSM:inst14|shiftregister[23]~_emulated  ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; FSM:inst14|shiftregister[21]~_emulated  ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; FSM:inst14|shiftregister[7]~_emulated   ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; FSM:inst14|shiftregister[5]~_emulated   ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; FSM:inst14|shiftregister[18]~_emulated  ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; FSM:inst14|shiftregister[17]~_emulated  ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; FSM:inst14|shiftregister[35]~_emulated  ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; FSM:inst14|shiftregister[36]~_emulated  ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; FSM:inst14|shiftregister[3]~_emulated   ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; FSM:inst14|shiftregister[4]~_emulated   ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; FSM:inst14|shiftregister[50]~_emulated  ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; FSM:inst14|shiftregister[49]~_emulated  ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; FSM:inst14|shiftregister[31]~_emulated  ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; FSM:inst14|shiftregister[29]~_emulated  ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; FSM:inst14|shiftregister[14]~_emulated  ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; FSM:inst14|shiftregister[16]~_emulated  ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; FSM:inst14|shiftregister[0]~_emulated   ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; FSM:inst14|shiftregister[47]~_emulated  ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; FSM:inst14|shiftregister[45]~_emulated  ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; FSM:inst14|shiftregister[42]~_emulated  ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; FSM:inst14|shiftregister[41]~_emulated  ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; FSM:inst14|shiftregister[10]~_emulated  ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; FSM:inst14|shiftregister[9]~_emulated   ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; FSM:inst14|shiftregister[146]~_emulated ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; FSM:inst14|shiftregister[142]~_emulated ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; FSM:inst14|shiftregister[149]~_emulated ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; FSM:inst14|shiftregister[141]~_emulated ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; FSM:inst14|shiftregister[135]~_emulated ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; FSM:inst14|shiftregister[127]~_emulated ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; FSM:inst14|shiftregister[133]~_emulated ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; FSM:inst14|shiftregister[125]~_emulated ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; FSM:inst14|shiftregister[88]~_emulated  ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; FSM:inst14|shiftregister[80]~_emulated  ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; FSM:inst14|shiftregister[68]~_emulated  ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; FSM:inst14|shiftregister[64]~_emulated  ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; FSM:inst14|shiftregister[98]~_emulated  ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; FSM:inst14|shiftregister[66]~_emulated  ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; FSM:inst14|shiftregister[78]~_emulated  ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; FSM:inst14|shiftregister[62]~_emulated  ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; FSM:inst14|shiftregister[87]~_emulated  ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; FSM:inst14|shiftregister[71]~_emulated  ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; FSM:inst14|shiftregister[79]~_emulated  ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; FSM:inst14|shiftregister[63]~_emulated  ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; FSM:inst14|shiftregister[85]~_emulated  ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; FSM:inst14|shiftregister[69]~_emulated  ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; FSM:inst14|shiftregister[77]~_emulated  ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; FSM:inst14|shiftregister[61]~_emulated  ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; FSM:inst14|shiftregister[34]~_emulated  ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; FSM:inst14|shiftregister[33]~_emulated  ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; FSM:inst14|shiftregister[2]~_emulated   ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; FSM:inst14|shiftregister[1]~_emulated   ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; FSM:inst14|shiftregister[15]~_emulated  ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; FSM:inst14|shiftregister[13]~_emulated  ;
+; Rule D101: Data bits are not synchronized when transferred between asynchronous clock domains - Structure 1           ;                                         ;
+;  Source node(s) from clock "ENC1A"                                                                                    ; Encoder:inst5|COUNT_1[22]               ;
+;  Destination node(s) from clock "Clock"                                                                               ; UartController:inst3|ENClatch[22]       ;
+; Rule D101: Data bits are not synchronized when transferred between asynchronous clock domains - Structure 2           ;                                         ;
+;  Source node(s) from clock "ENC2A"                                                                                    ; Encoder:inst5|COUNT_2[22]               ;
+;  Destination node(s) from clock "Clock"                                                                               ; UartController:inst3|ENClatch[22]       ;
+; Rule D101: Data bits are not synchronized when transferred between asynchronous clock domains - Structure 3           ;                                         ;
+;  Source node(s) from clock "ENC1A"                                                                                    ; Encoder:inst5|COUNT_1[23]               ;
+;  Destination node(s) from clock "Clock"                                                                               ; UartController:inst3|ENClatch[23]       ;
+; Rule D101: Data bits are not synchronized when transferred between asynchronous clock domains - Structure 4           ;                                         ;
+;  Source node(s) from clock "ENC2A"                                                                                    ; Encoder:inst5|COUNT_2[23]               ;
+;  Destination node(s) from clock "Clock"                                                                               ; UartController:inst3|ENClatch[23]       ;
+; Rule D101: Data bits are not synchronized when transferred between asynchronous clock domains - Structure 5           ;                                         ;
+;  Source node(s) from clock "ENC1A"                                                                                    ; Encoder:inst5|COUNT_1[30]               ;
+;  Destination node(s) from clock "Clock"                                                                               ; UartController:inst3|ENClatch[30]       ;
+; Rule D101: Data bits are not synchronized when transferred between asynchronous clock domains - Structure 6           ;                                         ;
+;  Source node(s) from clock "ENC2A"                                                                                    ; Encoder:inst5|COUNT_2[30]               ;
+;  Destination node(s) from clock "Clock"                                                                               ; UartController:inst3|ENClatch[30]       ;
+; Rule D101: Data bits are not synchronized when transferred between asynchronous clock domains - Structure 7           ;                                         ;
+;  Source node(s) from clock "ENC1A"                                                                                    ; Encoder:inst5|COUNT_1[31]               ;
+;  Destination node(s) from clock "Clock"                                                                               ; UartController:inst3|ENClatch[31]       ;
+; Rule D101: Data bits are not synchronized when transferred between asynchronous clock domains - Structure 8           ;                                         ;
+;  Source node(s) from clock "ENC2A"                                                                                    ; Encoder:inst5|COUNT_2[31]               ;
+;  Destination node(s) from clock "Clock"                                                                               ; UartController:inst3|ENClatch[31]       ;
+; Rule D101: Data bits are not synchronized when transferred between asynchronous clock domains - Structure 9           ;                                         ;
+;  Source node(s) from clock "ENC1A"                                                                                    ; Encoder:inst5|COUNT_1[6]                ;
+;  Destination node(s) from clock "Clock"                                                                               ; UartController:inst3|ENClatch[6]        ;
+; Rule D101: Data bits are not synchronized when transferred between asynchronous clock domains - Structure 10          ;                                         ;
+;  Source node(s) from clock "ENC2A"                                                                                    ; Encoder:inst5|COUNT_2[6]                ;
+;  Destination node(s) from clock "Clock"                                                                               ; UartController:inst3|ENClatch[6]        ;
+; Rule D101: Data bits are not synchronized when transferred between asynchronous clock domains - Structure 11          ;                                         ;
+;  Source node(s) from clock "ENC1A"                                                                                    ; Encoder:inst5|COUNT_1[14]               ;
+;  Destination node(s) from clock "Clock"                                                                               ; UartController:inst3|ENClatch[14]       ;
+; Rule D101: Data bits are not synchronized when transferred between asynchronous clock domains - Structure 12          ;                                         ;
+;  Source node(s) from clock "ENC2A"                                                                                    ; Encoder:inst5|COUNT_2[14]               ;
+;  Destination node(s) from clock "Clock"                                                                               ; UartController:inst3|ENClatch[14]       ;
+; Rule D101: Data bits are not synchronized when transferred between asynchronous clock domains - Structure 13          ;                                         ;
+;  Source node(s) from clock "ENC1A"                                                                                    ; Encoder:inst5|COUNT_1[11]               ;
+;  Destination node(s) from clock "Clock"                                                                               ; UartController:inst3|ENClatch[11]       ;
+; Rule D101: Data bits are not synchronized when transferred between asynchronous clock domains - Structure 14          ;                                         ;
+;  Source node(s) from clock "ENC2A"                                                                                    ; Encoder:inst5|COUNT_2[11]               ;
+;  Destination node(s) from clock "Clock"                                                                               ; UartController:inst3|ENClatch[11]       ;
+; Rule D101: Data bits are not synchronized when transferred between asynchronous clock domains - Structure 15          ;                                         ;
+;  Source node(s) from clock "ENC1A"                                                                                    ; Encoder:inst5|COUNT_1[15]               ;
+;  Destination node(s) from clock "Clock"                                                                               ; UartController:inst3|ENClatch[15]       ;
+; Rule D101: Data bits are not synchronized when transferred between asynchronous clock domains - Structure 16          ;                                         ;
+;  Source node(s) from clock "ENC2A"                                                                                    ; Encoder:inst5|COUNT_2[15]               ;
+;  Destination node(s) from clock "Clock"                                                                               ; UartController:inst3|ENClatch[15]       ;
+; Rule D101: Data bits are not synchronized when transferred between asynchronous clock domains - Structure 17          ;                                         ;
+;  Source node(s) from clock "ENC1A"                                                                                    ; Encoder:inst5|COUNT_1[21]               ;
+;  Destination node(s) from clock "Clock"                                                                               ; UartController:inst3|ENClatch[21]       ;
+; Rule D101: Data bits are not synchronized when transferred between asynchronous clock domains - Structure 18          ;                                         ;
+;  Source node(s) from clock "ENC2A"                                                                                    ; Encoder:inst5|COUNT_2[21]               ;
+;  Destination node(s) from clock "Clock"                                                                               ; UartController:inst3|ENClatch[21]       ;
+; Rule D101: Data bits are not synchronized when transferred between asynchronous clock domains - Structure 19          ;                                         ;
+;  Source node(s) from clock "ENC1A"                                                                                    ; Encoder:inst5|COUNT_1[20]               ;
+;  Destination node(s) from clock "Clock"                                                                               ; UartController:inst3|ENClatch[20]       ;
+; Rule D101: Data bits are not synchronized when transferred between asynchronous clock domains - Structure 20          ;                                         ;
+;  Source node(s) from clock "ENC2A"                                                                                    ; Encoder:inst5|COUNT_2[20]               ;
+;  Destination node(s) from clock "Clock"                                                                               ; UartController:inst3|ENClatch[20]       ;
+; Rule D101: Data bits are not synchronized when transferred between asynchronous clock domains - Structure 21          ;                                         ;
+;  Source node(s) from clock "ENC1A"                                                                                    ; Encoder:inst5|COUNT_1[25]               ;
+;  Destination node(s) from clock "Clock"                                                                               ; UartController:inst3|ENClatch[25]       ;
+; Rule D101: Data bits are not synchronized when transferred between asynchronous clock domains - Structure 22          ;                                         ;
+;  Source node(s) from clock "ENC2A"                                                                                    ; Encoder:inst5|COUNT_2[25]               ;
+;  Destination node(s) from clock "Clock"                                                                               ; UartController:inst3|ENClatch[25]       ;
+; Rule D101: Data bits are not synchronized when transferred between asynchronous clock domains - Structure 23          ;                                         ;
+;  Source node(s) from clock "ENC1A"                                                                                    ; Encoder:inst5|COUNT_1[27]               ;
+;  Destination node(s) from clock "Clock"                                                                               ; UartController:inst3|ENClatch[27]       ;
+; Rule D101: Data bits are not synchronized when transferred between asynchronous clock domains - Structure 24          ;                                         ;
+;  Source node(s) from clock "ENC2A"                                                                                    ; Encoder:inst5|COUNT_2[27]               ;
+;  Destination node(s) from clock "Clock"                                                                               ; UartController:inst3|ENClatch[27]       ;
+; Rule D101: Data bits are not synchronized when transferred between asynchronous clock domains - Structure 25          ;                                         ;
+;  Source node(s) from clock "ENC1A"                                                                                    ; Encoder:inst5|COUNT_1[17]               ;
+;  Destination node(s) from clock "Clock"                                                                               ; UartController:inst3|ENClatch[17]       ;
+; Rule D101: Data bits are not synchronized when transferred between asynchronous clock domains - Structure 26          ;                                         ;
+;  Source node(s) from clock "ENC2A"                                                                                    ; Encoder:inst5|COUNT_2[17]               ;
+;  Destination node(s) from clock "Clock"                                                                               ; UartController:inst3|ENClatch[17]       ;
+; Rule D101: Data bits are not synchronized when transferred between asynchronous clock domains - Structure 27          ;                                         ;
+;  Source node(s) from clock "ENC1A"                                                                                    ; Encoder:inst5|COUNT_1[19]               ;
+;  Destination node(s) from clock "Clock"                                                                               ; UartController:inst3|ENClatch[19]       ;
+; Rule D101: Data bits are not synchronized when transferred between asynchronous clock domains - Structure 28          ;                                         ;
+;  Source node(s) from clock "ENC2A"                                                                                    ; Encoder:inst5|COUNT_2[19]               ;
+;  Destination node(s) from clock "Clock"                                                                               ; UartController:inst3|ENClatch[19]       ;
+; Rule D101: Data bits are not synchronized when transferred between asynchronous clock domains - Structure 29          ;                                         ;
+;  Source node(s) from clock "ENC1A"                                                                                    ; Encoder:inst5|COUNT_1[29]               ;
+;  Destination node(s) from clock "Clock"                                                                               ; UartController:inst3|ENClatch[29]       ;
+; Rule D101: Data bits are not synchronized when transferred between asynchronous clock domains - Structure 30          ;                                         ;
+;  Source node(s) from clock "ENC2A"                                                                                    ; Encoder:inst5|COUNT_2[29]               ;
+;  Destination node(s) from clock "Clock"                                                                               ; UartController:inst3|ENClatch[29]       ;
+; Rule D101: Data bits are not synchronized when transferred between asynchronous clock domains - Structure 31          ;                                         ;
+;  Structure 31                                                                                                         ; Encoder:inst5|COUNT_1[28]               ;
+; Rule D101: Data bits are not synchronized when transferred between asynchronous clock domains - Structure 32          ;                                         ;
+;  Structure 32                                                                                                         ; Encoder:inst5|COUNT_2[28]               ;
+; Rule D101: Data bits are not synchronized when transferred between asynchronous clock domains - Structure 33          ;                                         ;
+;  Structure 33                                                                                                         ; Encoder:inst5|COUNT_1[10]               ;
+; Rule D101: Data bits are not synchronized when transferred between asynchronous clock domains - Structure 34          ;                                         ;
+;  Structure 34                                                                                                         ; Encoder:inst5|COUNT_2[10]               ;
+; Rule D101: Data bits are not synchronized when transferred between asynchronous clock domains - Structure 35          ;                                         ;
+;  Structure 35                                                                                                         ; Encoder:inst5|COUNT_1[2]                ;
+; Rule D101: Data bits are not synchronized when transferred between asynchronous clock domains - Structure 36          ;                                         ;
+;  Structure 36                                                                                                         ; Encoder:inst5|COUNT_2[2]                ;
+; Rule D101: Data bits are not synchronized when transferred between asynchronous clock domains - Structure 37          ;                                         ;
+;  Structure 37                                                                                                         ; Encoder:inst5|COUNT_1[9]                ;
+; Rule D101: Data bits are not synchronized when transferred between asynchronous clock domains - Structure 38          ;                                         ;
+;  Structure 38                                                                                                         ; Encoder:inst5|COUNT_2[9]                ;
+; Rule D101: Data bits are not synchronized when transferred between asynchronous clock domains - Structure 39          ;                                         ;
+;  Structure 39                                                                                                         ; Encoder:inst5|COUNT_1[13]               ;
+; Rule D101: Data bits are not synchronized when transferred between asynchronous clock domains - Structure 40          ;                                         ;
+;  Structure 40                                                                                                         ; Encoder:inst5|COUNT_2[13]               ;
+; Rule D101: Data bits are not synchronized when transferred between asynchronous clock domains - Structure 41          ;                                         ;
+;  Structure 41                                                                                                         ; Encoder:inst5|COUNT_1[4]                ;
+; Rule D101: Data bits are not synchronized when transferred between asynchronous clock domains - Structure 42          ;                                         ;
+;  Structure 42                                                                                                         ; Encoder:inst5|COUNT_2[4]                ;
+; Rule D101: Data bits are not synchronized when transferred between asynchronous clock domains - Structure 43          ;                                         ;
+;  Structure 43                                                                                                         ; Encoder:inst5|COUNT_1[12]               ;
+; Rule D101: Data bits are not synchronized when transferred between asynchronous clock domains - Structure 44          ;                                         ;
+;  Structure 44                                                                                                         ; Encoder:inst5|COUNT_2[12]               ;
+; Rule D101: Data bits are not synchronized when transferred between asynchronous clock domains - Structure 45          ;                                         ;
+;  Structure 45                                                                                                         ; Encoder:inst5|COUNT_1[7]                ;
+; Rule D101: Data bits are not synchronized when transferred between asynchronous clock domains - Structure 46          ;                                         ;
+;  Structure 46                                                                                                         ; Encoder:inst5|COUNT_2[7]                ;
+; Rule D101: Data bits are not synchronized when transferred between asynchronous clock domains - Structure 47          ;                                         ;
+;  Structure 47                                                                                                         ; Encoder:inst5|COUNT_1[3]                ;
+; Rule D101: Data bits are not synchronized when transferred between asynchronous clock domains - Structure 48          ;                                         ;
+;  Structure 48                                                                                                         ; Encoder:inst5|COUNT_2[3]                ;
+; Rule D101: Data bits are not synchronized when transferred between asynchronous clock domains - Structure 49          ;                                         ;
+;  Structure 49                                                                                                         ; Encoder:inst5|COUNT_1[26]               ;
+; Rule D101: Data bits are not synchronized when transferred between asynchronous clock domains - Structure 50          ;                                         ;
+;  Structure 50                                                                                                         ; Encoder:inst5|COUNT_2[26]               ;
+; Rule D101: Data bits are not synchronized when transferred between asynchronous clock domains - Structure 51          ;                                         ;
+;  Structure 51                                                                                                         ; Encoder:inst5|COUNT_1[24]               ;
+; Rule D101: Data bits are not synchronized when transferred between asynchronous clock domains - Structure 52          ;                                         ;
+;  Structure 52                                                                                                         ; Encoder:inst5|COUNT_2[24]               ;
+; Rule D101: Data bits are not synchronized when transferred between asynchronous clock domains - Structure 53          ;                                         ;
+;  Structure 53                                                                                                         ; Encoder:inst5|COUNT_1[18]               ;
+; Rule D101: Data bits are not synchronized when transferred between asynchronous clock domains - Structure 54          ;                                         ;
+;  Structure 54                                                                                                         ; Encoder:inst5|COUNT_2[18]               ;
+; Rule D101: Data bits are not synchronized when transferred between asynchronous clock domains - Structure 55          ;                                         ;
+;  Structure 55                                                                                                         ; Encoder:inst5|COUNT_1[16]               ;
+; Rule D101: Data bits are not synchronized when transferred between asynchronous clock domains - Structure 56          ;                                         ;
+;  Structure 56                                                                                                         ; Encoder:inst5|COUNT_2[16]               ;
+; Rule D101: Data bits are not synchronized when transferred between asynchronous clock domains - Structure 57          ;                                         ;
+;  Structure 57                                                                                                         ; Encoder:inst5|COUNT_1[5]                ;
+; Rule D101: Data bits are not synchronized when transferred between asynchronous clock domains - Structure 58          ;                                         ;
+;  Structure 58                                                                                                         ; Encoder:inst5|COUNT_2[5]                ;
+; Rule D101: Data bits are not synchronized when transferred between asynchronous clock domains - Structure 59          ;                                         ;
+;  Structure 59                                                                                                         ; Encoder:inst5|COUNT_1[1]                ;
+; Rule D101: Data bits are not synchronized when transferred between asynchronous clock domains - Structure 60          ;                                         ;
+;  Structure 60                                                                                                         ; Encoder:inst5|COUNT_2[1]                ;
+; Rule D101: Data bits are not synchronized when transferred between asynchronous clock domains - Structure 61          ;                                         ;
+;  Structure 61                                                                                                         ; Encoder:inst5|COUNT_1[8]                ;
+; Rule D101: Data bits are not synchronized when transferred between asynchronous clock domains - Structure 62          ;                                         ;
+;  Structure 62                                                                                                         ; Encoder:inst5|COUNT_2[8]                ;
+; Rule D101: Data bits are not synchronized when transferred between asynchronous clock domains - Structure 63          ;                                         ;
+;  Structure 63                                                                                                         ; Encoder:inst5|COUNT_1[0]                ;
+; Rule D101: Data bits are not synchronized when transferred between asynchronous clock domains - Structure 64          ;                                         ;
+;  Structure 64                                                                                                         ; Encoder:inst5|COUNT_2[0]                ;
++-----------------------------------------------------------------------------------------------------------------------+-----------------------------------------+
+
+
++------------------------------------------------------------------------------------------------------------------------+
+; Medium Violations                                                                                                      ;
++-------------------------------------------------------------------------------+----------------------------------------+
+; Rule name                                                                     ; Name                                   ;
++-------------------------------------------------------------------------------+----------------------------------------+
+; Rule R102: External reset should be synchronized using two cascaded registers ; ResetIn                                ;
+;  Reset signal destination node(s) list                                        ; FSM:inst14|dataregister[13]            ;
+;  Reset signal destination node(s) list                                        ; FSM:inst14|shiftregister[13]~_emulated ;
+;  Reset signal destination node(s) list                                        ; FSM:inst14|dataregister[15]            ;
+;  Reset signal destination node(s) list                                        ; FSM:inst14|shiftregister[15]~_emulated ;
+;  Reset signal destination node(s) list                                        ; FSM:inst14|dataregister[1]             ;
+;  Reset signal destination node(s) list                                        ; FSM:inst14|shiftregister[1]~_emulated  ;
+;  Reset signal destination node(s) list                                        ; FSM:inst14|dataregister[2]             ;
+;  Reset signal destination node(s) list                                        ; FSM:inst14|shiftregister[2]~_emulated  ;
+;  Reset signal destination node(s) list                                        ; FSM:inst14|dataregister[33]            ;
+;  Reset signal destination node(s) list                                        ; FSM:inst14|shiftregister[33]~_emulated ;
++-------------------------------------------------------------------------------+----------------------------------------+
+
+
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Information only Violations                                                                                                                                          ;
++------------------------------------------------------------------+-----------------------------------------------------------------------------------------+---------+
+; Rule name                                                        ; Name                                                                                    ; Fan-Out ;
++------------------------------------------------------------------+-----------------------------------------------------------------------------------------+---------+
+; Rule T101: Nodes with more than the specified number of fan-outs ; lpm_counter0:inst1|lpm_counter:lpm_counter_component|cntr_amh:auto_generated|safe_q[23] ; 83      ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; SPI:inst|Dataregister[15]~64                                                            ; 33      ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; mmu_uart_top:inst9|baud_cnt:baud_cnt_u0|ck_en                                           ; 33      ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; UartController:inst3|DoneINCLINO                                                        ; 39      ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; mmu_uart_top:inst11|tx:tx_u0|shift_en                                                   ; 65      ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; UartController:inst3|packet[31]~552                                                     ; 31      ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; mmu_uart_top:inst11|baud_cnt:baud_cnt_u0|ck_en                                          ; 33      ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; UartController:inst3|packet[5]~515                                                      ; 33      ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; UartController:inst3|packetnumber[4]                                                    ; 31      ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; UartController:inst3|packetnumber[5]                                                    ; 31      ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; UartController:inst3|packetnumber[28]~839                                               ; 32      ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; UartController:inst3|packetnumber[0]~788                                                ; 32      ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; UartController:inst3|ENClatch[31]~483                                                   ; 32      ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; UartController:inst3|encaddress                                                         ; 35      ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; UartController:inst3|UART2ReceivedCounter[17]~788                                       ; 32      ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; UartController:inst3|UART2ReceivedCounter[17]~791                                       ; 32      ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; Encoder:inst5|process_0~1                                                               ; 64      ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; Encoder:inst5|process_0~3                                                               ; 64      ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; ENC1B                                                                                   ; 31      ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; ENC2B                                                                                   ; 31      ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; FSM:inst14|outclockcounter[5]                                                           ; 39      ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; FSM:inst14|Equal1~10                                                                    ; 36      ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; FSM:inst14|done                                                                         ; 300     ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; FSM:inst14|count[0]                                                                     ; 32      ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; FSM:inst14|clockout~3                                                                   ; 34      ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; FSM:inst14|count[1]                                                                     ; 34      ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; ResetIn                                                                                 ; 678     ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; FSM:inst14|outclockcounter[7]~192                                                       ; 32      ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; FSM:inst14|outclockcounter[3]                                                           ; 37      ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; FSM:inst14|count[9]~128                                                                 ; 32      ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; FSM:inst14|clockout~0                                                                   ; 225     ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; FSM:inst14|shiftregister[144]~1256                                                      ; 160     ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; FSM:inst14|shiftregister[120]~1272                                                      ; 60      ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; Topbit                                                                                  ; 44      ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; FSM:inst14|clockin~6                                                                    ; 38      ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; FSM:inst14|shiftregister[144]~1271                                                      ; 35      ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; FSM:inst14|incounter[1]~32                                                              ; 32      ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; FSM:inst14|clockin~8                                                                    ; 80      ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; Clock                                                                                   ; 910     ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; ENC1A                                                                                   ; 32      ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; ENC2A                                                                                   ; 32      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; Clock                                                                                   ; 910     ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; ResetIn                                                                                 ; 678     ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; FSM:inst14|done                                                                         ; 300     ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; FSM:inst14|clockout~0                                                                   ; 225     ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; FSM:inst14|shiftregister[144]~1256                                                      ; 160     ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; lpm_counter0:inst1|lpm_counter:lpm_counter_component|cntr_amh:auto_generated|safe_q[23] ; 83      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; FSM:inst14|clockin~8                                                                    ; 80      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; mmu_uart_top:inst11|tx:tx_u0|shift_en                                                   ; 65      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; Encoder:inst5|process_0~1                                                               ; 64      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; Encoder:inst5|process_0~3                                                               ; 64      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; FSM:inst14|shiftregister[120]~1272                                                      ; 60      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; Topbit                                                                                  ; 44      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; FSM:inst14|outclockcounter[5]                                                           ; 39      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; UartController:inst3|DoneINCLINO                                                        ; 39      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; FSM:inst14|clockin~6                                                                    ; 38      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; FSM:inst14|outclockcounter[3]                                                           ; 37      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; FSM:inst14|Equal1~10                                                                    ; 36      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; FSM:inst14|shiftregister[144]~1271                                                      ; 35      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; UartController:inst3|encaddress                                                         ; 35      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; FSM:inst14|count[1]                                                                     ; 34      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; FSM:inst14|clockout~3                                                                   ; 34      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; UartController:inst3|packet[5]~515                                                      ; 33      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; SPI:inst|Dataregister[15]~64                                                            ; 33      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; mmu_uart_top:inst9|baud_cnt:baud_cnt_u0|ck_en                                           ; 33      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; mmu_uart_top:inst11|baud_cnt:baud_cnt_u0|ck_en                                          ; 33      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; FSM:inst14|count[9]~128                                                                 ; 32      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; UartController:inst3|packetnumber[28]~839                                               ; 32      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; UartController:inst3|packetnumber[0]~788                                                ; 32      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; FSM:inst14|count[0]                                                                     ; 32      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; FSM:inst14|outclockcounter[7]~192                                                       ; 32      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; ENC2A                                                                                   ; 32      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; FSM:inst14|incounter[1]~32                                                              ; 32      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; UartController:inst3|ENClatch[31]~483                                                   ; 32      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; ENC1A                                                                                   ; 32      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; UartController:inst3|UART2ReceivedCounter[17]~788                                       ; 32      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; UartController:inst3|UART2ReceivedCounter[17]~791                                       ; 32      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; ENC2B                                                                                   ; 31      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; ENC1B                                                                                   ; 31      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; UartController:inst3|packetnumber[4]                                                    ; 31      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; UartController:inst3|packet[31]~552                                                     ; 31      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; UartController:inst3|packetnumber[5]                                                    ; 31      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; FSM:inst14|shiftregister~1260                                                           ; 30      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; UartController:inst3|packetnumber[2]                                                    ; 29      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; mmu_uart_top:inst11|RX:rx_u0|full                                                       ; 29      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; FSM:inst14|Add2~6                                                                       ; 28      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; UartController:inst3|packetnumber[1]                                                    ; 28      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; FSM:inst14|Add2~4                                                                       ; 27      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; FSM:inst14|Add2~0                                                                       ; 25      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; FSM:inst14|Add2~2                                                                       ; 25      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; FSM:inst14|shiftregister~1320                                                           ; 25      ;
++------------------------------------------------------------------+-----------------------------------------------------------------------------------------+---------+
+
+
++---------------------------+
+; Design Assistant Messages ;
++---------------------------+
+Info: *******************************************************************
+Info: Running Quartus II Design Assistant
+    Info: Version 9.0 Build 132 02/25/2009 SJ Web Edition
+    Info: Processing started: Tue Nov 22 14:30:30 2011
+Info: Command: quartus_drc --read_settings_files=on --write_settings_files=off Inclinometer -c test
+Info: Selected device EP2C5T144C8 for design "test"
+Critical Warning: (High) Rule A108: Design should not contain latches. Found 160 latch(es) related to this rule.
+    Critical Warning: Node  "FSM:inst14|shiftregister[159]~latch"
+    Critical Warning: Node  "FSM:inst14|shiftregister[157]~latch"
+    Critical Warning: Node  "FSM:inst14|shiftregister[158]~latch"
+    Critical Warning: Node  "FSM:inst14|shiftregister[38]~latch"
+    Critical Warning: Node  "FSM:inst14|shiftregister[40]~latch"
+    Critical Warning: Node  "FSM:inst14|shiftregister[54]~latch"
+    Critical Warning: Node  "FSM:inst14|shiftregister[56]~latch"
+    Critical Warning: Node  "FSM:inst14|shiftregister[27]~latch"
+    Critical Warning: Node  "FSM:inst14|shiftregister[28]~latch"
+    Critical Warning: Node  "FSM:inst14|shiftregister[59]~latch"
+    Critical Warning: Node  "FSM:inst14|shiftregister[60]~latch"
+    Critical Warning: Node  "FSM:inst14|shiftregister[147]~latch"
+    Critical Warning: Node  "FSM:inst14|shiftregister[155]~latch"
+    Critical Warning: Node  "FSM:inst14|shiftregister[152]~latch"
+    Critical Warning: Node  "FSM:inst14|shiftregister[156]~latch"
+    Critical Warning: Node  "FSM:inst14|shiftregister[134]~latch"
+    Critical Warning: Node  "FSM:inst14|shiftregister[138]~latch"
+    Critical Warning: Node  "FSM:inst14|shiftregister[136]~latch"
+    Critical Warning: Node  "FSM:inst14|shiftregister[140]~latch"
+    Critical Warning: Node  "FSM:inst14|shiftregister[104]~latch"
+    Critical Warning: Node  "FSM:inst14|shiftregister[108]~latch"
+    Critical Warning: Node  "FSM:inst14|shiftregister[116]~latch"
+    Critical Warning: Node  "FSM:inst14|shiftregister[124]~latch"
+    Critical Warning: Node  "FSM:inst14|shiftregister[102]~latch"
+    Critical Warning: Node  "FSM:inst14|shiftregister[118]~latch"
+    Critical Warning: Node  "FSM:inst14|shiftregister[90]~latch"
+    Critical Warning: Node  "FSM:inst14|shiftregister[122]~latch"
+    Critical Warning: Node  "FSM:inst14|shiftregister[83]~latch"
+    Critical Warning: Node  "FSM:inst14|shiftregister[115]~latch"
+    Critical Warning: Node  "FSM:inst14|shiftregister[91]~latch"
+    Info: Truncated list of Design Assistant messages to 30 messages. Go to sections under Design Assistant section of Compilation Report for complete lists of Design Assistant messages generated.
+Critical Warning: (High) Rule R101: Combinational logic used as a reset signal should be synchronized. Found 2 node(s) related to this rule.
+    Critical Warning: Node  "Encoder:inst5|process_0~1"
+    Critical Warning: Node  "Encoder:inst5|process_0~3"
+Critical Warning: (High) Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source. Found 224 node(s) related to this rule.
+    Critical Warning: Node  "Encoder:inst5|COUNT_1[22]"
+    Critical Warning: Node  "Encoder:inst5|COUNT_2[22]"
+    Critical Warning: Node  "Encoder:inst5|COUNT_1[23]"
+    Critical Warning: Node  "Encoder:inst5|COUNT_2[23]"
+    Critical Warning: Node  "Encoder:inst5|COUNT_1[30]"
+    Critical Warning: Node  "Encoder:inst5|COUNT_2[30]"
+    Critical Warning: Node  "Encoder:inst5|COUNT_1[31]"
+    Critical Warning: Node  "Encoder:inst5|COUNT_2[31]"
+    Critical Warning: Node  "Encoder:inst5|COUNT_1[6]"
+    Critical Warning: Node  "Encoder:inst5|COUNT_2[6]"
+    Critical Warning: Node  "Encoder:inst5|COUNT_1[14]"
+    Critical Warning: Node  "Encoder:inst5|COUNT_2[14]"
+    Critical Warning: Node  "Encoder:inst5|COUNT_1[11]"
+    Critical Warning: Node  "Encoder:inst5|COUNT_2[11]"
+    Critical Warning: Node  "Encoder:inst5|COUNT_1[15]"
+    Critical Warning: Node  "Encoder:inst5|COUNT_2[15]"
+    Critical Warning: Node  "Encoder:inst5|COUNT_1[21]"
+    Critical Warning: Node  "Encoder:inst5|COUNT_2[21]"
+    Critical Warning: Node  "Encoder:inst5|COUNT_1[20]"
+    Critical Warning: Node  "Encoder:inst5|COUNT_2[20]"
+    Critical Warning: Node  "Encoder:inst5|COUNT_1[25]"
+    Critical Warning: Node  "Encoder:inst5|COUNT_2[25]"
+    Critical Warning: Node  "Encoder:inst5|COUNT_1[27]"
+    Critical Warning: Node  "Encoder:inst5|COUNT_2[27]"
+    Critical Warning: Node  "Encoder:inst5|COUNT_1[17]"
+    Critical Warning: Node  "Encoder:inst5|COUNT_2[17]"
+    Critical Warning: Node  "Encoder:inst5|COUNT_1[19]"
+    Critical Warning: Node  "Encoder:inst5|COUNT_2[19]"
+    Critical Warning: Node  "Encoder:inst5|COUNT_1[29]"
+    Critical Warning: Node  "Encoder:inst5|COUNT_2[29]"
+    Info: Truncated list of Design Assistant messages to 30 messages. Go to sections under Design Assistant section of Compilation Report for complete lists of Design Assistant messages generated.
+Critical Warning: (High) Rule D101: Data bits are not synchronized when transferred between asynchronous clock domains. Found 64 asynchronous clock domain interface structure(s) related to this rule.
+    Critical Warning: Node  "Encoder:inst5|COUNT_1[22]"
+    Critical Warning: Node  "Encoder:inst5|COUNT_2[22]"
+    Critical Warning: Node  "Encoder:inst5|COUNT_1[23]"
+    Critical Warning: Node  "Encoder:inst5|COUNT_2[23]"
+    Critical Warning: Node  "Encoder:inst5|COUNT_1[30]"
+    Critical Warning: Node  "Encoder:inst5|COUNT_2[30]"
+    Critical Warning: Node  "Encoder:inst5|COUNT_1[31]"
+    Critical Warning: Node  "Encoder:inst5|COUNT_2[31]"
+    Critical Warning: Node  "Encoder:inst5|COUNT_1[6]"
+    Critical Warning: Node  "Encoder:inst5|COUNT_2[6]"
+    Critical Warning: Node  "Encoder:inst5|COUNT_1[14]"
+    Critical Warning: Node  "Encoder:inst5|COUNT_2[14]"
+    Critical Warning: Node  "Encoder:inst5|COUNT_1[11]"
+    Critical Warning: Node  "Encoder:inst5|COUNT_2[11]"
+    Critical Warning: Node  "Encoder:inst5|COUNT_1[15]"
+    Critical Warning: Node  "Encoder:inst5|COUNT_2[15]"
+    Critical Warning: Node  "Encoder:inst5|COUNT_1[21]"
+    Critical Warning: Node  "Encoder:inst5|COUNT_2[21]"
+    Critical Warning: Node  "Encoder:inst5|COUNT_1[20]"
+    Critical Warning: Node  "Encoder:inst5|COUNT_2[20]"
+    Critical Warning: Node  "Encoder:inst5|COUNT_1[25]"
+    Critical Warning: Node  "Encoder:inst5|COUNT_2[25]"
+    Critical Warning: Node  "Encoder:inst5|COUNT_1[27]"
+    Critical Warning: Node  "Encoder:inst5|COUNT_2[27]"
+    Critical Warning: Node  "Encoder:inst5|COUNT_1[17]"
+    Critical Warning: Node  "Encoder:inst5|COUNT_2[17]"
+    Critical Warning: Node  "Encoder:inst5|COUNT_1[19]"
+    Critical Warning: Node  "Encoder:inst5|COUNT_2[19]"
+    Critical Warning: Node  "Encoder:inst5|COUNT_1[29]"
+    Critical Warning: Node  "Encoder:inst5|COUNT_2[29]"
+    Info: Truncated list of Design Assistant messages to 30 messages. Go to sections under Design Assistant section of Compilation Report for complete lists of Design Assistant messages generated.
+Warning: (Medium) Rule R102: External reset should be synchronized using two cascaded registers. Found 1 node(s) related to this rule.
+    Warning: Node  "ResetIn"
+Info: (Information) Rule T101: Nodes with more than the specified number of fan-outs. (Value defined:30). Found 41 node(s) with highest fan-out.
+    Info: Node  "lpm_counter0:inst1|lpm_counter:lpm_counter_component|cntr_amh:auto_generated|safe_q[23]"
+    Info: Node  "SPI:inst|Dataregister[15]~64"
+    Info: Node  "mmu_uart_top:inst9|baud_cnt:baud_cnt_u0|ck_en"
+    Info: Node  "UartController:inst3|DoneINCLINO"
+    Info: Node  "mmu_uart_top:inst11|tx:tx_u0|shift_en"
+    Info: Node  "UartController:inst3|packet[31]~552"
+    Info: Node  "mmu_uart_top:inst11|baud_cnt:baud_cnt_u0|ck_en"
+    Info: Node  "UartController:inst3|packet[5]~515"
+    Info: Node  "UartController:inst3|packetnumber[4]"
+    Info: Node  "UartController:inst3|packetnumber[5]"
+    Info: Node  "UartController:inst3|packetnumber[28]~839"
+    Info: Node  "UartController:inst3|packetnumber[0]~788"
+    Info: Node  "UartController:inst3|ENClatch[31]~483"
+    Info: Node  "UartController:inst3|encaddress"
+    Info: Node  "UartController:inst3|UART2ReceivedCounter[17]~788"
+    Info: Node  "UartController:inst3|UART2ReceivedCounter[17]~791"
+    Info: Node  "Encoder:inst5|process_0~1"
+    Info: Node  "Encoder:inst5|process_0~3"
+    Info: Node  "ENC1B"
+    Info: Node  "ENC2B"
+    Info: Node  "FSM:inst14|outclockcounter[5]"
+    Info: Node  "FSM:inst14|Equal1~10"
+    Info: Node  "FSM:inst14|done"
+    Info: Node  "FSM:inst14|count[0]"
+    Info: Node  "FSM:inst14|clockout~3"
+    Info: Node  "FSM:inst14|count[1]"
+    Info: Node  "ResetIn"
+    Info: Node  "FSM:inst14|outclockcounter[7]~192"
+    Info: Node  "FSM:inst14|outclockcounter[3]"
+    Info: Node  "FSM:inst14|count[9]~128"
+    Info: Truncated list of Design Assistant messages to 30 messages. Go to sections under Design Assistant section of Compilation Report for complete lists of Design Assistant messages generated.
+Info: (Information) Rule T102: Top nodes with the highest number of fan-outs. (Value defined:50). Found 50 node(s) with highest fan-out.
+    Info: Node  "Clock"
+    Info: Node  "ResetIn"
+    Info: Node  "FSM:inst14|done"
+    Info: Node  "FSM:inst14|clockout~0"
+    Info: Node  "FSM:inst14|shiftregister[144]~1256"
+    Info: Node  "lpm_counter0:inst1|lpm_counter:lpm_counter_component|cntr_amh:auto_generated|safe_q[23]"
+    Info: Node  "FSM:inst14|clockin~8"
+    Info: Node  "mmu_uart_top:inst11|tx:tx_u0|shift_en"
+    Info: Node  "Encoder:inst5|process_0~1"
+    Info: Node  "Encoder:inst5|process_0~3"
+    Info: Node  "FSM:inst14|shiftregister[120]~1272"
+    Info: Node  "Topbit"
+    Info: Node  "FSM:inst14|outclockcounter[5]"
+    Info: Node  "UartController:inst3|DoneINCLINO"
+    Info: Node  "FSM:inst14|clockin~6"
+    Info: Node  "FSM:inst14|outclockcounter[3]"
+    Info: Node  "FSM:inst14|Equal1~10"
+    Info: Node  "FSM:inst14|shiftregister[144]~1271"
+    Info: Node  "UartController:inst3|encaddress"
+    Info: Node  "FSM:inst14|count[1]"
+    Info: Node  "FSM:inst14|clockout~3"
+    Info: Node  "UartController:inst3|packet[5]~515"
+    Info: Node  "SPI:inst|Dataregister[15]~64"
+    Info: Node  "mmu_uart_top:inst9|baud_cnt:baud_cnt_u0|ck_en"
+    Info: Node  "mmu_uart_top:inst11|baud_cnt:baud_cnt_u0|ck_en"
+    Info: Node  "FSM:inst14|count[9]~128"
+    Info: Node  "UartController:inst3|packetnumber[28]~839"
+    Info: Node  "UartController:inst3|packetnumber[0]~788"
+    Info: Node  "FSM:inst14|count[0]"
+    Info: Node  "FSM:inst14|outclockcounter[7]~192"
+    Info: Truncated list of Design Assistant messages to 30 messages. Go to sections under Design Assistant section of Compilation Report for complete lists of Design Assistant messages generated.
+Info: Design Assistant information: finished post-synthesis analysis of current design -- generated 91 information messages and 451 warning messages
+Info: Quartus II Design Assistant was successful. 0 errors, 98 warnings
+    Info: Peak virtual memory: 138 megabytes
+    Info: Processing ended: Tue Nov 22 14:30:33 2011
+    Info: Elapsed time: 00:00:03
+    Info: Total CPU time (on all processors): 00:00:03
+
+

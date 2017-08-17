@@ -1,0 +1,149 @@
+------------------------------------------------------------
+TimeQuest Timing Analyzer Summary
+------------------------------------------------------------
+
+Type  : Slow Model Setup 'Clock'
+Slack : -8.516
+TNS   : -4602.681
+
+Type  : Slow Model Setup 'ENC2A'
+Slack : -3.822
+TNS   : -74.236
+
+Type  : Slow Model Setup 'ENC1A'
+Slack : -3.807
+TNS   : -74.312
+
+Type  : Slow Model Setup 'ResetIn'
+Slack : -1.290
+TNS   : -80.787
+
+Type  : Slow Model Hold 'ResetIn'
+Slack : -0.182
+TNS   : -4.307
+
+Type  : Slow Model Hold 'Clock'
+Slack : 0.499
+TNS   : 0.000
+
+Type  : Slow Model Hold 'ENC2A'
+Slack : 0.741
+TNS   : 0.000
+
+Type  : Slow Model Hold 'ENC1A'
+Slack : 1.164
+TNS   : 0.000
+
+Type  : Slow Model Recovery 'Clock'
+Slack : -1.357
+TNS   : -370.530
+
+Type  : Slow Model Recovery 'ENC1A'
+Slack : -1.106
+TNS   : -34.720
+
+Type  : Slow Model Recovery 'ENC2A'
+Slack : -0.801
+TNS   : -25.264
+
+Type  : Slow Model Removal 'Clock'
+Slack : 1.054
+TNS   : 0.000
+
+Type  : Slow Model Removal 'ENC2A'
+Slack : 1.358
+TNS   : 0.000
+
+Type  : Slow Model Removal 'ENC1A'
+Slack : 1.643
+TNS   : 0.000
+
+Type  : Slow Model Minimum Pulse Width 'Clock'
+Slack : -1.941
+TNS   : -1352.381
+
+Type  : Slow Model Minimum Pulse Width 'ENC1A'
+Slack : -1.777
+TNS   : -49.265
+
+Type  : Slow Model Minimum Pulse Width 'ENC2A'
+Slack : -1.777
+TNS   : -49.265
+
+Type  : Slow Model Minimum Pulse Width 'ResetIn'
+Slack : -1.777
+TNS   : -1.777
+
+Type  : Fast Model Setup 'Clock'
+Slack : -2.054
+TNS   : -939.190
+
+Type  : Fast Model Setup 'ENC2A'
+Slack : -0.854
+TNS   : -9.452
+
+Type  : Fast Model Setup 'ENC1A'
+Slack : -0.845
+TNS   : -9.308
+
+Type  : Fast Model Setup 'ResetIn'
+Slack : -0.049
+TNS   : -0.049
+
+Type  : Fast Model Hold 'Clock'
+Slack : -0.029
+TNS   : -0.079
+
+Type  : Fast Model Hold 'ENC2A'
+Slack : 0.238
+TNS   : 0.000
+
+Type  : Fast Model Hold 'ResetIn'
+Slack : 0.260
+TNS   : 0.000
+
+Type  : Fast Model Hold 'ENC1A'
+Slack : 0.355
+TNS   : 0.000
+
+Type  : Fast Model Recovery 'ENC1A'
+Slack : -0.037
+TNS   : -0.800
+
+Type  : Fast Model Recovery 'Clock'
+Slack : 0.054
+TNS   : 0.000
+
+Type  : Fast Model Recovery 'ENC2A'
+Slack : 0.101
+TNS   : 0.000
+
+Type  : Fast Model Removal 'Clock'
+Slack : 0.124
+TNS   : 0.000
+
+Type  : Fast Model Removal 'ENC2A'
+Slack : 0.731
+TNS   : 0.000
+
+Type  : Fast Model Removal 'ENC1A'
+Slack : 0.874
+TNS   : 0.000
+
+Type  : Fast Model Minimum Pulse Width 'Clock'
+Slack : -1.380
+TNS   : -911.380
+
+Type  : Fast Model Minimum Pulse Width 'ENC1A'
+Slack : -1.222
+TNS   : -33.222
+
+Type  : Fast Model Minimum Pulse Width 'ENC2A'
+Slack : -1.222
+TNS   : -33.222
+
+Type  : Fast Model Minimum Pulse Width 'ResetIn'
+Slack : -1.222
+TNS   : -1.222
+
+------------------------------------------------------------

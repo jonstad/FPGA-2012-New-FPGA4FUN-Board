@@ -1,0 +1,256 @@
+library IEEE;
+use IEEE.STD_LOGIC_1164.all;
+use IEEE.Numeric_std.all;
+
+entity UartController is
+	Port(Clock: in std_logic;
+		UART1_Byte_received: in std_logic;
+		UART2_Byte_received: in std_logic;
+		Tx_Busy,Tx2_Busy: in std_logic;
+		RX_DATA_UART		: in std_logic_vector(7 downto 0);
+		DATA_IN_TEMP		: in std_logic_vector(15 downto 0);
+		DATA_IN_ENC1		: in std_logic_vector(31 downto 0);
+		RX_DATA_UART2		: in std_logic_vector(7 downto 0);
+		WR_EN				: out std_logic;
+		ENCODER_ADDRESS		: out std_logic;
+		DATA_OUT			: out std_logic_vector(7 downto 0);
+		CLK_DIV				: out std_logic_vector(15 downto 0);
+		ENC_WRITE			: out std_logic;
+		ENC_READ			: out std_logic;
+		
+		WR_EN2				: out std_logic;
+		DATA_OUT2			: out std_logic_vector(7 downto 0));
+end UartController;
+
+
+architecture TransmittEncoder of UartController is
+	constant  RECEIVEBUFFER_LENGTH : integer :=10;
+	signal UART2ReceivedCounter : integer :=0;
+	signal  UART1buffer,UART2buffer : std_logic_vector(79 downto 0);
+	constant  MAXCOUNT:  	integer	:= 15;
+	constant  MAXCOUNTENC:  integer := 32;
+	constant  MAXCOUNTINC:  integer := 1;
+	signal DoneTemp,DoneENC1,DoneENC2,DoneINCLINO,DoneSendInclino: boolean := true;
+	signal write_enc, read_enc : std_logic :='1';
+	signal dout,dout2 : std_logic_vector(7 downto 0);
+	signal wr_enint,wr_enint2,encaddress : std_logic :='1';
+	signal packetnumber,packet: integer :=0;
+		begin
+		--Counter
+		process (Clock,Tx_Busy,Tx2_Busy,UART1_Byte_received,UART2_Byte_received)
+			begin	
+				if rising_edge(Clock) then
+					-- START UART2_Byte_received
+					if Tx2_Busy = '1' and UART2_Byte_received = '1'  then
+						if UART2ReceivedCounter =0 then 
+							UART2buffer(7 downto 0) <="00000000";--RX_DATA_UART2;
+							UART2ReceivedCounter <=UART2ReceivedCounter +1;				
+						elsif UART2ReceivedCounter =1 then 
+							UART2buffer(15 downto 8) <="00000000";--RX_DATA_UART2;
+							UART2ReceivedCounter <=UART2ReceivedCounter +1;	
+						elsif UART2ReceivedCounter =2 then 
+							UART2buffer(23 downto 16) <=RX_DATA_UART2;
+							UART2ReceivedCounter <=UART2ReceivedCounter +1;	
+						elsif UART2ReceivedCounter =3 then 
+							UART2buffer(31 downto 24) <=RX_DATA_UART2;
+							UART2ReceivedCounter <=UART2ReceivedCounter +1;	
+						elsif UART2ReceivedCounter =4 then 
+							UART2buffer(39 downto 32) <=RX_DATA_UART2;
+							UART2ReceivedCounter <=UART2ReceivedCounter +1;	
+						elsif UART2ReceivedCounter =5 then 
+							UART2buffer(47 downto 40) <=RX_DATA_UART2;
+							UART2ReceivedCounter <=UART2ReceivedCounter +1;	
+						elsif UART2ReceivedCounter =6 then 
+							UART2buffer(55 downto 48) <="00000000";--RX_DATA_UART2;
+							UART2ReceivedCounter <=UART2ReceivedCounter +1;	
+						elsif UART2ReceivedCounter =7 then 
+							UART2buffer(63 downto 56) <="00000000";--RX_DATA_UART2;
+							UART2ReceivedCounter <=UART2ReceivedCounter +1;	
+						elsif UART2ReceivedCounter =8 then 
+							UART2buffer(71 downto 64) <="00000000";--RX_DATA_UART2;
+							UART2ReceivedCounter <=UART2ReceivedCounter +1;	
+						elsif UART2ReceivedCounter =9 then 
+							UART2buffer(79 downto 72) <="00000000";--RX_DATA_UART2;
+							UART2ReceivedCounter <=0;					
+						end if;													
+							
+					end if;
+					-- END UART2_Byte_received
+					
+					-- START UART1_Byte_received
+					if UART1_Byte_received = '1' and RX_DATA_UART = "00110001" then
+						--wr_enint<='0';
+						DoneTemp <= false;
+					elsif UART1_Byte_received = '1' and RX_DATA_UART = "00110010" then
+						wr_enint<='0';
+						DoneENC1 <= false;
+					elsif UART1_Byte_received = '1' and RX_DATA_UART = "00110011" then
+						wr_enint<='0';
+						DoneENC2 <= false;					
+					elsif UART1_Byte_received = '1' and RX_DATA_UART = "00110100" then
+						wr_enint2<='0';
+						DoneINCLINO <= false;
+					elsif UART1_Byte_received = '1' and RX_DATA_UART = "00110101" then
+						wr_enint<='0';
+						DoneSendInclino <= false;
+					
+					elsif Tx_Busy='1' and DoneSendInclino = false then
+						if packetnumber <= MAXCOUNTINC then
+							
+							if packetnumber = 0  then
+								dout<=UART2buffer(31 downto 24);
+							elsif packetnumber = 1  then
+								dout<=UART2buffer(39 downto 32);
+								wr_enint<='1';
+--							elsif packetnumber = 2  then
+--								dout<=UART2buffer(39 downto 32);
+--							elsif packetnumber = 3  then
+--								dout<=UART2buffer(47 downto 40);								
+							end if;	
+							packetnumber<=packetnumber+1;						
+						elsif packetnumber = 2 then	
+							packetnumber<=0;
+							DoneSendInclino <= true;
+							wr_enint<='1';									
+							
+--															
+						end if;		-- END if packetnumber <= MAXCOUNT then														
+
+					
+					
+						
+					-- TRANSMIT TEMPERATURE	
+					elsif Tx_Busy='1' and DoneTemp = false then
+						--wr_enint<='0';
+						if packetnumber <= MAXCOUNT then
+							wr_enint<='0';
+							if packetnumber >= 0 then
+								if DATA_IN_TEMP(packetnumber) = '1' then
+									dout<=std_logic_vector(TO_UNSIGNED(49,8));
+								else 
+									dout<=std_logic_vector(TO_UNSIGNED(48,8));
+								end if;
+							end if;
+							packetnumber<=packetnumber+1;
+								
+--							if packetnumber = 0 then
+--								--dout2<=X"66";
+--								dout <= DATA_IN_TEMP(7 downto 0);
+--								packetnumber<=packetnumber+1;
+--							else 
+--								dout <= DATA_IN_TEMP(15 downto 8);
+--								--dout2<=X"67";
+--								packetnumber<=packetnumber+1;
+--							end if;
+						else 
+							packetnumber<=0;
+							DoneTemp <= true;
+							wr_enint<='1';															
+						end if;		-- END if packetnumber <= MAXCOUNT then
+						
+					
+					elsif Tx_Busy='1' and DoneENC1 = false then	
+						--TRANSMIT ENCODER 1
+							encaddress <= '0';
+							read_enc   <= '0';
+						if packetnumber <= MAXCOUNTENC then
+								if DATA_IN_ENC1(packetnumber) = '1' then
+									dout<=std_logic_vector(TO_UNSIGNED(49,8));
+								else 
+									dout<=std_logic_vector(TO_UNSIGNED(48,8));
+								end if;
+							packetnumber<=packetnumber+1;
+						
+						elsif packetnumber = MAXCOUNTENC+1 then
+							dout<=std_logic_vector(TO_UNSIGNED(69,8));
+							packetnumber<=packetnumber+1;
+						elsif packetnumber = MAXCOUNTENC+2 then
+							dout<=std_logic_vector(TO_UNSIGNED(78,8));
+							packetnumber<=packetnumber+1;						
+						elsif packetnumber = MAXCOUNTENC+3 then
+							dout<=std_logic_vector(TO_UNSIGNED(67,8));
+							packetnumber<=packetnumber+1;						
+						elsif packetnumber = MAXCOUNTENC+4 then
+							dout<=std_logic_vector(TO_UNSIGNED(49,8));
+							packetnumber<=packetnumber+1;
+						
+						elsif packetnumber = MAXCOUNTENC+5 then
+							dout<=std_logic_vector(TO_UNSIGNED(10,8));
+							packetnumber<=packetnumber+1;							
+						elsif packetnumber = MAXCOUNTENC+6 then
+							dout<=std_logic_vector(TO_UNSIGNED(13,8));
+							packetnumber<=packetnumber+1;
+							read_enc   <= '1';	
+						elsif packetnumber = MAXCOUNTENC+7 then
+							DoneENC1 <= true;
+							wr_enint<='1';
+							packetnumber<=0;
+						end if; --END packetnumber <= MAXCOUNTENC then
+					
+					elsif Tx_Busy='1' and DoneENC2 = false then	
+						--TRANSMIT ENCODER 2
+						encaddress <= '1';
+						read_enc   <= '0';	
+						if packetnumber <= MAXCOUNTENC then
+								if DATA_IN_ENC1(packetnumber) = '1' then
+									dout<=std_logic_vector(TO_UNSIGNED(49,8));
+								else 
+									dout<=std_logic_vector(TO_UNSIGNED(48,8));
+								end if;
+							packetnumber<=packetnumber+1;
+						
+						elsif packetnumber = MAXCOUNTENC+1 then
+							dout<=std_logic_vector(TO_UNSIGNED(69,8));
+							packetnumber<=packetnumber+1;
+						elsif packetnumber = MAXCOUNTENC+2 then
+							dout<=std_logic_vector(TO_UNSIGNED(78,8));
+							packetnumber<=packetnumber+1;						
+						elsif packetnumber = MAXCOUNTENC+3 then
+							dout<=std_logic_vector(TO_UNSIGNED(67,8));
+							packetnumber<=packetnumber+1;						
+						elsif packetnumber = MAXCOUNTENC+4 then
+							dout<=std_logic_vector(TO_UNSIGNED(50,8));
+							packetnumber<=packetnumber+1;
+						elsif packetnumber = MAXCOUNTENC+5 then
+							dout<=std_logic_vector(TO_UNSIGNED(10,8));
+							packetnumber<=packetnumber+1;							
+						elsif packetnumber = MAXCOUNTENC+6 then
+							dout<=std_logic_vector(TO_UNSIGNED(13,8));
+							packetnumber<=packetnumber+1;	
+							read_enc   <= '1';
+						elsif packetnumber = MAXCOUNTENC+7 then
+							DoneENC2 <= true;
+							wr_enint<='1';
+							packetnumber <= 0;							
+						end if;		-- END if packetnumber <= MAXCOUNTENC then		
+					
+					elsif Tx_Busy='1' and DoneINCLINO = false then	
+							--TRANSMIT INCLINO
+							if packet <= 1 then
+								dout2<=X"01";
+								packet <= 2;
+							else
+									wr_enint2<='1';	
+									DoneINCLINO <= true;
+									packet <= 0;
+							end if;	-- END if packet <= 1 then
+						
+					end if;
+					-- END UART1_Byte_received
+				
+			end if;  --END RISING EDGE CLOCK
+		end process;
+	
+	ENCODER_ADDRESS<= encaddress;
+	WR_EN		<=	wr_enint;
+	WR_EN2		<=	wr_enint2;
+	DATA_OUT	<=	dout;
+	DATA_OUT2	<=	dout2;
+	--ENC_WRITE   <=  read_enc; 
+	ENC_READ 	<=  read_enc;
+	--CLK_DIV<="0000010000000000";
+	--CLK_DIV<="0000111010011110";
+	--CLK_DIV<="0000110110010000";
+	CLK_DIV<="0000001101100100";	-- -- baud_rate = F(clk) / (ck_div * 3)		
+end architecture;
+				
